@@ -1,0 +1,1247 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockSharp.Transaq</name>
+    </assembly>
+    <members>
+        <member name="T:StockSharp.Transaq.ApiLogLevels">
+            <summary>
+            Уровни логирования.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.ApiLogLevels.Min">
+            <summary>
+            Минимально.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.ApiLogLevels.Standard">
+            <summary>
+            Стандарт (оптимально).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.ApiLogLevels.Max">
+            <summary>
+            Максимально.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusResponse.Client">
+            <summary>
+            Код клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusResponse.Securities">
+            <summary>
+            Информация по инструментам.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusSecurity.SecId">
+            <summary>
+            Id инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusSecurity.Market">
+            <summary>
+            Id рынка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusSecurity.SecCode">
+            <summary>
+            Обозначение инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusSecurity.MaxBuy">
+            <summary>
+            Максимум купить (лот).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MaxBuySellTPlusSecurity.MaxSell">
+            <summary>
+            Максимум продать (лот).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.Client">
+            <summary>
+            Код клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.Currency">
+            <summary>
+            Валюта портфеля клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.Capital">
+            <summary>
+            Величина капитала.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.UtilizationFact">
+            <summary>
+            Использование капитала (фактическое).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.UtilizationPlan">
+            <summary>
+            Использование капитала (плановое).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.CoverageFact">
+            <summary>
+            Фактическая обеспеченность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.CoveragePlan">
+            <summary>
+            Плановая обеспеченность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.OpenBalance">
+            <summary>
+            Входящее сальдо.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.Tax">
+            <summary>
+            Суммарная комиссия.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.PnLIncome">
+            <summary>
+            Прибыль/убыток по входящим позициям.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioMctResponse.PnLIntraday">
+            <summary>
+            Прибыль/убыток по сделкам.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.SecId">
+            <summary>
+            Id инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Market">
+            <summary>
+            Id рынка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.SecCode">
+            <summary>
+            Обозначение инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Currency">
+            <summary>
+            Валюта цены инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.GoRate">
+            <summary>
+            Ставка ГО (либо long, либо short, в зависимости от позиции клиента) по инструменту для клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.GoRateLong">
+            <summary>
+            Ставка ГО long по инструменту для клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.GoRateShort">
+            <summary>
+            Ставка ГО short по инструменту для клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Price">
+            <summary>
+            Текущая цена.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.InitRate">
+            <summary>
+            Входящая цена позиции (цена последнего клиринга).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.CrossRate">
+            <summary>
+            Кросс-курс валюты портфеля к валюте контракта.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.InitCrossRate">
+            <summary>
+            Входящий кросс-курс валюты портфеля к валюте контракта.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.OpenBalance">
+            <summary>
+            Входящяя позиция, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Bought">
+            <summary>
+            Куплено, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Sold">
+            <summary>
+            Продано, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Balance">
+            <summary>
+            Текущая позиция, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Buying">
+            <summary>
+            Заявлено купить, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Selling">
+            <summary>
+            Заявлено продать, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.PosCost">
+            <summary>
+            Текущая стоимость позиции.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.GoPosFact">
+            <summary>
+            ГО позиции (фактическое).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.GoPosPlan">
+            <summary>
+            ГО позиции (плановое).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.Tax">
+            <summary>
+            Комиссия по сделкам в инструменте.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.PnLIncome">
+            <summary>
+            Прибыль/убыток по входящим позициям в инструменте.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.PnLIntraday">
+            <summary>
+            Прибыль/убыток по сделкам в инструменте.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.MaxBuy">
+            <summary>
+            Максимум купить (лот).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.MaxSell">
+            <summary>
+            Максимум продать (лот).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.BoughtAverage">
+            <summary>
+            Средняя цена покупки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MctSecurity.SoldAverage">
+            <summary>
+            Средняя цена продажи.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqMessageAdapter">
+            <summary>
+            Адаптер сообщений для Transaq.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqMessageAdapter.MaxNewsHeaderCount">
+            <summary>
+            Максимально-допустимое количество заголовков новостей.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+            <summary>
+            Создать <see cref="T:StockSharp.Transaq.TransaqMessageAdapter"/>.
+            </summary>
+            <param name="transactionIdGenerator">Генератор идентификаторов транзакций.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.DisposeManaged">
+            <summary>
+            Освободить занятые ресурсы.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.CreateOrderCondition">
+            <summary>
+            Создать для заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional"/> условие, которое поддерживается подключением.
+            </summary>
+            <returns>Условие для заявки. Если подключение не поддерживает заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional"/>, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+            <summary>
+            Отправить сообщение.
+            </summary>
+            <param name="message">Сообщение.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqMessageAdapter.ToString">
+            <summary>
+            Получить строковое представление.
+            </summary>
+            <returns>Строковое представление.</returns>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.CandleTimeFrames">
+            <summary>
+            Список доступных периодов свечей.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Transaq.TransaqMessageAdapter.CandleTimeFramesInitialized">
+            <summary>
+            Событие инициализации поля <see cref="P:StockSharp.Transaq.TransaqMessageAdapter.CandleTimeFrames"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.Login">
+            <summary>
+            Логин.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.Password">
+            <summary>
+            Пароль.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.Address">
+            <summary>
+            Адрес сервера.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.Proxy">
+            <summary>
+            Прокси.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.ApiLogLevel">
+            <summary>
+            Уровень логирования коннектора. По умолчанию <see cref="F:StockSharp.Transaq.ApiLogLevels.Standard"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.DllPath">
+            <summary>
+            Полный путь к dll файлу, содержащее Transaq API. По-умолчанию равно txmlconnector.dll.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.MicexRegisters">
+            <summary>
+            Передавать ли данные для фондового рынка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.IsHFT">
+            <summary>
+            Подключаться ли к HFT серверу Финам.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.MarketDataInterval">
+            <summary>
+            Период агрегирования данных на сервере Transaq.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.ApiLogsPath">
+            <summary>
+            Путь к логам коннектора.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.OverrideDll">
+            <summary>
+            Перезаписать файл библиотеки из ресурсов. По-умолчанию файл будет перезаписан.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.IsValid">
+            <summary>
+            Проверить введенные параметры на валидность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.ConnectorVersion">
+            <summary>
+            Версия коннектора.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.CurrentServer">
+            <summary>
+            Текущий сервер.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqMessageAdapter.ServerTimeDiff">
+            <summary>
+            Разница между локальным и серверным временем.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqOrderConditionTypes">
+            <summary>
+            Типы стоп-заявок заявок.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqOrderConditionTypes.StopLoss">
+            <summary>
+            SL предназначен для закрытия позиции с целью ограничения убытков от удержания позиции при неблагоприятном движении цены на рынке.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqOrderConditionTypes.TakeProfit">
+            <summary>
+            TP предназначен для закрытия позиции с фиксацие прибыли.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqOrderConditionTypes.TakeProfitStopLoss">
+            <summary>
+            TP + SL. При выполнении условия для одной части, вторая часть снимается.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqOrderConditionTypes.Algo">
+            <summary>
+            Алгоритмическая заявка.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqAlgoOrderConditionTypes">
+            <summary>
+            Допустимые типы условия.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.None">
+            <summary>
+            Нет.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.Bid">
+            <summary>
+            Лучшая цена покупки.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.BidOrLast">
+            <summary>
+            Лучшая цена покупки или сделка по заданной цене и выше.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.Ask">
+            <summary>
+            Лучшая цена продажи.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.AskOrLast">
+            <summary>
+            Лучшая цена продажи или сделка по заданной цене и ниже.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.Time">
+            <summary>
+            Время выставления заявки на Биржу.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.CovDown">
+            <summary>
+            Обеспеченность ниже заданной.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.CovUp">
+            <summary>
+            Обеспеченность выше заданной.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.LastUp">
+            <summary>
+            Сделка на рынке по заданной цене или выше.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderConditionTypes.LastDown">
+            <summary>
+            Сделка на рынке по заданной цене или ниже.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqAlgoOrderValidTypes">
+            <summary>
+            Условие действительности заявки.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderValidTypes.Date">
+            <summary>
+            По дате и времени.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderValidTypes.Immediately">
+            <summary>
+            Немедленно.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAlgoOrderValidTypes.TillCancelled">
+            <summary>
+            До отмены.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqOrderCondition">
+            <summary>
+            Условия стоп-заявок, специфичных для <see cref="N:StockSharp.Transaq"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqOrderCondition.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.Transaq.TransaqOrderCondition"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.Type">
+            <summary>
+            Тип стоп-заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.LinkedOrderId">
+            <summary>
+            Идентификатор связанной заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.ValidFor">
+            <summary>
+            Заявка действительна до.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossActivationPrice">
+            <summary>
+            Цена активации, при достижении которой будет выставлена заявка по цене указанной в <see cref="P:StockSharp.Transaq.TransaqOrderCondition.StopLossOrderPrice"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossOrderPrice">
+            <summary>
+            Цена выставляемой заявки, которая будет отправлена на биржу при активации по цене указанной в <see cref="P:StockSharp.Transaq.TransaqOrderCondition.StopLossActivationPrice"/>. 
+            Абсолютное значение, или в процентах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossByMarket">
+            <summary>
+            Выставить заявку по рынку (в этом случае <see cref="P:StockSharp.Transaq.TransaqOrderCondition.StopLossOrderPrice"/> игнорируется).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossVolume">
+            <summary>
+            Объем (абсолютное значение или в процентах).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossUseCredit">
+            <summary>
+            Использовать кредит.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossProtectionTime">
+            <summary>
+            Защитное время, в сек. Защитное время позволяет предотвратить исполнение при "проколах" на рынке.
+            Т.е. в таких ситуациях, когда цены на рынке лишь кратковременно достигают уровня <see cref="P:StockSharp.Transaq.TransaqOrderCondition.StopLossActivationPrice"/>, и вскоре возвращаются обратно. 
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.StopLossComment">
+            <summary>
+            Примечание.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitActivationPrice">
+            <summary>
+            Цена активации, при достижении которой будет отправлена заявка на биржу с указанной ценой, с учетом <see cref="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitProtectionSpread"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitByMarket">
+            <summary>
+            Выставить заявку по рынку.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitVolume">
+            <summary>
+            Объем. 
+            Абсолютное значение, или в процентах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitUseCredit">
+            <summary>
+            Использовать кредит.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitProtectionTime">
+            <summary>
+            Защитное время, в сек. Защитное время позволяет предотвратить исполнение при "проколах" на рынке.
+            Т.е. в таких ситуациях, когда цены на рынке лишь кратковременно достигают уровня <see cref="P:StockSharp.Transaq.TransaqOrderCondition.StopLossActivationPrice"/>, и вскоре возвращаются обратно.
+            Нужно при использовании трейлинга, при выставленном значении <see cref="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitCorrection"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitComment">
+            <summary>
+            Примечание.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitCorrection">
+            <summary>
+            Коррекция. Если задано, то после активации заявки по <see cref="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitActivationPrice"/> и снижении цены (для TP на продажу)
+            или повышения цены (для TP на покупку) будет послана заявка по цене, с учетом <see cref="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitProtectionSpread"/>.
+            Абсолютное значение, или в процентах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitProtectionSpread">
+            <summary>
+            Защитный спред. Величина, которя будет прибавлятся (при TP на покупку) или отниматься (при TP на продажу)
+            к цене <see cref="P:StockSharp.Transaq.TransaqOrderCondition.TakeProfitActivationPrice"/>, при отравке заявки на биржу.
+            Абсолютное значение, или в процентах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.AlgoType">
+            <summary>
+            Условие.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.AlgoValue">
+            <summary>
+            Цена для заявки, либо обеспеченность в процентах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.AlgoValidAfterType">
+            <summary>
+            Условие действительности заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.AlgoValidAfter">
+            <summary>
+            С какого момента времени действительна.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.AlgoValidBeforeType">
+            <summary>
+            Условие действительности заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqOrderCondition.AlgoValidBefore">
+            <summary>
+            До какого момента времени действительна.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.Proxy">
+            <summary>
+            Прокси.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Proxy.Type">
+            <summary>
+            Тип протокола, который использует прокси.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Proxy.Address">
+            <summary>
+            Адрес прокси.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Proxy.Login">
+            <summary>
+            Логин (если прокси требует авторизацию).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Proxy.Password">
+            <summary>
+            Пароль (если прокси требует авторизацию).
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.ProxyTypes">
+            <summary>
+            Типы протоколов прокси.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.ProxyTypes.Socks4">
+            <summary>
+            SOCKS 4.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.ProxyTypes.Socks5">
+            <summary>
+            SOCKS 5.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.ProxyTypes.Http">
+            <summary>
+            HHTP Proxy.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Board.Id">
+            <summary>
+            Идентификатор режима торгов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Board.Name">
+            <summary>
+            Наименование режима торгов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Board.Market">
+            <summary>
+            Внутренний код рынка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Board.Type">
+            <summary>
+            Тип режима торгов 0=FORTS, 1=Т+, 2= Т0.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.active">
+            <summary>
+            Активная.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.cancelled">
+            <summary>
+            Снята трейдером (заявка уже попала на рынок и была отменена).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.denied">
+            <summary>
+            Отклонена Брокером.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.disabled">
+            <summary>
+            Прекращена трейдером (условная заявка, которую сняли до наступления условия).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.expired">
+            <summary>
+            Время действия истекло.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.failed">
+            <summary>
+            Не удалось выставить на биржу.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.forwarding">
+            <summary>
+            Выставляется на биржу.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.inactive">
+            <summary>
+            Статус не известен из-за проблем со связью с биржей.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.matched">
+            <summary>
+            Исполнена.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.refused">
+            <summary>
+            Отклонена контрагентом.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.rejected">
+            <summary>
+            Отклонена биржей.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.removed">
+            <summary>
+            Аннулирована биржей.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.wait">
+            <summary>
+            Не наступило время активации.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.watching">
+            <summary>
+            Ожидает наступления условия.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.linkwait">
+            <summary>
+            Ожидает исполнения связанной заявки.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.sl_executed">
+            <summary>
+            Выполнена (Stop Loss).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.sl_forwarding">
+            <summary>
+            Стоп выставляется на биржу (Stop Loss).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.sl_guardtime">
+            <summary>
+            Стоп ожидает исполнения в защитном периоде.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.tp_correction">
+            <summary>
+            Ожидает исполнения в режиме коррекции (Take Profit).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.tp_correction_guardtime">
+            <summary>
+            Стоп ожидает исполнения в защитном режиме после коррекции (Take Profit).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.tp_executed">
+            <summary>
+            Выполнен (Take Profit).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.tp_forwarding">
+            <summary>
+            Стоп выставляется на биржу (Take Profit).
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.Native.Responses.TransaqOrderStatus.tp_guardtime">
+            <summary>
+            Стоп ожидает исполнения в защитном периоде (Take Profit).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.Client">
+            <summary>
+            Код клиента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.CoverageFact">
+            <summary>
+            Фактическая обеспеченность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.CoveragePlan">
+            <summary>
+            Плановая обеспеченность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.CoverageCrit">
+            <summary>
+            Критическая обеспеченность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.OpenEquity">
+            <summary>
+            Входящая оценка портфеля без дисконта.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.Equity">
+            <summary>
+            Текущая оценка портфеля без дисконта.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.Cover">
+            <summary>
+            Плановое обеспечение (оценка ликвидационной стоимости портфеля).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.MarginInit">
+            <summary>
+            Плановая начальная маржа (оценка портфельного риска).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.PnLIncome">
+            <summary>
+            Прибыль/убыток по входящим позициям.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.PnLIntraday">
+            <summary>
+            Прибыль/убыток по сделкам.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.Leverage">
+            <summary>
+            Фактическое плечо.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.PortfolioTPlusResponse.MarginActual">
+            <summary>
+            Фактический уровень маржи портфеля.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Money.OpenBalance">
+            <summary>
+            Входящяя денежная позиция.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Money.Bought">
+            <summary>
+            Затрачено на покупки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Money.Sold">
+            <summary>
+            Выручено с продаж.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Money.Settled">
+            <summary>
+            Исполнено.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Money.Balance">
+            <summary>
+            Текущая денежная позиция.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.Money.Tax">
+            <summary>
+            Уплачено комиссии.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MoneyValuePart.Register">
+            <summary>
+            Регистр учета.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MoneyValuePart.OpenBalance">
+            <summary>
+            Входящяя денежная позиция.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MoneyValuePart.Bought">
+            <summary>
+            Затрачено на покупки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MoneyValuePart.Sold">
+            <summary>
+            Выручено с продаж.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MoneyValuePart.Settled">
+            <summary>
+            Исполнено.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.MoneyValuePart.Balance">
+            <summary>
+            Текущая денежная позиция.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.SecId">
+            <summary>
+            Id инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Market">
+            <summary>
+            Id рынка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.SecCode">
+            <summary>
+            Обозначение инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Price">
+            <summary>
+            Текущая цена.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.OpenBalance">
+            <summary>
+            Входящяя позиция, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Bought">
+            <summary>
+            Куплено, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Sold">
+            <summary>
+            Продано, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Balance">
+            <summary>
+            Текущая позиция, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Buying">
+            <summary>
+            Заявлено купить, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Selling">
+            <summary>
+            Заявлено продать, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.Cover">
+            <summary>
+            Вклад бумаги в плановое обеспечение.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.InitMargin">
+            <summary>
+            Плановая начальная маржа(риск).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.PnLIncome">
+            <summary>
+            Прибыль/убыток по входящим позициям.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.PnLIntraday">
+            <summary>
+            Прибыль/убыток по сделкам.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.RiskRateLong">
+            <summary>
+            Ставка риска для лонгов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.RiskRateShort">
+            <summary>
+            Ставка риска для шортов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.MaxBuy">
+            <summary>
+            Максимальная покупка, в лотах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurity.MaxSell">
+            <summary>
+            Максимальная продажа, в лотах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Register">
+            <summary>
+            Регистр учета.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.OpenBalance">
+            <summary>
+            Входящяя позиция, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Bought">
+            <summary>
+            Куплено, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Sold">
+            <summary>
+            Продано, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Settled">
+            <summary>
+            Исполнено, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Balance">
+            <summary>
+            Текущая позиция, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Buying">
+            <summary>
+            Заявлено купить, штук.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Native.Responses.TPlusSecurityValuePart.Selling">
+            <summary>
+            Заявлено продать, штук.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.Native.ApiException">
+            <summary>
+            Класс ошибки при работе с API Transaq.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Properties.Resources.txcn">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Properties.Resources.txcn64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Properties.Resources.txmlconnector">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.Properties.Resources.txmlconnector64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqAddresses">
+            <summary>
+            Адреса серверов Transaq.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAddresses.FinamDemo">
+            <summary>
+            Финам демо сервер. IP адрес 78.41.194.72, порт 3939.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAddresses.FinamReal1">
+            <summary>
+            Финам боевой сервер 1. IP адрес 213.247.141.133, порт 3900.
+            </summary>
+        </member>
+        <member name="F:StockSharp.Transaq.TransaqAddresses.FinamReal2">
+            <summary>
+            Финам боевой сервер 2. IP адрес 78.41.199.24, порт 3900.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Transaq.TransaqTrader">
+            <summary>
+            Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector"/>, предоставляющая подключение к Transaq через TXmlConnector.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqTrader.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.Transaq.TransaqTrader"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqTrader.StockSharp#Algo#Candles#IExternalCandleSource#GetSupportedRanges(StockSharp.Algo.Candles.CandleSeries)">
+            <summary>
+            Получить временные диапазоны, для которых у данного источника для передаваемой серии свечек есть данные.
+            </summary>
+            <param name="series">Серия свечек.</param>
+            <returns>Временные диапазоны.</returns>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Подписаться на получение свечек.
+            </summary>
+            <param name="series">Серия свечек.</param>
+            <param name="from">Начальная дата, с которой необходимо получать данные.</param>
+            <param name="to">Конечная дата, до которой необходимо получать данные.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqTrader.UnSubscribeCandles(StockSharp.Algo.Candles.CandleSeries)">
+            <summary>
+            Остановить подписку получения свечек, ранее созданную через <see cref="M:StockSharp.Transaq.TransaqTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)"/>.
+            </summary>
+            <param name="series">Серия свечек.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqTrader.OnProcessMessage(StockSharp.Messages.Message)">
+            <summary>
+            Обработать сообщение.
+            </summary>
+            <param name="message">Сообщение.</param>
+        </member>
+        <member name="M:StockSharp.Transaq.TransaqTrader.ChangePassword(System.String)">
+            <summary>
+            Сменить пароль.
+            </summary>
+            <param name="newPassword">Новый пароль.</param>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.Password">
+            <summary>
+            Пароль.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.Login">
+            <summary>
+            Логин.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.Address">
+            <summary>
+            Адрес сервера.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.Proxy">
+            <summary>
+            Прокси.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.ApiLogLevel">
+            <summary>
+            Уровень логирования коннектора. По умолчанию <see cref="F:StockSharp.Transaq.ApiLogLevels.Standard"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.DllPath">
+            <summary>
+            Полный путь к dll файлу, содержащее Transaq API. По-умолчанию равно txmlconnector.dll.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.MicexRegisters">
+            <summary>
+            Передавать ли данные для фондового рынка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.IsHFT">
+            <summary>
+            Подключаться ли к HFT серверу Финам.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.MarketDataInterval">
+            <summary>
+            Период агрегирования данных на сервере Transaq.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.OverrideDll">
+            <summary>
+            Перезаписать файл библиотеки из ресурсов. По-умолчанию файл будет перезаписан.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.ConnectorVersion">
+            <summary>
+            Версия коннектора.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.CurrentServer">
+            <summary>
+            Текущий сервер.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.ServerTimeDiff">
+            <summary>
+            Разница между локальным и серверным временем.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Transaq.TransaqTrader.CandleTimeFrames">
+            <summary>
+            Список доступных периодов свечей.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Transaq.TransaqTrader.CandleTimeFramesInitialized">
+            <summary>
+            Событие инициализации поля <see cref="P:StockSharp.Transaq.TransaqTrader.CandleTimeFrames"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Transaq.TransaqTrader.NewCandles">
+            <summary>
+            Событие появления новых свечек, полученных после подписки через <see cref="M:StockSharp.Transaq.TransaqTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Transaq.TransaqTrader.Stopped">
+            <summary>
+            Событие окончания обработки серии.
+            </summary>
+        </member>
+    </members>
+</doc>

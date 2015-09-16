@@ -1,0 +1,3434 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockSharp.BusinessEntities</name>
+    </assembly>
+    <members>
+        <member name="T:StockSharp.BusinessEntities.AggregatedQuote">
+            <summary>
+            Aggregate quote.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Quote">
+            <summary>
+            Market depth quote representing bid or ask.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Quote.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Quote"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Quote.#ctor(StockSharp.BusinessEntities.Security,System.Decimal,System.Decimal,StockSharp.Messages.Sides)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Quote"/>.
+            </summary>
+            <param name="security">The instrument by which the quote is received.</param>
+            <param name="price">Quote price.</param>
+            <param name="volume">Quote volume.</param>
+            <param name="direction">Direction (buy or sell).</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Quote.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.Quote"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Quote.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Quote.Security">
+            <summary>
+            The instrument by which the quote is received.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Quote.Price">
+            <summary>
+            Quote price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Quote.Volume">
+            <summary>
+            Quote volume.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Quote.OrderDirection">
+            <summary>
+            Direction (buy or sell).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Quote.ExtensionInfo">
+            <summary>
+            Extended quote info.
+            </summary>
+            <remarks>
+            Uses in case of keep additional information associated with the quotation. For example, the number of contracts in its own order book, the amount of the best buying and selling.
+            </remarks>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.AggregatedQuote.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.AggregatedQuote"/>.
+            </summary>
+            <param name="checkInnerPrice">Whether to check the internal quote price.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.AggregatedQuote.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.AggregatedQuote"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.AggregatedQuote.InnerQuotes">
+            <summary>
+            Collection of enclosed quotes, which are combined into a single quote.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.BasePosition">
+            <summary>
+            The base class describes the cash position and the position on the instrument.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.BasePosition.#ctor">
+            <summary>
+            Initialize <see cref="T:StockSharp.BusinessEntities.BasePosition"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.BasePosition.CopyTo(StockSharp.BusinessEntities.BasePosition)">
+            <summary>
+            To copy fields of the current position to <paramref name="destination" />.
+            </summary>
+            <param name="destination">The position in which you should to copy fields.</param>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.BeginValue">
+            <summary>
+            Position size at the beginning of the trading session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.CurrentValue">
+            <summary>
+            Current position size.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.BlockedValue">
+            <summary>
+            Position size, registered for active orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.ExtensionInfo">
+            <summary>
+            Extended information.
+            </summary>
+            <remarks>
+            Required if additional information is stored in the program. For example, the amount of commission paid.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.CurrentPrice">
+            <summary>
+            Position price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.AveragePrice">
+            <summary>
+            Average price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.UnrealizedPnL">
+            <summary>
+            Unrealized profit.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.RealizedPnL">
+            <summary>
+            Realized profit.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.VariationMargin">
+            <summary>
+            Variation margin.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.Commission">
+            <summary>
+            Total commission.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.LastChangeTime">
+            <summary>
+            Time of last position change.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.LocalTime">
+            <summary>
+            Local time of the last position change.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasePosition.Description">
+            <summary>
+            Text position description.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.BasketSecurity">
+            <summary>
+            Instruments basket.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Security">
+            <summary>
+            Security (shares, futures, options etc.).
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Security.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Security"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Security.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Security.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.Security"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Security.CopyTo(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To copy fields of the current instrument to <paramref name="destination" />.
+            </summary>
+            <param name="destination">The instrument in which you should to copy fields.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Security.Notify(System.String)">
+            <summary>
+            To call the event <see cref="E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>.
+            </summary>
+            <param name="propName">Property name.</param>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Id">
+            <summary>
+            Security ID.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Name">
+            <summary>
+            Security name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.ShortName">
+            <summary>
+            Short security name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Code">
+            <summary>
+            Security code.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Class">
+            <summary>
+            Security class.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.PriceStep">
+            <summary>
+            Minimum price step.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.VolumeStep">
+            <summary>
+            Minimum volume step.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Multiplier">
+            <summary>
+            Lot multiplier.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Decimals">
+            <summary>
+            Number of digits in price after coma.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Type">
+            <summary>
+            Security type.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.ExpiryDate">
+            <summary>
+            Security expiration date (for derivatives - expiration, for bonds — redemption).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.SettlementDate">
+            <summary>
+            Settlement date for security (for derivatives and bonds).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Board">
+            <summary>
+            Exchange board where the security is traded.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.UnderlyingSecurityId">
+            <summary>
+            Underlying asset on which the current security is built.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.OptionType">
+            <summary>
+            Option type.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Strike">
+            <summary>
+            Option strike price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Currency">
+            <summary>
+            Trading security currency.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.BinaryOptionType">
+            <summary>
+            Type of binary option.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.ExternalId">
+            <summary>
+            Security ID in other systems.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.ExtensionInfo">
+            <summary>
+            Extended security info.
+            </summary>
+            <remarks>
+            Required if additional information associated with the instrument is stored in the program. For example, the date of instrument expiration (if it is option) or information about the underlying asset if it is the futures contract.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.StepPrice">
+            <summary>
+            Step price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.LastTrade">
+            <summary>
+            Information about the last trade. If during the session on the instrument there were no trades, the value equals to <see langword="null" />.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.OpenPrice">
+            <summary>
+            First trade price for the session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.ClosePrice">
+            <summary>
+            Last trade price for the previous session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.LowPrice">
+            <summary>
+            Lowest price for the session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.HighPrice">
+            <summary>
+            Highest price for the session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.BestBid">
+            <summary>
+            Best bid in market depth.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.BestAsk">
+            <summary>
+            Best ask in market depth.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.BestPair">
+            <summary>
+            Best pair quotes.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.State">
+            <summary>
+            Current state of security.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.MinPrice">
+            <summary>
+            Lower price limit.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.MaxPrice">
+            <summary>
+            Upper price limit.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.MarginBuy">
+            <summary>
+            Initial margin to buy.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.MarginSell">
+            <summary>
+            Initial margin to sell.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Connector">
+            <summary>
+            Connection to the trading system, through which this instrument has been downloaded.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.ImpliedVolatility">
+            <summary>
+            Volatility (implied).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.HistoricalVolatility">
+            <summary>
+            Volatility (historic).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.TheorPrice">
+            <summary>
+            Theoretical price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Delta">
+            <summary>
+            Option delta.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Gamma">
+            <summary>
+            Option gamma.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Vega">
+            <summary>
+            Option vega.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Theta">
+            <summary>
+            Option theta.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Rho">
+            <summary>
+            Option rho.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.OpenInterest">
+            <summary>
+            Number of open positions (open interest).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.LocalTime">
+            <summary>
+            Local time of the last instrument change.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.LastChangeTime">
+            <summary>
+            Time of the last instrument change.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.BidsVolume">
+            <summary>
+            Total volume in all buy orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.BidsCount">
+            <summary>
+            Number of buy orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.AsksVolume">
+            <summary>
+            Total volume in all sell orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.AsksCount">
+            <summary>
+            Number of sell orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.TradesCount">
+            <summary>
+            Number of trades.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.HighBidPrice">
+            <summary>
+            Maximum bid during the session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.LowAskPrice">
+            <summary>
+            Maximum ask during the session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Yield">
+            <summary>
+            Yield.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.VWAP">
+            <summary>
+            Average price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.SettlementPrice">
+            <summary>
+            Settlement price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.AveragePrice">
+            <summary>
+            Average price per session.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Security.Volume">
+            <summary>
+            Volume per session.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.BasketSecurity.#ctor">
+            <summary>
+            Initialize <see cref="T:StockSharp.BusinessEntities.BasketSecurity"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.BasketSecurity.Contains(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To check whether specified instrument is used now.
+            </summary>
+            <param name="security">The instrument that should be checked.</param>
+            <returns><see langword="true" />, if specified instrument is used now, otherwise <see langword="false" />.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.BasketSecurity.InnerSecurities">
+            <summary>
+            Instruments, from which this basket is created.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Exchange">
+            <summary>
+            Exchange info.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Exchange"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.OnEquals(StockSharp.BusinessEntities.Exchange)">
+            <summary>
+            Compare <see cref="T:StockSharp.BusinessEntities.Exchange"/> on the equivalence.
+            </summary>
+            <param name="other">Another value with which to compare.</param>
+            <returns><see langword="true"/>, if the specified object is equal to the current object, otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.GetHashCode">
+            <summary>
+            Get the hash code of the object <see cref="T:StockSharp.BusinessEntities.Exchange"/>.
+            </summary>
+            <returns>A hash code.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.Exchange"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Load settings.
+            </summary>
+            <param name="storage">Settings storage.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Exchange.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Save settings.
+            </summary>
+            <param name="storage">Settings storage.</param>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Name">
+            <summary>
+            Exchange code name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.RusName">
+            <summary>
+            Russian exchange name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.EngName">
+            <summary>
+            English exchange name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.CountryCode">
+            <summary>
+            ISO country code.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.TimeZoneInfo">
+            <summary>
+            Information about the time zone where the exchange is located.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Test">
+            <summary>
+            Information about the test exchange, which has no limitations in work schedule.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Moex">
+            <summary>
+            Information about MOEX (Moscow Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Ux">
+            <summary>
+            Information about UX.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Amex">
+            <summary>
+            Information about AMEX (American Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cme">
+            <summary>
+            Information about CME (Chicago Mercantile Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cbot">
+            <summary>
+            Information about CBOT (Chicago Board of Trade).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cce">
+            <summary>
+            Information about CCE (Chicago Climate Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nymex">
+            <summary>
+            Information about NYMEX (New York Mercantile Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nyse">
+            <summary>
+            Information about NYSE (New York Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nasdaq">
+            <summary>
+            Information about NASDAQ.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nqlx">
+            <summary>
+            Information about NQLX.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Lse">
+            <summary>
+            Information about LSE (London Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Tse">
+            <summary>
+            Information about TSE (Tokio Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Hkex">
+            <summary>
+            Information about HKEX (Hong Kong Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Hkfe">
+            <summary>
+            Information about HKFE (Hong Kong Futures Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Sse">
+            <summary>
+            Information about Sse (Shanghai Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Szse">
+            <summary>
+            Information about SZSE (Shenzhen Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Tsx">
+            <summary>
+            Information about TSX (Toronto Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Fwb">
+            <summary>
+            Information about FWB (Frankfurt Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Asx">
+            <summary>
+            Information about ASX (Australian Securities Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nzx">
+            <summary>
+            Information about NZX (New Zealand Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Bse">
+            <summary>
+            Information about BSE (Bombay Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Nse">
+            <summary>
+            Information about NSE (National Stock Exchange of India).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Swx">
+            <summary>
+            Information about SWX (Swiss Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Krx">
+            <summary>
+            Information about KRX (Korea Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Mse">
+            <summary>
+            Information about MSE (Madrid Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Jse">
+            <summary>
+            Information about JSE (Johannesburg Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Sgx">
+            <summary>
+            Information about SGX (Singapore Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Tsec">
+            <summary>
+            Information about TSEC (Taiwan Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Pse">
+            <summary>
+            Information about PSE (Philippine Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Klse">
+            <summary>
+            Information about KLSE (Bursa Malaysia).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Idx">
+            <summary>
+            Information about IDX (Indonesia Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Set">
+            <summary>
+            Information about SET (Stock Exchange of Thailand).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cse">
+            <summary>
+            Information about CSE (Colombo Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Tase">
+            <summary>
+            Information about TASE (Tel Aviv Stock Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Lmax">
+            <summary>
+            Information about LMAX (LMAX Exchange).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.DukasCopy">
+            <summary>
+            Information about DukasCopy.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.GainCapital">
+            <summary>
+            Information about GAIN Capital.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.MBTrading">
+            <summary>
+            Information about MB Trading.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.TrueFX">
+            <summary>
+            Information about TrueFX.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Cfh">
+            <summary>
+            Information about CFH.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Ond">
+            <summary>
+            Information about OANDA.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Integral">
+            <summary>
+            Information about Integral.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Btce">
+            <summary>
+            Information about BTCE.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.BitStamp">
+            <summary>
+            Information about BitStamp.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.BtcChina">
+            <summary>
+            Information about BtcChina.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.Icbit">
+            <summary>
+            Information about Icbit.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Exchange.ExtensionInfo">
+            <summary>
+            Extended exchange info.
+            </summary>
+            <remarks>
+            Required if additional information associated with the exchange is stored in the program. .
+            </remarks>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.ExchangeBoard">
+            <summary>
+            Information about electronic board.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.EnumerateExchanges">
+            <summary>
+            To get a list of exchanges.
+            </summary>
+            <returns>Exchanges.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.EnumerateExchangeBoards">
+            <summary>
+            To get a list of boards.
+            </summary>
+            <returns>Boards.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.ExchangeBoard"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.GetBoard(System.String)">
+            <summary>
+            To get a board by its code.
+            </summary>
+            <param name="code">Board code.</param>
+            <returns>Found board. If board with the passed name does not exist, then <see langword="null" /> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.GetOrCreateBoard(System.String,System.Func{System.String,StockSharp.BusinessEntities.ExchangeBoard})">
+            <summary>
+            To get a board by its code. If board with the passed name does not exist, then it will be created.
+            </summary>
+            <param name="code">Board code.</param>
+            <param name="createBoard">The handler creating a board, if it is not found. If the value is <see langword="null" />, then the board is created by default initialization.</param>
+            <returns>Exchange board.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.SaveBoard(StockSharp.BusinessEntities.ExchangeBoard)">
+            <summary>
+            To save the board.
+            </summary>
+            <param name="board">Board.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.OnEquals(StockSharp.BusinessEntities.ExchangeBoard)">
+            <summary>
+            Compare <see cref="T:StockSharp.BusinessEntities.ExchangeBoard"/> on the equivalence.
+            </summary>
+            <param name="other">Another value with which to compare.</param>
+            <returns><see langword="true"/>, if the specified object is equal to the current object, otherwise, <see langword="false"/>.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.GetHashCode">
+            <summary>
+            Get the hash code of the object <see cref="T:StockSharp.BusinessEntities.ExchangeBoard"/>.
+            </summary>
+            <returns>A hash code.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.ExchangeBoard"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Load settings.
+            </summary>
+            <param name="storage">Settings storage.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ExchangeBoard.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Save settings.
+            </summary>
+            <param name="storage">Settings storage.</param>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Associated">
+            <summary>
+            ALL board with no schedule limits.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Test">
+            <summary>
+            Test board with no schedule limits.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Forts">
+            <summary>
+            Information about FORTS board of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Micex">
+            <summary>
+            Information about indecies of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexAuct">
+            <summary>
+            Information about AUCT of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexAubb">
+            <summary>
+            Information about AUBB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCasf">
+            <summary>
+            Information about CASF of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqbr">
+            <summary>
+            Information about EQBR of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqbs">
+            <summary>
+            Information about EQBS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqdp">
+            <summary>
+            Information about EQDP of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqeu">
+            <summary>
+            Information about EQEU of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqus">
+            <summary>
+            Information about EQUS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqnb">
+            <summary>
+            Information about EQNB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqne">
+            <summary>
+            Information about EQNE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqnl">
+            <summary>
+            Information about EQNL of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqno">
+            <summary>
+            Information about EQNO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqob">
+            <summary>
+            Information about EQOB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqos">
+            <summary>
+            Information about EQOS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqov">
+            <summary>
+            Information about EQOV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqlv">
+            <summary>
+            Information about EQLV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqdb">
+            <summary>
+            Information about EQDB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqde">
+            <summary>
+            Information about EQDE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqli">
+            <summary>
+            Information about EQLI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqqi">
+            <summary>
+            Information about EQQI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexSmal">
+            <summary>
+            Information about SMAL of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexSpob">
+            <summary>
+            Information about SPOB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqbr">
+            <summary>
+            Information about TQBR of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqde">
+            <summary>
+            Information about TQDE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqbs">
+            <summary>
+            Information about TQBS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqeu">
+            <summary>
+            Information about TQEU of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqus">
+            <summary>
+            Information about TQUS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqnb">
+            <summary>
+            Information about TQNB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqne">
+            <summary>
+            Information about TQNE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqnl">
+            <summary>
+            Information about TQNL of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqno">
+            <summary>
+            Information about TQNO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqob">
+            <summary>
+            Information about TQOB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqos">
+            <summary>
+            Information about TQOS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqov">
+            <summary>
+            Information about TQOV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqlv">
+            <summary>
+            Information about TQLV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqli">
+            <summary>
+            Information about TQLI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTqqi">
+            <summary>
+            Information about TQQI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexEqrp">
+            <summary>
+            Information about EQRP of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsrp">
+            <summary>
+            Information about PSRP of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRfnd">
+            <summary>
+            Information about RFND of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTadm">
+            <summary>
+            Information about TADM of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexNadm">
+            <summary>
+            Information about NADM of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsau">
+            <summary>
+            Information about PSAU of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPaus">
+            <summary>
+            Information about PAUS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsbb">
+            <summary>
+            Information about PSBB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPseq">
+            <summary>
+            Information about PSEQ of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPses">
+            <summary>
+            Information about PSES of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPseu">
+            <summary>
+            Information about PSEU of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsdb">
+            <summary>
+            Information about PSDB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsde">
+            <summary>
+            Information about PSDE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsus">
+            <summary>
+            Information about PSUS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsnb">
+            <summary>
+            Information about PSNB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsne">
+            <summary>
+            Information about PSNE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsnl">
+            <summary>
+            Information about PSNL of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsno">
+            <summary>
+            Information about PSNO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsob">
+            <summary>
+            Information about PSOB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsos">
+            <summary>
+            Information about PSOS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsov">
+            <summary>
+            Information about PSOV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPslv">
+            <summary>
+            Information about PSLV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsli">
+            <summary>
+            Information about PSLI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPsqi">
+            <summary>
+            Information about PSQI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpeu">
+            <summary>
+            Information about RPEU of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpma">
+            <summary>
+            Information about RPMA of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpmo">
+            <summary>
+            Information about RPMO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpua">
+            <summary>
+            Information about RPUA of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpuo">
+            <summary>
+            Information about RPUO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpuq">
+            <summary>
+            Information about RPUQ of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexFbcb">
+            <summary>
+            Information about FBCB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexFbfx">
+            <summary>
+            Information about FBFX of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexIrk2">
+            <summary>
+            Information about IRK2 of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpqi">
+            <summary>
+            Information about RPQI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPteq">
+            <summary>
+            Information about PTEQ of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtes">
+            <summary>
+            Information about PTES of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPteu">
+            <summary>
+            Information about PTEU of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtus">
+            <summary>
+            Information about PTUS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtnb">
+            <summary>
+            Information about PTNB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtne">
+            <summary>
+            Information about PTNE of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtnl">
+            <summary>
+            Information about PTNL of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtno">
+            <summary>
+            Information about PTNO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtob">
+            <summary>
+            Information about PTOB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtos">
+            <summary>
+            Information about PTOS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtov">
+            <summary>
+            Information about PTOV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtlv">
+            <summary>
+            Information about PTLV of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtli">
+            <summary>
+            Information about PTLI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexPtqi">
+            <summary>
+            Information about PTQI of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexScvc">
+            <summary>
+            Information about SCVC of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpng">
+            <summary>
+            Information about RPNG of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexRpfg">
+            <summary>
+            Information about RPFG of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCbcr">
+            <summary>
+            Information about CDCR of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCred">
+            <summary>
+            Information about CRED of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDepz">
+            <summary>
+            Information about DEPZ of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDpvb">
+            <summary>
+            Information about DPVB of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDpfk">
+            <summary>
+            Information about DPFK of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDpfo">
+            <summary>
+            Information about DPFO of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexDppf">
+            <summary>
+            Information about DPPF of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCets">
+            <summary>
+            Information about CETS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexAets">
+            <summary>
+            Information about AETS of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexCngd">
+            <summary>
+            Information about CNGD of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexTran">
+            <summary>
+            Information about TRAN of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MicexJunior">
+            <summary>
+            Information about QJSIM of <see cref="P:StockSharp.BusinessEntities.Exchange.Moex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Ux">
+            <summary>
+            Information about derivatives market of <see cref="P:StockSharp.BusinessEntities.Exchange.Ux"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.UxStock">
+            <summary>
+            Information about stock market of <see cref="P:StockSharp.BusinessEntities.Exchange.Ux"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cme">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Cme"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cce">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Cce"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cbot">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Cbot"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nymex">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Nymex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Amex">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Amex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nyse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Nyse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nasdaq">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Nasdaq"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nqlx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Nqlx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Lse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Lse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Tse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Tse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Hkex">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Hkex"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Hkfe">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Hkfe"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Sse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Sse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Szse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Szse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Tsx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Tsx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Fwb">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Fwb"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Asx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Asx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nzx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Nzx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Bse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Bse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Nse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Nse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Swx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Swx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Krx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Krx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Mse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Mse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Jse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Jse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Sgx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Sgx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Tsec">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Tsec"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Pse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Pse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Klse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Klse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Idx">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Idx"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Set">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Set"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cse">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Cse"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Tase">
+            <summary>
+            Information about board of <see cref="P:StockSharp.BusinessEntities.Exchange.Tase"/> exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Lmax">
+            <summary>
+            Information about brokerage board <see cref="P:StockSharp.BusinessEntities.Exchange.Lmax"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.DukasCopy">
+            <summary>
+            Information about brokerage board <see cref="P:StockSharp.BusinessEntities.Exchange.DukasCopy"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.GainCapital">
+            <summary>
+            Information about brokerage board <see cref="P:StockSharp.BusinessEntities.Exchange.GainCapital"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.MBTrading">
+            <summary>
+            Information about brokerage board <see cref="P:StockSharp.BusinessEntities.Exchange.MBTrading"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.TrueFX">
+            <summary>
+            Information about brokerage board <see cref="P:StockSharp.BusinessEntities.Exchange.TrueFX"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Integral">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.Integral"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Cfh">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.Cfh"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Ond">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.Ond"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Smart">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.Nasdaq"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Btce">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.Btce"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.BitStamp">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.BitStamp"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.BtcChina">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.BtcChina"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Icbit">
+            <summary>
+            Information about board <see cref="P:StockSharp.BusinessEntities.Exchange.Icbit"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Finam">
+            <summary>
+            Information about virtual board Finam.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Mfd">
+            <summary>
+            Information about virtual board Mfd.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Code">
+            <summary>
+            Board code.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.ExpiryTime">
+            <summary>
+            Securities expiration times.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.Exchange">
+            <summary>
+            Exchange, where board is situated.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.IsSupportAtomicReRegister">
+            <summary>
+            Gets a value indicating whether the re-registration orders via <see cref="T:StockSharp.Messages.OrderReplaceMessage"/> as a single transaction.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.IsSupportMarketOrders">
+            <summary>
+            Are market type orders <see cref="F:StockSharp.Messages.OrderTypes.Market"/> supported.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.WorkingTime">
+            <summary>
+            Board working hours.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.ExtensionInfo">
+            <summary>
+            Extended exchange info.
+            </summary>
+            <remarks>
+            Required if additional information associated with the exchange is stored in the program. .
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.IsMicex">
+            <summary>
+            Is MICEX board.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.ExchangeBoard.IsUxStock">
+            <summary>
+            Is the UX exchange stock market board.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.IExchangeInfoProvider">
+            <summary>
+            Interface describing exchanges and trading boards provider.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IExchangeInfoProvider.GetExchangeBoard(System.String)">
+            <summary>
+            To get a board by the code.
+            </summary>
+            <param name="code">The board code <see cref="P:StockSharp.BusinessEntities.ExchangeBoard.Code"/>.</param>
+            <returns>Trading board. If the board with the specified code does not exist, then <see langword="null"/> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IExchangeInfoProvider.GetExchange(System.String)">
+            <summary>
+            To get an exchange by the code.
+            </summary>
+            <param name="code">The exchange code <see cref="P:StockSharp.BusinessEntities.Exchange.Name"/>.</param>
+            <returns>Exchange. If the exchange with the specified code does not exist, then <see langword="null"/> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IExchangeInfoProvider.Save(StockSharp.BusinessEntities.ExchangeBoard)">
+            <summary>
+            To save the board.
+            </summary>
+            <param name="board">Trading board.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IExchangeInfoProvider.Save(StockSharp.BusinessEntities.Exchange)">
+            <summary>
+            To save the exchange.
+            </summary>
+            <param name="exchange">Exchange.</param>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IExchangeInfoProvider.Boards">
+            <summary>
+            All exchanges.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IExchangeInfoProvider.Exchanges">
+            <summary>
+            All boards.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IExchangeInfoProvider.BoardAdded">
+            <summary>
+            Notification about adding a new board.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IExchangeInfoProvider.ExchangeAdded">
+            <summary>
+            Notification about adding a new exchange.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.ISecurityList">
+            <summary>
+            Interface describing a list of items.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.FilterableSecurityProvider">
+            <summary>
+            Provider of information about instruments supporting search using <see cref="T:Gma.DataStructures.StringSearch.SuffixTrie`1"/>.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.ISecurityProvider">
+            <summary>
+            The interface for access to provider of information about instruments.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ISecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Lookup securities by criteria <paramref name="criteria" />.
+            </summary>
+            <param name="criteria">The instrument whose fields will be used as a filter.</param>
+            <returns>Found instruments.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ISecurityProvider.GetNativeId(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Get native id.
+            </summary>
+            <param name="security">Security.</param>
+            <returns>Native (internal) trading system security id.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.#ctor(StockSharp.BusinessEntities.ISecurityList,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="securities">Securities.</param>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.#ctor(System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.#ctor(StockSharp.BusinessEntities.IConnector,System.Boolean,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="connector">Connection to the trading system.</param>
+            <param name="onlyNewSecurities">To get only new instruments from the trading system.</param>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Lookup securities by criteria <paramref name="criteria" />.
+            </summary>
+            <param name="criteria">The instrument whose fields will be used as a filter.</param>
+            <returns>Found instruments.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.DisposeManaged">
+            <summary>
+            Release resources.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.Securities">
+            <summary>
+            Available instruments.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.Connector">
+            <summary>
+            Connection to the trading system.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.OnlyNewSecurities">
+            <summary>
+            To get only new instruments from the trading system.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.ExcludeFilter">
+            <summary>
+            Filter for instruments exclusion.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.ExcludedCount">
+            <summary>
+            The number of excluded instruments by filter <see cref="P:StockSharp.BusinessEntities.FilterableSecurityProvider.ExcludeFilter"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.FilterableSecurityProvider.SecuritiesChanged">
+            <summary>
+            Available instruments set change event.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.IConnector">
+            <summary>
+            The main interface providing the connection to the trading systems.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.IMarketDataProvider">
+            <summary>
+            The market data by the instrument provider interface.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IMarketDataProvider.GetMarketDepth(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To get the quotes order book.
+            </summary>
+            <param name="security">The instrument by which an order book should be got.</param>
+            <returns>Order book.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IMarketDataProvider.GetSecurityValue(StockSharp.BusinessEntities.Security,StockSharp.Messages.Level1Fields)">
+            <summary>
+            To get the value of market data for the instrument.
+            </summary>
+            <param name="security">Security.</param>
+            <param name="field">Market-data field.</param>
+            <returns>The field value. If no data, the <see langword="null" /> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IMarketDataProvider.GetLevel1Fields(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To get a set of available fields <see cref="T:StockSharp.Messages.Level1Fields"/>, for which there is a market data for the instrument.
+            </summary>
+            <param name="security">Security.</param>
+            <returns>Possible fields.</returns>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IMarketDataProvider.ValuesChanged">
+            <summary>
+            Security changed.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.GetSessionState(StockSharp.BusinessEntities.ExchangeBoard)">
+            <summary>
+            Get session state for required board.
+            </summary>
+            <param name="board">Electronic board.</param>
+            <returns>Session state. If the information about session state does not exist, then <see langword="null" /> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.Connect">
+            <summary>
+            Connect to trading system.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.Disconnect">
+            <summary>
+            Disconnect from trading system.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.LookupSecurities(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To find instruments that match the filter <paramref name="criteria"/>. Found instruments will be passed through the event <see cref="E:StockSharp.BusinessEntities.IConnector.LookupSecuritiesResult"/>.
+            </summary>
+            <param name="criteria">The instrument whose fields will be used as a filter.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.LookupSecurities(StockSharp.Messages.SecurityLookupMessage)">
+            <summary>
+            To find instruments that match the filter <paramref name="criteria"/>. Found instruments will be passed through the event <see cref="E:StockSharp.BusinessEntities.IConnector.LookupSecuritiesResult"/>.
+            </summary>
+            <param name="criteria">The criterion which fields will be used as a filter.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.LookupPortfolios(StockSharp.BusinessEntities.Portfolio)">
+            <summary>
+            To find portfolios that match the filter <paramref name="criteria"/>. Found portfolios will be passed through the event <see cref="E:StockSharp.BusinessEntities.IConnector.LookupPortfoliosResult"/>.
+            </summary>
+            <param name="criteria">The portfolio which fields will be used as a filter.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.GetPosition(StockSharp.BusinessEntities.Portfolio,StockSharp.BusinessEntities.Security,System.String)">
+            <summary>
+            To get the position by portfolio and instrument.
+            </summary>
+            <param name="portfolio">The portfolio on which the position should be found.</param>
+            <param name="security">The instrument on which the position should be found.</param>
+            <param name="depoName">The depository name where the stock is located physically. By default, an empty string is passed, which means the total position by all depositories.</param>
+            <returns>Position.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.GetFilteredMarketDepth(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Get filtered order book.
+            </summary>
+            <param name="security">The instrument by which an order book should be got.</param>
+            <returns>Filtered order book.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterOrder(StockSharp.BusinessEntities.Order)">
+            <summary>
+            Register new order.
+            </summary>
+            <param name="order">Registration details.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.ReRegisterOrder(StockSharp.BusinessEntities.Order,StockSharp.BusinessEntities.Order)">
+            <summary>
+            Reregister the order.
+            </summary>
+            <param name="oldOrder">Cancelling order.</param>
+            <param name="newOrder">New order to register.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.ReRegisterOrder(StockSharp.BusinessEntities.Order,System.Decimal,System.Decimal)">
+            <summary>
+            Reregister the order.
+            </summary>
+            <param name="oldOrder">Changing order.</param>
+            <param name="price">Price of the new order.</param>
+            <param name="volume">Volume of the new order.</param>
+            <returns>New order.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.CancelOrder(StockSharp.BusinessEntities.Order)">
+            <summary>
+            Cancel the order.
+            </summary>
+            <param name="order">The order which should be canceled.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.CancelOrders(System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.Messages.Sides},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
+            <summary>
+            Cancel orders by filter.
+            </summary>
+            <param name="isStopOrder"><see langword="true" />, if cancel only a stop orders, <see langword="false" /> - if regular orders, <see langword="null" /> - both.</param>
+            <param name="portfolio">Portfolio. If the value is equal to <see langword="null" />, then the portfolio does not match the orders cancel filter.</param>
+            <param name="direction">Order side. If the value is <see langword="null" />, the direction does not use.</param>
+            <param name="board">Trading board. If the value is equal to <see langword="null" />, then the board does not match the orders cancel filter.</param>
+            <param name="security">Instrument. If the value is equal to <see langword="null" />, then the instrument does not match the orders cancel filter.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.SubscribeMarketData(StockSharp.BusinessEntities.Security,StockSharp.Messages.MarketDataTypes)">
+            <summary>
+            To sign up to get market data by the instrument.
+            </summary>
+            <param name="security">The instrument by which new information getting should be started .</param>
+            <param name="type">Market data type.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnSubscribeMarketData(StockSharp.BusinessEntities.Security,StockSharp.Messages.MarketDataTypes)">
+            <summary>
+            To unsubscribe from getting market data by the instrument.
+            </summary>
+            <param name="security">The instrument by which new information getting should be started .</param>
+            <param name="type">Market data type.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterMarketDepth(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To start getting quotes (order book) by the instrument. Quotes values are available through the event <see cref="E:StockSharp.BusinessEntities.IConnector.MarketDepthsChanged"/>.
+            </summary>
+            <param name="security">The instrument by which quotes getting should be started.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterMarketDepth(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To stop getting quotes by the instrument.
+            </summary>
+            <param name="security">The instrument by which quotes getting should be stopped.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterFilteredMarketDepth(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To start getting filtered quotes (order book) by the instrument. Quotes values are available through the event <see cref="M:StockSharp.BusinessEntities.IConnector.GetFilteredMarketDepth(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+            <param name="security">The instrument by which quotes getting should be started.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterFilteredMarketDepth(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To stop getting filtered quotes by the instrument.
+            </summary>
+            <param name="security">The instrument by which quotes getting should be stopped.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterTrades(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To start getting trades (tick data) by the instrument. New trades will come through the event <see cref="E:StockSharp.BusinessEntities.IConnector.NewTrades"/>.
+            </summary>
+            <param name="security">The instrument by which trades getting should be started.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterTrades(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To stop getting trades (tick data) by the instrument.
+            </summary>
+            <param name="security">The instrument by which trades getting should be stopped.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterSecurity(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To start getting new information (for example, <see cref="P:StockSharp.BusinessEntities.Security.LastTrade"/> or <see cref="P:StockSharp.BusinessEntities.Security.BestBid"/>) by the instrument.
+            </summary>
+            <param name="security">The instrument by which new information getting should be started .</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterSecurity(StockSharp.BusinessEntities.Security)">
+            <summary>
+            To stop getting new information.
+            </summary>
+            <param name="security">The instrument by which new information getting should be stopped.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterOrderLog(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Subscribe on order log for the security.
+            </summary>
+            <param name="security">Security for subscription.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterOrderLog(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Unsubscribe from order log for the security.
+            </summary>
+            <param name="security">Security for unsubscription.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterPortfolio(StockSharp.BusinessEntities.Portfolio)">
+            <summary>
+            Subscribe on the portfolio changes.
+            </summary>
+            <param name="portfolio">Portfolio for subscription.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterPortfolio(StockSharp.BusinessEntities.Portfolio)">
+            <summary>
+            Unsubscribe from the portfolio changes.
+            </summary>
+            <param name="portfolio">Portfolio for unsubscription.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RegisterNews">
+            <summary>
+            Subscribe on news.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.UnRegisterNews">
+            <summary>
+            Unsubscribe from news.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.IConnector.RequestNewsStory(StockSharp.BusinessEntities.News)">
+            <summary>
+            Request news <see cref="P:StockSharp.BusinessEntities.News.Story"/> body. After receiving the event <see cref="E:StockSharp.BusinessEntities.IConnector.NewsChanged"/> will be triggered.
+            </summary>
+            <param name="news">News.</param>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewMyTrades">
+            <summary>
+            Own trades received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewTrades">
+            <summary>
+            Tick tades received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewOrders">
+            <summary>
+            Orders received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.OrdersChanged">
+            <summary>
+            Orders changed (cancelled, matched).
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.OrdersRegisterFailed">
+            <summary>
+            Order registration errors event.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.OrdersCancelFailed">
+            <summary>
+            Order cancellation errors event.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.StopOrdersRegisterFailed">
+            <summary>
+            Stop-order registration errors event.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.StopOrdersCancelFailed">
+            <summary>
+            Stop-order cancellation errors event.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewStopOrders">
+            <summary>
+            Stop-orders received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.StopOrdersChanged">
+            <summary>
+            Stop orders state change event .
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewSecurities">
+            <summary>
+            Securities received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.SecuritiesChanged">
+            <summary>
+            Securities changed.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewPortfolios">
+            <summary>
+            Portfolios received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.PortfoliosChanged">
+            <summary>
+            Portfolios changed.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewPositions">
+            <summary>
+            Positions received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.PositionsChanged">
+            <summary>
+            Positions changed.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewMarketDepths">
+            <summary>
+            Order books received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.MarketDepthsChanged">
+            <summary>
+            Order books changed.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewOrderLogItems">
+            <summary>
+            Order log received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewNews">
+            <summary>
+            News received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewsChanged">
+            <summary>
+            News updated (news body received <see cref="P:StockSharp.BusinessEntities.News.Story"/>).
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.NewMessage">
+            <summary>
+            Message processed <see cref="T:StockSharp.Messages.Message"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.Connected">
+            <summary>
+            Connected.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.Disconnected">
+            <summary>
+            Disconnected.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.ConnectionError">
+            <summary>
+            Connection error (for example, the connection was aborted by server).
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.Error">
+            <summary>
+            Dats process error.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.MarketTimeChanged">
+            <summary>
+            Server time changed <see cref="P:StockSharp.BusinessEntities.IConnector.ExchangeBoards"/>. It passed the time difference since the last call of the event. The first time the event passes the value <see cref="F:System.TimeSpan.Zero"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.LookupSecuritiesResult">
+            <summary>
+            Lookup result <see cref="M:StockSharp.BusinessEntities.IConnector.LookupSecurities(StockSharp.BusinessEntities.Security)"/> received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.LookupPortfoliosResult">
+            <summary>
+            Lookup result <see cref="M:StockSharp.BusinessEntities.IConnector.LookupPortfolios(StockSharp.BusinessEntities.Portfolio)"/> received.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.MarketDataSubscriptionSucceeded">
+            <summary>
+            Successful subscription market-data.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.MarketDataSubscriptionFailed">
+            <summary>
+            Error subscription market-data.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.IConnector.SessionStateChanged">
+            <summary>
+            Session changed.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.ExchangeBoards">
+            <summary>
+            List of all exchange boards, for which instruments are loaded <see cref="P:StockSharp.BusinessEntities.IConnector.Securities"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.Securities">
+            <summary>
+            List of all loaded instruments. It should be called after event <see cref="E:StockSharp.BusinessEntities.IConnector.NewSecurities"/> arisen. Otherwise the empty set will be returned.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.Orders">
+            <summary>
+            Get all orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.StopOrders">
+            <summary>
+            Get all stop-orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.OrderRegisterFails">
+            <summary>
+            Get all registration errors.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.OrderCancelFails">
+            <summary>
+            Get all cancellation errors.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.Trades">
+            <summary>
+            Get all tick trades.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.MyTrades">
+            <summary>
+            Get all own trades.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.Portfolios">
+            <summary>
+            Get all portfolios.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.Positions">
+            <summary>
+            Get all positions.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.News">
+            <summary>
+            All news.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.ConnectionState">
+            <summary>
+            Connection state.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.IsSupportAtomicReRegister">
+            <summary>
+            Gets a value indicating whether the re-registration orders via the method <see cref="M:StockSharp.BusinessEntities.IConnector.ReRegisterOrder(StockSharp.BusinessEntities.Order,StockSharp.BusinessEntities.Order)"/> as a single transaction.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.RegisteredSecurities">
+            <summary>
+            List of all securities, subscribed via <see cref="M:StockSharp.BusinessEntities.IConnector.RegisterSecurity(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.RegisteredMarketDepths">
+            <summary>
+            List of all securities, subscribed via <see cref="M:StockSharp.BusinessEntities.IConnector.RegisterMarketDepth(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.RegisteredTrades">
+            <summary>
+            List of all securities, subscribed via <see cref="M:StockSharp.BusinessEntities.IConnector.RegisterTrades(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.RegisteredOrderLogs">
+            <summary>
+            List of all securities, subscribed via <see cref="M:StockSharp.BusinessEntities.IConnector.RegisterOrderLog(StockSharp.BusinessEntities.Security)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.RegisteredPortfolios">
+            <summary>
+            List of all portfolios, subscribed via <see cref="M:StockSharp.BusinessEntities.IConnector.RegisterPortfolio(StockSharp.BusinessEntities.Portfolio)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.TransactionAdapter">
+            <summary>
+            Transactional adapter.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.IConnector.MarketDataAdapter">
+            <summary>
+            Market-data adapter.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.MarketDepth">
+            <summary>
+            Order book.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.#ctor(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Create order book.
+            </summary>
+            <param name="security">Security.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Decrease(System.Int32)">
+            <summary>
+            To reduce the order book to the required depth.
+            </summary>
+            <param name="newDepth">New order book depth.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetQuote(StockSharp.Messages.Sides,System.Int32)">
+            <summary>
+            To get a quote by the direction <see cref="T:StockSharp.Messages.Sides"/> and the depth index.
+            </summary>
+            <param name="orderDirection">Orders side.</param>
+            <param name="depthIndex">Depth index. Zero index means the best quote.</param>
+            <returns>Quote. If a quote does not exist for specified depth, then the <see langword="null"/> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetQuote(System.Decimal)">
+            <summary>
+            To get a quote by the price.
+            </summary>
+            <param name="price">Quote price.</param>
+            <returns>Found quote. If there is no quote in the order book for the passed price, then the <see langword="null" /> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetQuotes(StockSharp.Messages.Sides)">
+            <summary>
+            To get quotes by the direction <see cref="T:StockSharp.Messages.Sides"/>.
+            </summary>
+            <param name="orderDirection">Orders side.</param>
+            <returns>Quotes.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetBestQuote(StockSharp.Messages.Sides)">
+            <summary>
+            To get the best quote by the direction <see cref="T:StockSharp.Messages.Sides"/>.
+            </summary>
+            <param name="orderDirection">Order side.</param>
+            <returns>The best quote. If the order book is empty, then the <see langword="null"/> will be returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetPair(System.Int32)">
+            <summary>
+            To get a pair of quotes (bid + offer) by the depth index.
+            </summary>
+            <param name="depthIndex">Depth index. Zero index means the best pair of quotes.</param>
+            <returns>The pair of quotes. If the index is larger than book order depth <see cref="P:StockSharp.BusinessEntities.MarketDepth.Depth"/>, then the <see langword="null"/> is returned.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetTopPairs(System.Int32)">
+            <summary>
+            To get a pair of quotes for a given book depth.
+            </summary>
+            <param name="depth">Book depth. The counting is from the best quotes.</param>
+            <returns>Spread.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetTopQuotes(System.Int32)">
+            <summary>
+            To get quotes for a given book depth.
+            </summary>
+            <param name="depth">Book depth. Quotes are in order of price increasing from bids to offers.</param>
+            <returns>Spread.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Update(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Quote},System.DateTimeOffset)">
+            <summary>
+            Update the order book by new quotes.
+            </summary>
+            <param name="quotes">The new quotes.</param>
+            <param name="lastChangeTime">Last change time.</param>
+            <returns>Market depth.</returns>
+            <remarks>
+            The old quotes will be removed from the book.
+            </remarks>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Update(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Quote},System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Quote},System.Boolean,System.DateTimeOffset)">
+            <summary>
+            Update the order book by new bids and asks.
+            </summary>
+            <param name="bids">The new bids.</param>
+            <param name="asks">The new asks.</param>
+            <param name="isSorted">Are quotes sorted. This parameter is used for optimization in order to prevent re-sorting.</param>
+            <param name="lastChangeTime">Last change time.</param>
+            <returns>Market depth.</returns>
+            <remarks>
+            The old quotes will be removed from the book.
+            </remarks>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Update(StockSharp.BusinessEntities.Quote[],StockSharp.BusinessEntities.Quote[],System.DateTimeOffset)">
+            <summary>
+            To update the order book. The version without checks and blockings.
+            </summary>
+            <param name="bids">Sorted bids.</param>
+            <param name="asks">Sorted asks.</param>
+            <param name="lastChangeTime">Change time.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.UpdateQuote(StockSharp.BusinessEntities.Quote)">
+            <summary>
+            To refresh the quote. If a quote with the same price is already in the order book, it is updated as passed. Otherwise, it automatically rebuilds the order book.
+            </summary>
+            <param name="quote">The new quote.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.AddBid(System.Decimal,System.Decimal)">
+            <summary>
+            Add buy quote.
+            </summary>
+            <param name="price">Buy price.</param>
+            <param name="volume">Buy volume.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.AddAsk(System.Decimal,System.Decimal)">
+            <summary>
+            Add sell quote.
+            </summary>
+            <param name="price">Sell price.</param>
+            <param name="volume">Sell volume.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.AddQuote(StockSharp.BusinessEntities.Quote)">
+            <summary>
+            To add the quote. If a quote with the same price is already in the order book, they are combined into the <see cref="T:StockSharp.BusinessEntities.AggregatedQuote"/>.
+            </summary>
+            <param name="quote">The new quote.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.GetEnumerator">
+            <summary>
+            To get the enumerator object.
+            </summary>
+            <returns>The enumerator object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            To get the enumerator object.
+            </summary>
+            <returns>The enumerator object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.ToPairs">
+            <summary>
+            To get all pairs from the order book.
+            </summary>
+            <returns>Pairs from which the order book is composed.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Remove(StockSharp.BusinessEntities.Quote,System.DateTimeOffset)">
+            <summary>
+            Remove the quote.
+            </summary>
+            <param name="quote">The quote to remove.</param>
+            <param name="lastChangeTime">Order book change time.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Remove(System.Decimal,System.Decimal,System.DateTimeOffset)">
+            <summary>
+            Remove the volume for the price.
+            </summary>
+            <param name="price">Remove the quote for the price.</param>
+            <param name="volume">The volume to be deleted. If it is not specified, then all the quote is removed.</param>
+            <param name="lastChangeTime">Order book change time.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Remove(StockSharp.Messages.Sides,System.Decimal,System.Decimal,System.DateTimeOffset)">
+            <summary>
+            Remove the volume for the price.
+            </summary>
+            <param name="direction">Order side.</param>
+            <param name="price">Remove the quote for the price.</param>
+            <param name="volume">The volume to be deleted. If it is not specified, then all the quote is removed.</param>
+            <param name="lastChangeTime">Order book change time.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.MarketDepth"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepth.Verify">
+            <summary>
+            To determine whether the order book is in the right state.
+            </summary>
+            <returns><see langword="true" />, if the order book contains correct data, otherwise <see langword="false" />.</returns>
+            <remarks>
+            It is used in cases when the trading system by mistake sends the wrong quotes.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.MaxDepth">
+            <summary>
+            The maximum depth of order book.
+            </summary>
+            <remarks>
+            The default value is 100. If the exceeded the maximum depth the event <see cref="E:StockSharp.BusinessEntities.MarketDepth.QuoteOutOfDepth"/> will triggered.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Security">
+            <summary>
+            Security.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Connector">
+            <summary>
+            Connection to the trading system.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.AutoVerify">
+            <summary>
+            Automatically check for quotes by <see cref="M:StockSharp.BusinessEntities.MarketDepth.Verify"/>.
+            </summary>
+            <remarks>
+            The default is disabled for performance.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.UseAggregatedQuotes">
+            <summary>
+            Whether to use aggregated quotes <see cref="T:StockSharp.BusinessEntities.AggregatedQuote"/> at the join of the volumes with the same price.
+            </summary>
+            <remarks>
+            The default is disabled for performance.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.LastChangeTime">
+            <summary>
+            Last change time.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.LocalTime">
+            <summary>
+            The order book local time stamp.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Bids">
+            <summary>
+            Get the array of bids sorted by descending price. The first (best) bid will be the maximum price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Asks">
+            <summary>
+            Get the array of asks sorted by ascending price. The first (best) ask will be the minimum price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Currency">
+            <summary>
+            Trading security currency.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.BestBid">
+            <summary>
+            The best bid. If the order book does not contain bids, will be returned <see langword="null" />.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.BestAsk">
+            <summary>
+            The best ask. If the order book does not contain asks, will be returned <see langword="null" />.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.BestPair">
+            <summary>
+            The best pair. If the order book is empty, will be returned <see langword="null" />.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.TotalBidsPrice">
+            <summary>
+            To get the total price size by bids.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.TotalAsksPrice">
+            <summary>
+            To get the total price size by offers.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.TotalBidsVolume">
+            <summary>
+            Get bids total volume.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.TotalAsksVolume">
+            <summary>
+            Get asks total volume.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.TotalVolume">
+            <summary>
+            Get total volume.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.TotalPrice">
+            <summary>
+            To get the total price size.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Count">
+            <summary>
+            Total quotes count (bids + asks).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepth.Depth">
+            <summary>
+            Depth of book.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.MarketDepth.QuoteOutOfDepth">
+            <summary>
+            Event on exceeding the maximum allowable depth of quotes.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.MarketDepth.DepthChanged">
+            <summary>
+            Depth <see cref="P:StockSharp.BusinessEntities.MarketDepth.Depth"/> changed.
+            </summary>
+        </member>
+        <member name="E:StockSharp.BusinessEntities.MarketDepth.QuotesChanged">
+            <summary>
+            Quotes changed.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.MarketDepthPair">
+            <summary>
+            Quotes pair.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepthPair.#ctor(StockSharp.BusinessEntities.Security,StockSharp.BusinessEntities.Quote,StockSharp.BusinessEntities.Quote)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.MarketDepthPair"/>.
+            </summary>
+            <param name="security">Security.</param>
+            <param name="bid">Bid.</param>
+            <param name="ask">Ask.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MarketDepthPair.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.Security">
+            <summary>
+            Security.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.Bid">
+            <summary>
+            Bid.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.Ask">
+            <summary>
+            Ask.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.SpreadPrice">
+            <summary>
+            Spread by price. Is <see langword="null" />, if one of the quotes is empty.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.SpreadVolume">
+            <summary>
+            Spread by volume. If negative, it best ask has a greater volume than the best bid. Is <see langword="null" />, if one of the quotes is empty.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.MiddlePrice">
+            <summary>
+            The middle of spread. Is <see langword="null" />, if one of the quotes is empty.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MarketDepthPair.IsFull">
+            <summary>
+            Quotes pair has <see cref="P:StockSharp.BusinessEntities.MarketDepthPair.Bid"/> and <see cref="P:StockSharp.BusinessEntities.MarketDepthPair.Ask"/>.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.MyTrade">
+            <summary>
+            Own trade.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MyTrade.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.MyTrade"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.MyTrade.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MyTrade.Order">
+            <summary>
+            Order, for which a trade was filled.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MyTrade.Trade">
+            <summary>
+            Trade info.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MyTrade.Commission">
+            <summary>
+            Commission.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MyTrade.Slippage">
+            <summary>
+            Slippage in trade price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.MyTrade.ExtensionInfo">
+            <summary>
+            Extended trade info.
+            </summary>
+            <remarks>
+            Required if additional information associated with the own trade is stored in the program. For example, the commission amount, the currency, the trade type.
+            </remarks>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.News">
+            <summary>
+            News.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Id">
+            <summary>
+            News ID.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Board">
+            <summary>
+            Exchange board for which the news is published.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Security">
+            <summary>
+            Security, for which news have been published.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Source">
+            <summary>
+            News source.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Headline">
+            <summary>
+            Header.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Story">
+            <summary>
+            News text.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.ServerTime">
+            <summary>
+            Time of news arrival.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.LocalTime">
+            <summary>
+            News received local time.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.Url">
+            <summary>
+            News link in the internet.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.News.ExtensionInfo">
+            <summary>
+            Extended information.
+            </summary>
+            <remarks>
+            Required when extra information is stored in the program.
+            </remarks>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Order">
+            <summary>
+            Order.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Order.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Order"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Order.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.LatencyRegistration">
+            <summary>
+            Time taken to register an order.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.LatencyCancellation">
+            <summary>
+            Time taken to cancel an order.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Id">
+            <summary>
+            Order ID.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.StringId">
+            <summary>
+            Order ID (as string, if electronic board does not use numeric order ID representation).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.BoardId">
+            <summary>
+            Board order id. Uses in case of <see cref="P:StockSharp.BusinessEntities.Order.Id"/> and <see cref="P:StockSharp.BusinessEntities.Order.StringId"/> is a brokerage system ids.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Time">
+            <summary>
+            Order placing time on exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.TransactionId">
+            <summary>
+            Transaction ID. Automatically set when the <see cref="M:StockSharp.BusinessEntities.IConnector.RegisterOrder(StockSharp.BusinessEntities.Order)"/> method called.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Security">
+            <summary>
+            Security, for which an order is being placed.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.State">
+            <summary>
+            Order state.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Portfolio">
+            <summary>
+            Portfolio, in which the order is being traded.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Messages">
+            <summary>
+            Messages for order (created by the trading system when registered, changed or cancelled).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.LastChangeTime">
+            <summary>
+            Time of last order change (Cancellation, Fill).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.LocalTime">
+            <summary>
+            Last trade change local time (Cancellation, Fill).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Price">
+            <summary>
+            Order price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Volume">
+            <summary>
+            Number of contracts in an order.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.VisibleVolume">
+            <summary>
+            Visible quantity of contracts in order.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Direction">
+            <summary>
+            Order side (buy or sell).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Balance">
+            <summary>
+            Order contracts remainder.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Status">
+            <summary>
+            System order status.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.IsSystem">
+            <summary>
+            Is a system trade.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Comment">
+            <summary>
+            Placed order comment.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Type">
+            <summary>
+            Order type.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.ExpiryDate">
+            <summary>
+            Order expiry time. The default is <see langword="null"/>, which mean (GTC).
+            </summary>
+            <remarks>
+            If the value is <see cref="F:System.DateTimeOffset.MaxValue"/>, then the order is registered until cancel. Otherwise, the period is specified.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Condition">
+            <summary>
+            Order condition (e.g., stop- and algo- orders parameters).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.TimeInForce">
+            <summary>
+            Limit order time in force.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.DerivedOrder">
+            <summary>
+            Exchange order that was created by the stop-order when the condition is activated (<see langword="null" /> if a stop condition has not been activated).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.RepoInfo">
+            <summary>
+            Information for REPO\REPO-M orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.RpsInfo">
+            <summary>
+            Information for Negotiate Deals Mode orders.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.ExtensionInfo">
+            <summary>
+            Extended information on order.
+            </summary>
+            <remarks>
+            Required if additional information associated with the order is stored in the program. For example, the activation time, the yield for usual orders or the condition order ID for a stop order.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Commission">
+            <summary>
+            Comission (broker, exchange etc.).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Connector">
+            <summary>
+            Connection to the trading system, through which this order has been registered.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.UserOrderId">
+            <summary>
+            User's order ID.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.BrokerCode">
+            <summary>
+            Broker firm code.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.ClientCode">
+            <summary>
+            Client code assigned by the broker.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Order.Currency">
+            <summary>
+            Trading security currency.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.OrderFail">
+            <summary>
+            Description of the error that occurred during the registration or cancellation of the order.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.OrderFail.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.OrderFail"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.OrderFail.Order">
+            <summary>
+            The order which was not registered or was canceled due to an error.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.OrderFail.Error">
+            <summary>
+            System information about error containing the reason for the refusal or cancel of registration.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.OrderFail.ServerTime">
+            <summary>
+            Server time.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.OrderFail.LocalTime">
+            <summary>
+            Local time, when the error has been received.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.OrderFail.ExtensionInfo">
+            <summary>
+            Extended information on the order with an error.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.OrderLogItem">
+            <summary>
+            Order log item.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.OrderLogItem.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.OrderLogItem"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.OrderLogItem.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Portfolio">
+            <summary>
+            Portfolio, describing the trading account and the size of its generated commission.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Portfolio.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Portfolio"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Portfolio.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.Portfolio"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Portfolio.CopyTo(StockSharp.BusinessEntities.Portfolio)">
+            <summary>
+            To copy the current portfolio fields to the <paramref name="destination" />.
+            </summary>
+            <param name="destination">The portfolio, in which fields should be copied .</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Portfolio.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.Name">
+            <summary>
+            Portfolio code name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.Leverage">
+            <summary>
+            Margin leverage.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.Currency">
+            <summary>
+            Portfolio currency.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.Connector">
+            <summary>
+            Connection to the trading system, through which this portfolio has been loaded.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.Board">
+            <summary>
+            Exchange board, for which the current portfolio is active.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.State">
+            <summary>
+            Portfolio state.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Portfolio.AnonymousPortfolio">
+            <summary>
+            Portfolio associated with the orders received through the orders log.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Position">
+            <summary>
+            The position by the instrument.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Position.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Position"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Position.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.Position"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Position.CopyTo(StockSharp.BusinessEntities.Position)">
+            <summary>
+            To copy fields of the current position to <paramref name="destination" />.
+            </summary>
+            <param name="destination">The position in which you should to copy fields.</param>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Position.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Position.Portfolio">
+            <summary>
+            Portfolio, in which position is created.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Position.Security">
+            <summary>
+            Security, for which a position was created.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Position.DepoName">
+            <summary>
+            The depositary where the physical security.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Position.LimitType">
+            <summary>
+            Limit type for Т+ market.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.SecurityExternalId">
+            <summary>
+            Security IDs in other systems.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.SecurityExternalId.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.SecurityExternalId"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.SecurityExternalId.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.SecurityExternalId.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.SecurityExternalId"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.Sedol">
+            <summary>
+            ID in SEDOL format (Stock Exchange Daily Official List).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.Cusip">
+            <summary>
+            ID in CUSIP format (Committee on Uniform Securities Identification Procedures).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.Isin">
+            <summary>
+            ID in ISIN format (International Securities Identification Number).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.Ric">
+            <summary>
+            ID in RIC format (Reuters Instrument Code).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.Bloomberg">
+            <summary>
+            ID in Bloomberg format.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.IQFeed">
+            <summary>
+            ID in IQFeed format.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.InteractiveBrokers">
+            <summary>
+            ID in Interactive Brokers format.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.SecurityExternalId.Plaza">
+            <summary>
+            ID in Plaza format.
+            </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.Trade">
+            <summary>
+            Tick trade.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Trade.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.Trade"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Trade.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.BusinessEntities.Trade"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Trade.GetHashCode">
+            <summary>
+            Get the hash code of the object <see cref="T:StockSharp.BusinessEntities.Trade"/>.
+            </summary>
+            <returns>A hash code.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.Trade.ToString">
+            <summary>
+            Returns a string that represents the current object.
+            </summary>
+            <returns>A string that represents the current object.</returns>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Id">
+            <summary>
+            Trade ID.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.StringId">
+            <summary>
+            Trade ID (as string, if electronic board does not use numeric order ID representation).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Security">
+            <summary>
+            The instrument, on which the trade was completed.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Time">
+            <summary>
+            Trade time.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.LocalTime">
+            <summary>
+            Trade received local time.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Volume">
+            <summary>
+            Number of contracts in a trade.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Price">
+            <summary>
+            Trade price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.OrderDirection">
+            <summary>
+            Order side (buy or sell), which led to the trade.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.IsSystem">
+            <summary>
+            Is a system trade.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Status">
+            <summary>
+            System trade status.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.OpenInterest">
+            <summary>
+            Number of open positions (open interest).
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.IsUpTick">
+            <summary>
+            Is tick ascending or descending in price.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.Currency">
+            <summary>
+            Trading security currency.
+            </summary>
+        </member>
+        <member name="P:StockSharp.BusinessEntities.Trade.ExtensionInfo">
+            <summary>
+            Extended trade info.
+            </summary>
+            <remarks>
+            Required if additional information associated with the trade is stored in the program. For example, the operation that results to the trade.
+            </remarks>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.UnitHelper2">
+            <summary>
+            Extension class for <see cref="T:StockSharp.Messages.Unit"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Pips(System.Int32,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To create from <see cref="T:System.Int32"/> the pips values.
+            </summary>
+            <param name="value"><see cref="T:System.Int32"/> value.</param>
+            <param name="security">The instrument from which information about the price increment is taken .</param>
+            <returns>Pips.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Pips(System.Double,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To create from <see cref="T:System.Double"/> the pips values.
+            </summary>
+            <param name="value"><see cref="T:System.Double"/> value.</param>
+            <param name="security">The instrument from which information about the price increment is taken .</param>
+            <returns>Pips.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Pips(System.Decimal,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To create from <see cref="T:System.Decimal"/> the pips values.
+            </summary>
+            <param name="value"><see cref="T:System.Decimal"/> value.</param>
+            <param name="security">The instrument from which information about the price increment is taken .</param>
+            <returns>Pips.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Points(System.Int32,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To create from <see cref="T:System.Int32"/> the points values.
+            </summary>
+            <param name="value"><see cref="T:System.Int32"/> value.</param>
+            <param name="security">The instrument from which information about the price increment cost is taken .</param>
+            <returns>Points.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Points(System.Double,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To create from <see cref="T:System.Double"/> the points values.
+            </summary>
+            <param name="value"><see cref="T:System.Double"/> value.</param>
+            <param name="security">The instrument from which information about the price increment cost is taken .</param>
+            <returns>Points.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Points(System.Decimal,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To create from <see cref="T:System.Decimal"/> the points values.
+            </summary>
+            <param name="value"><see cref="T:System.Decimal"/> value.</param>
+            <param name="security">The instrument from which information about the price increment cost is taken .</param>
+            <returns>Points.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.ToUnit2(System.String,StockSharp.BusinessEntities.Security)">
+            <summary>
+            Convert string to <see cref="T:StockSharp.Messages.Unit"/>.
+            </summary>
+            <param name="str">String value of <see cref="T:StockSharp.Messages.Unit"/>.</param>
+            <param name="security">Information about the instrument. Required when using <see cref="F:StockSharp.Messages.UnitTypes.Point"/> и <see cref="F:StockSharp.Messages.UnitTypes.Step"/>.</param>
+            <returns>Object <see cref="T:StockSharp.Messages.Unit"/>.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.Convert(StockSharp.Messages.Unit,StockSharp.Messages.UnitTypes,StockSharp.BusinessEntities.Security)">
+            <summary>
+            Cast the value to another type.
+            </summary>
+            <param name="unit">Source unit.</param>
+            <param name="destinationType">Destination value type.</param>
+            <param name="security">Information about the instrument. Required when using <see cref="F:StockSharp.Messages.UnitTypes.Point"/> и <see cref="F:StockSharp.Messages.UnitTypes.Step"/>.</param>
+            <returns>Converted value.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.UnitHelper2.SetSecurity(StockSharp.Messages.Unit,StockSharp.BusinessEntities.Security)">
+            <summary>
+            To set the <see cref="P:StockSharp.Messages.Unit.GetTypeValue"/> property for the value.
+            </summary>
+            <param name="unit">Unit.</param>
+            <param name="security">Security.</param>
+            <returns>Unit.</returns>
+        </member>
+    </members>
+</doc>

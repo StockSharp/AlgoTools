@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LciViewer", "LciViewer\LciViewer.csproj", "{B8F4A4C2-FEC9-4CE4-9A65-040FBC635AAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OptionCalculator", "OptionCalculator\OptionCalculator.csproj", "{66AC554D-27ED-45B8-8553-016A65012535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpeedTest", "SpeedTest\SpeedTest.csproj", "{5C7EDB92-7B70-43F4-9851-3E0A42968283}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B8F4A4C2-FEC9-4CE4-9A65-040FBC635AAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8F4A4C2-FEC9-4CE4-9A65-040FBC635AAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8F4A4C2-FEC9-4CE4-9A65-040FBC635AAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8F4A4C2-FEC9-4CE4-9A65-040FBC635AAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66AC554D-27ED-45B8-8553-016A65012535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66AC554D-27ED-45B8-8553-016A65012535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66AC554D-27ED-45B8-8553-016A65012535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66AC554D-27ED-45B8-8553-016A65012535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C7EDB92-7B70-43F4-9851-3E0A42968283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7EDB92-7B70-43F4-9851-3E0A42968283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7EDB92-7B70-43F4-9851-3E0A42968283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7EDB92-7B70-43F4-9851-3E0A42968283}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = Trading.vsmdi
+	EndGlobalSection
+EndGlobal

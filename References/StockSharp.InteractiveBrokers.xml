@@ -1,0 +1,2866 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>StockSharp.InteractiveBrokers</name>
+    </assembly>
+    <members>
+        <member name="T:StockSharp.InteractiveBrokers.FundamentalReports">
+            <summary>
+            Типы финансовых отчетов.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.FundamentalReports.Overview">
+            <summary>
+            Обзор.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.FundamentalReports.Statements">
+            <summary>
+            Отчетность.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.FundamentalReports.Summary">
+            <summary>
+            Общая финансовая информация.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.FundamentalReports.Ratio">
+            <summary>
+            Соотношение показателей.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.FundamentalReports.Estimates">
+            <summary>
+            Прогноз.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.FundamentalReports.Calendar">
+            <summary>
+            График.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.GenericFieldTypes">
+            <summary>
+            Поля маркет-данных.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.OptionVolume">
+            <summary>
+            Option Volume
+            For stocks only.
+            Returns TickType.OptionCallVolume and TickType.OptionPutVolume 
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.OptionOpenInterest">
+            <summary>
+            Option Open Interest
+            For stocks only.
+            Returns TickType.OptionCallOpenInterest and TickType.OptionPutOpenInterest
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.HistoricalVolatility">
+            <summary>
+            Historical Volatility
+            For stocks only.
+            Returns TickType.OptionHistoricalVol
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.AverageOptVolume">
+            <summary>
+            Average Opt Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.OptionImpliedVolatility">
+            <summary>
+            Option Implied Volatility
+            For stocks only.
+            Returns TickType.OptionImpliedVol
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.CloseImpliedVolatility">
+            <summary>
+            Close Implied Volatility
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.BondAnalyticData">
+            <summary>
+            Bond analytic data
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.IndexFuturePremium">
+            <summary>
+            Index Future Premium
+            Returns TickType.IndexFuturePremium
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.MiscellaneousStats">
+            <summary>
+            Miscellaneous Stats
+            Returns TickType.Low13Week, TickType.High13Week, TickType.Low26Week, TickType.High26Week, TickType.Low52Week, TickType.High52Week and TickType.AverageVolume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.CScreen">
+            <summary>
+            CScreen
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.MarkPrice">
+            <summary>
+            Mark Price
+            Used in TWS P/L Computations
+            Returns TickType.MarkPrice
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.AuctionPrice">
+            <summary>
+            Auction Price
+            Auction values (volume, price and imbalance)
+            Returns TickType.AuctionVolume, TickType.AuctionPrice, TickType.AuctionImbalance
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.RealTimeVolume">
+            <summary>
+            Real Time Volume Tick Type
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.Shortable">
+            <summary>
+            Shortable Ticks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.Inventory">
+            <summary>
+            Inventory Type
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.FundamentalRatios">
+            <summary>
+            Fundamental Ratios Tick Type
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.CloseImpliedVolatility2">
+            <summary>
+            Close Implied Volatility
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.TradeCount">
+            <summary>
+            Trade Count
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.TradeRate">
+            <summary>
+            Trade Rate
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.VolumeRate">
+            <summary>
+            Volume Rate
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.LastRthTrade">
+            <summary>
+            Last RTH Trade
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.ParticipationMonitor">
+            <summary>
+            Participation Monitor
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.CttTickTag">
+            <summary>
+            Ctt Tick Tag
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.IBRate">
+            <summary>
+            IB Rate
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.RfqTickRespTag">
+            <summary>
+            Rfq Tick Resp Tag
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.Dmm">
+            <summary>
+            DMM
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.IssuerFundamentals">
+            <summary>
+            Issuer Fundamentals
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.IBWarrantImpVolCompeteTick">
+            <summary>
+            IB Warrant Imp Vol Compete Tick
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.FuturesMargins">
+            <summary>
+            Futures Margins
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.RealTimeHistoricalVolatility">
+            <summary>
+            Realtime Historical Volatility
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.MonetaryClosePrice">
+            <summary>
+            Monetary Close Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.RealTimeClose">
+            <summary>
+            RTCLOSE
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.GenericFieldTypes.MonitorTickTag">
+            <summary>
+            MonitorTickTag
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition">
+            <summary>
+            Условие заявок, специфичных для <see cref="N:StockSharp.InteractiveBrokers"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBOrderCondition.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.IBOrderCondition"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedType">
+            <summary>
+            Расширенное условие.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.StopPrice">
+            <summary>
+            Стоп-цена.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.IsMarketOnOpen">
+            <summary>
+            По открытию торгов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Oca">
+            <summary>
+            Настройки OCA (One-Cancels All).
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Transmit">
+            <summary>
+            Отправлять заявку в TWS.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ParentId">
+            <summary>
+            Идентификатор родительской заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.BlockOrder">
+            <summary>
+            Разбивать объем заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SweepToFill">
+            <summary>
+            По лучшей цене.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethod">
+            <summary>
+            Условие активации стоп-заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OutsideRth">
+            <summary>
+            Позволить активировать стоп-заявку вне торгового времени.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Hidden">
+            <summary>
+            Прятать заявку в стакане.
+            </summary>
+            <remarks>
+            Возможно только при отправке заявки на биржу ISLAND.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.GoodAfterTime">
+            <summary>
+            Активировать после заданного времени.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OverridePercentageConstraints">
+            <summary>
+            Отменять заявки с некорректной ценой. 
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Agent">
+            <summary>
+            Идентификатор трейдера.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.AllOrNone">
+            <summary>
+            Ожидать появления необходимого объема.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.MinVolume">
+            <summary>
+            Минимальный объем заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.PercentOffset">
+            <summary>
+            Сдвиг в цене для заявки типа <see cref="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Relative"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.TrailStopPrice">
+            <summary>
+            Цена активации скользящего стопа.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.TrailStopVolumePercentage">
+            <summary>
+            Объем скользящего стопа, выраженный в процентах.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisor">
+            <summary>
+            Найстройки для автоматического расчета объема заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.IsOpenOrClose">
+            <summary>
+            Является ли заявка открывающей или закрывающей.
+            </summary>
+            <remarks>
+            Только для институциональных клиентов.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Origin">
+            <summary>
+            Отправитель.
+            </summary>
+            <remarks>
+            Только для институциональных клиентов.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSale">
+            <summary>
+            Условие для коротких продаж комбинированных ног.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.AuctionStrategy">
+            <summary>
+            Торги.
+            </summary>
+            <remarks>Только для биржи BOX.</remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.StartingPrice">
+            <summary>
+            Стартовая цена.
+            </summary>
+            <remarks>Только для биржи BOX.</remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.StockRefPrice">
+            <summary>
+            Цена базового актива.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Delta">
+            <summary>
+            Дельта базового актива.
+            </summary>
+            <remarks>Только для биржи BOX.</remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.StockRangeLower">
+            <summary>
+            Минимальная цена базового актива.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.StockRangeUpper">
+            <summary>
+            Максимальная цена базового актива.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Volatility">
+            <summary>
+            Настройки для заявок типа <see cref="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Volatility"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRouting">
+            <summary>
+            Настройки для заявок, отправляемых в Smart биржу.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Combo">
+            <summary>
+            Настройки EFP заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Scale">
+            <summary>
+            Условие для изменяемой заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Clearing">
+            <summary>
+            Условие для клиринговой информации.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Algo">
+            <summary>
+            Условие для алго-заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.WhatIf">
+            <summary>
+            Вовзращать для заявки информацию о комиссии и марже.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.AlgoId">
+            <summary>
+            Идентификатор алгоритма.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.MiscOptions">
+            <summary>
+            Дополнительные параметры.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Solicited">
+            <summary>
+            Запрошенная.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.RandomizeSize">
+            <summary>
+            Произвольный размер.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.RandomizePrice">
+            <summary>
+            Произвольная цена.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Hedge">
+            <summary>
+            Условие для хедж-заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OptionExercise">
+            <summary>
+            Условие для заявок типа <see cref="F:StockSharp.Messages.OrderTypes.Execute"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.Active">
+            <summary>
+            Условие для GTC заявки.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.BaseCondition">
+            <summary>
+            Базовое условие.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBOrderCondition.BaseCondition.GetValue``1(System.String)">
+            <summary>
+            Получить значение параметра.
+            </summary>
+            <typeparam name="T">Тип значения.</typeparam>
+            <param name="name">Название параметра.</param>
+            <returns>Значение параметра.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBOrderCondition.BaseCondition.TryGetValue``1(System.String)">
+            <summary>
+            Получить значение параметра. Если значение не существует, будет возвращено <see langword="null"/>.
+            </summary>
+            <typeparam name="T">Тип значения.</typeparam>
+            <param name="name">Название параметра.</param>
+            <returns>Значение параметра.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBOrderCondition.BaseCondition.SetValue``1(System.String,``0)">
+            <summary>
+            Установить новое значение параметра.
+            </summary>
+            <typeparam name="T">Тип значения.</typeparam>
+            <param name="name">Название параметра.</param>
+            <param name="value">Значение параметра.</param>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes">
+            <summary>
+            Расширенные типы заявок, специфичных для <see cref="T:StockSharp.InteractiveBrokers.IBTrader"/>.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.MarketOnClose">
+            <summary>
+            Исполнить по рыночной цене, если цена закрытия превысила ожидаемую цену.
+            </summary>
+            <remarks>
+            Не действует для US <see cref="F:StockSharp.Messages.SecurityTypes.Future"/>, US <see cref="F:StockSharp.Messages.SecurityTypes.Option"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.LimitOnClose">
+            <summary>
+            Исполнить по заданной цене, если цена закрытия превысила ожидаемую цену.
+            </summary>
+            <remarks>
+            Не действует для US <see cref="F:StockSharp.Messages.SecurityTypes.Future"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.PeggedToMarket">
+            <summary>
+            По лучшей цене.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Stop">
+            <summary>
+            Стоп с рыночной ценой активации.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Currency"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Future"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Option"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Warrant"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.StopLimit">
+            <summary>
+            Стоп с заданной ценой активации.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Currency"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Future"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Option"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.TrailingStop">
+            <summary>
+            Скользящий стоп.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Currency"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Future"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Option"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Warrant"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Relative">
+            <summary>
+            Со сдвигом.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Option"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.VolumeWeightedAveragePrice">
+            <summary>
+            VWAP.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.TrailingStopLimit">
+            <summary>
+            Лимитированный скользящий стоп.
+            </summary>
+            <remarks>
+            Действует для <see cref="F:StockSharp.Messages.SecurityTypes.Currency"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Future"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Option"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/>, <see cref="F:StockSharp.Messages.SecurityTypes.Warrant"/>.
+            </remarks>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Volatility">
+            <summary>
+            Волатильность.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Empty">
+            <summary>
+            Используется для дельта заявок.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Default">
+            <summary>
+            Используется для дельта-нейтральных типов заявок.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Scale">
+            <summary>
+            Изменяемый на шаг цены.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.MarketIfTouched">
+            <summary>
+            С рыночной ценой при исполнении условия.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.LimitIfTouched">
+            <summary>
+            С заданной ценой при исполнении условия.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.OcaTypes">
+            <summary>
+            Режимы заявок типа OCA (One-Cancels All).
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.OcaTypes.CancelAll">
+            <summary>
+            Отменить все оставшиеся блоки.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.OcaTypes.ReduceWithBlock">
+            <summary>
+            Оставшиеся заявки пропорционально уменьшить на размер блока.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.OcaTypes.ReduceWithNoBlock">
+            <summary>
+            Оставшиеся заявки пропорционально уменьшить на размер вне блока.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.OcaCondition">
+            <summary>
+            Настройки OCA (One-Cancels All).
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OcaCondition.Group">
+            <summary>
+            Идентификатор группы.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OcaCondition.Type">
+            <summary>
+            Тип группы.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods">
+            <summary>
+            Условия для активации стоп-заявок.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.Default">
+            <summary>
+            Для NASDAQ <see cref="F:StockSharp.Messages.SecurityTypes.Stock"/> и US <see cref="F:StockSharp.Messages.SecurityTypes.Option"/> используется условие <see cref="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.DoubleBidAsk"/>.
+            Иначе, используется условие <see cref="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.BidAsk"/>.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.DoubleBidAsk">
+            <summary>
+            Двойное превышение или понижение текущей лучшей цены перед стоп-ценой.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.Last">
+            <summary>
+            Превышение или понижение цены последней сделки перед стоп-ценой.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.DoubleLast">
+            <summary>
+            Двойное превышение или понижение цены последней сделки перед стоп-ценой.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.BidAsk">
+            <summary>
+            Превышение или понижение текущей лучшей цены перед стоп-ценой.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.LastOrBidAsk">
+            <summary>
+            Превышение или понижение текущей лучшей цены или цены последней сделки перед стоп-ценой.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.TriggerMethods.MidpointMethod">
+            <summary>
+            Превышение или понижение середины спреда перед стоп-ценой.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions">
+            <summary>
+            Описания типа трейдера по правилу 80A.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.Individual">
+            <summary>
+            Частный трейдер.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.Agency">
+            <summary>
+            Агенство.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.AgentOtherMember">
+            <summary>
+            Агенство или другой тип.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.IndividualPTIA">
+            <summary>
+            Частный PTIA.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.AgencyPTIA">
+            <summary>
+            Агенство PTIA.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.AgentOtherMemberPTIA">
+            <summary>
+            Агенство или другой тип PTIA.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.IndividualPT">
+            <summary>
+            Частный PT.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.AgencyPT">
+            <summary>
+            Агенство PT.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AgentDescriptions.AgentOtherMemberPT">
+            <summary>
+            Агенство или другой тип PT.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorAllocations">
+            <summary>
+            Методы автоматических расчетов объемов для группы счетов.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorAllocations.PercentChange">
+            <summary>
+            Процентное изменение.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorAllocations.AvailableEquity">
+            <summary>
+            Через свободные денежные средства плюс заемные.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorAllocations.NetLiquidity">
+            <summary>
+            Через свободные денежные средства.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorAllocations.EqualQuantity">
+            <summary>
+            Равный объем.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorCondition">
+            <summary>
+            Найстройки для автоматического расчета объема заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorCondition.Group">
+            <summary>
+            Группа.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorCondition.Profile">
+            <summary>
+            Профайл.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorCondition.Allocation">
+            <summary>
+            Метод расчета.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.FinancialAdvisorCondition.Percentage">
+            <summary>
+            Процент отношения к заполнению объема.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.OrderOrigins">
+            <summary>
+            Отправители.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.OrderOrigins.Customer">
+            <summary>
+            Клиент.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.OrderOrigins.Firm">
+            <summary>
+            Фирма.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.AuctionStrategies">
+            <summary>
+            Торги.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AuctionStrategies.AuctionMatch">
+            <summary>
+            Совпадение.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AuctionStrategies.AuctionImprovement">
+            <summary>
+            Лучше.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.AuctionStrategies.AuctionTransparent">
+            <summary>
+            Прозрачный.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityTimeFrames">
+            <summary>
+            Тайм-фреймы волатильности.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityTimeFrames.Daily">
+            <summary>
+            Дневной.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityTimeFrames.Annual">
+            <summary>
+            Среднегодовой.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition">
+            <summary>
+            Настройки для заявок типа <see cref="F:StockSharp.InteractiveBrokers.IBOrderCondition.ExtendedOrderTypes.Volatility"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.ContinuousUpdate">
+            <summary>
+            Обновлять цену лимита при изменении базового актива. 
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.IsAverageBestPrice">
+            <summary>
+            Средняя лучшая цена или лучшая цена.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.Volatility">
+            <summary>
+            Волатильность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.VolatilityTimeFrame">
+            <summary>
+            Тайм-фрейм волатильности. 
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.OrderType">
+            <summary>
+            Тип заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.ExtendedOrderType">
+            <summary>
+            Расширенный тип заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.StopPrice">
+            <summary>
+            Стоп-цена. 
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.ConId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.SettlingFirm">
+            <summary>
+            Фирма.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.ClearingPortfolio">
+            <summary>
+            Клиринговый счет.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.ClearingIntent">
+            <summary>
+            Клиринговая цель.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.IsShortSale">
+            <summary>
+            Является ли заявка короткой продажей.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.VolatilityCondition.ShortSale">
+            <summary>
+            Условие для коротких продаж комбинированных ног.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleSlots">
+            <summary>
+            Типы коротких продаж комбинированных ног.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleSlots.Unapplicable">
+            <summary>
+            Частрый трейдер или нет короткая нога.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleSlots.ClearingBroker">
+            <summary>
+            Клиринговый брокер.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleSlots.ThirdParty">
+            <summary>
+            Другое.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleCondition">
+            <summary>
+            Условие для коротких продаж комбинированных ног.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleCondition.Slot">
+            <summary>
+            Тип короткой продажи комбинированных ног.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleCondition.Location">
+            <summary>
+            Уточнение типа короткой продажи комбинированных ног.
+            </summary>
+            <remarks>
+            Используется при <see cref="P:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleCondition.Slot"/> равным <see cref="F:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleSlots.ThirdParty"/>.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleCondition.ExemptCode">
+            <summary>
+            Exempt Code for Short Sale Exemption Orders
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ShortSaleCondition.IsOpenOrClose">
+            <summary>
+            Является ли заявка открывающей или закрывающей.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ComboCondition">
+            <summary>
+            Настройки EFP заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ComboCondition.BasisPoints">
+            <summary>
+            Базовые пункты.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ComboCondition.BasisPointsType">
+            <summary>
+            Тип базовых пунктов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ComboCondition.LegsDescription">
+            <summary>
+            Описание ног.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ComboCondition.Legs">
+            <summary>
+            Цены ног.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ComboCondition.ShortSales">
+            <summary>
+            Условие для коротких продаж.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition">
+            <summary>
+            Настройки для заявок, отправляемых в Smart биржу.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.DiscretionaryAmount">
+            <summary>
+            Диапазон сдвига цены заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.ETradeOnly">
+            <summary>
+            Электронные торги.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.FirmQuoteOnly">
+            <summary>
+            Котировки фирмы.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.NbboPriceCap">
+            <summary>
+            Максимальный сдвиг от лучших пар.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.NotHeld">
+            <summary>
+            Удерживать в стакане.
+            </summary>
+            <remarks>
+            Только для биржи IBDARK.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.OptOutSmartRouting">
+            <summary>
+            Прямая отправка ASX заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.SmartRoutingCondition.ComboParams">
+            <summary>
+            Параметры.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition">
+            <summary>
+            Условие для изменяемой заявки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.InitLevelSize">
+            <summary>
+            split order into X buckets
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.SubsLevelSize">
+            <summary>
+            split order so each bucket is of the size X
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.PriceIncrement">
+            <summary>
+            price increment per bucket
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.PriceAdjustValue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.PriceAdjustInterval">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.ProfitOffset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.AutoReset">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.InitPosition">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.InitFillQty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.RandomPercent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ScaleCondition.Table">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeTypes">
+            <summary>
+            Типы параметров для хеджирования.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeTypes.Delta">
+            <summary>
+            Дельта.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeTypes.Beta">
+            <summary>
+            Бета.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeTypes.FX">
+            <summary>
+            Валюта.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeTypes.Pair">
+            <summary>
+            Пара.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeCondition">
+            <summary>
+            Условие для хедж-заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeCondition.Type">
+            <summary>
+            Тип параметра для хеджирования.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.HedgeCondition.Param">
+            <summary>
+            Параметр.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.AlgoCondition">
+            <summary>
+            Условие для алго-заявок.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.AlgoCondition.Strategy">
+            <summary>
+            Стратегия.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.AlgoCondition.Params">
+            <summary>
+            Параметры.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingIntents">
+            <summary>
+            Цели клиринга.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingIntents.Broker">
+            <summary>
+            Брокер.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingIntents.Away">
+            <summary>
+            Другое.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingIntents.PostTradeAllocation">
+            <summary>
+            После торговое размещение.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingCondition">
+            <summary>
+            Условие для клиринговой информации.
+            </summary>
+            <remarks>
+            Только для институциональных клиентов.
+            </remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingCondition.Portfolio">
+            <summary>
+            Счет.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingCondition.SettlingFirm">
+            <summary>
+            Фирма.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingCondition.ClearingPortfolio">
+            <summary>
+            Клиринговый счет.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ClearingCondition.Intent">
+            <summary>
+            Цель клиринга.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.OptionExerciseCondition">
+            <summary>
+            Условие для заявок типа <see cref="F:StockSharp.Messages.OrderTypes.Execute"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OptionExerciseCondition.IsExercise">
+            <summary>
+            Исполнить опцион.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.OptionExerciseCondition.IsOverride">
+            <summary>
+            Заместить действие.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBOrderCondition.ActiveCondition">
+            <summary>
+            Условие для заявок GTC.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ActiveCondition.Start">
+            <summary>
+            Время старта.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBOrderCondition.ActiveCondition.Stop">
+            <summary>
+            Время окончания.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ExchangeNewsTypes">
+            <summary>
+            Типы новостей.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.Unknown">
+            <summary>
+            Неизвестный тип.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.Bbs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.LiveExchange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.DeadExchange">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.Html">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.PopupText">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ExchangeNewsTypes.PopupHtml">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter">
+            <summary>
+            Адаптер сообщений для InteractiveBrokers.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter"/>.
+            </summary>
+            <param name="transactionIdGenerator">Генератор идентификаторов транзакций.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.CreateOrderCondition">
+            <summary>
+            Создать для заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional"/> условие, которое поддерживается подключением.
+            </summary>
+            <returns>Условие для заявки. Если подключение не поддерживает заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional"/>, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+            <summary>
+            Отправить сообщение.
+            </summary>
+            <param name="message">Сообщение.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestCurrentTime">
+            <summary>
+            Returns the current system time on the server side.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestIds(System.Int32)">
+            <summary>
+            Returns one next valid Id...
+            </summary>
+            <param name="numberOfIds">Has No Effect</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeScanner(StockSharp.InteractiveBrokers.ScannerMarketDataMessage)">
+            <summary>
+            Запустить сканер инструментов на основе заданных параметров.
+            </summary>
+            <param name="message">Настройки фильтра сканера инструментов.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeScanner(System.Int64)">
+            <summary>
+            Остановить сканер инструментов, запущенный ранее через <see cref="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeScanner(StockSharp.InteractiveBrokers.ScannerMarketDataMessage)"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestScannerParameters">
+            <summary>
+            Call the reqScannerParameters() method to receive an XML document that describes the valid parameters that a scanner subscription can have.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeMarketData(StockSharp.Messages.MarketDataMessage,System.Collections.Generic.IEnumerable{StockSharp.InteractiveBrokers.GenericFieldTypes},System.Boolean,System.Boolean)">
+            <summary>
+            Call this method to request market data. The market data will be returned by the tickPrice, tickSize, tickOptionComputation(), tickGeneric(), tickString() and tickEFP() methods.
+            </summary>
+            <param name="message">this structure contains a description of the contract for which market data is being requested.</param>
+            <param name="genericFields">comma delimited list of generic tick types. Tick types can be found here: (new Generic Tick Types page) </param>
+            <param name="snapshot">Allows client to request snapshot market data.</param>
+            <param name="marketDataOff">Market Data Off - used in conjunction with RTVolume Generic tick type causes only volume data to be sent.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeMarketData(System.Int64)">
+            <summary>
+            After calling this method, market data for the specified Id will stop flowing.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ConvertPeriodtoIb(System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            used for reqHistoricalData
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeHistoricalCandles(StockSharp.Messages.MarketDataMessage,StockSharp.Messages.Level1Fields,System.Boolean)">
+            <summary>
+            Подписаться на получение исторических значения инструмента с заданной периодичностью.
+            </summary>
+            <param name="message">Сообщение о подписке или отписки на маркет-данные.</param>
+            <param name="field">Поле маркет-данных. Поддерживаются следующие значения:
+            <list type="number">
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Trades"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Bid"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Ask"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Midpoint"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.BidAsk"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.ImpliedVolatility"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.HistoricalVolatility"/>.</description>
+            </item>
+            </list></param>
+            <param name="useRth">Получать данные только по торговому времени. По-умолчанию используется торговое время.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeRealTimeCandles(StockSharp.Messages.MarketDataMessage,StockSharp.Messages.Level1Fields,System.Boolean)">
+            <summary>
+            Подписаться на получение свечек реального времени.
+            </summary>
+            <param name="message"></param>
+            <param name="field">Поля маркет-данных, на основе которых будут строяться свечи. Поддерживаются следующие значения:
+            <list type="number">
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Trades"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Bid"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Ask"/>.</description>
+            </item>
+            <item>
+            <description><see cref="F:StockSharp.InteractiveBrokers.CandleDataTypes.Midpoint"/>.</description>
+            </item>
+            </list>
+            </param>
+            <param name="useRth">Строить свечи только по торговому времени. По-умолчанию используется торговое время.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeRealTimeCandles(StockSharp.Messages.MarketDataMessage,System.Int64)">
+            <summary>
+            Остановить подписку получения свечек, ранее созданную через <see cref="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeRealTimeCandles(StockSharp.Messages.MarketDataMessage,StockSharp.Messages.Level1Fields,System.Boolean)"/>.
+            </summary>
+            <param name="message"></param>
+            <param name="requestId"></param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeMarketDepth(StockSharp.Messages.MarketDataMessage)">
+            <summary>
+            Call this method to request market depth for a specific contract. The market depth will be returned by the updateMktDepth() and updateMktDepthL2() methods.
+            </summary>
+            <param name="message">this structure contains a description of the contract for which market depth data is being requested.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscriveMarketDepth(System.Int64)">
+            <summary>
+            After calling this method, market depth data for the specified Id will stop flowing.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeNewsBulletins(System.Boolean)">
+            <summary>
+            Call this method to start receiving news bulletins. Each bulletin will be returned by the updateNewsBulletin() method.
+            </summary>
+            <param name="allMessages">if set to <see langword="true"/>, returns all the existing bulletins for the current day and any new ones. IF set to <see langword="false"/>, will only return new bulletins.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeNewsBulletins">
+            <summary>
+            Call this method to stop receiving news bulletins.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestSecurityInfo(StockSharp.Messages.SecurityLookupMessage)">
+            <summary>
+            Call this function to download all details for a particular underlying. the contract details will be received via the contractDetails() function on the EWrapper.
+            </summary>
+            <param name="criteria">summary description of the contract being looked up.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeFundamentalReport(StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage)">
+            <summary>
+            Подписаться на получение отчетов по рынку для заданного инструмента.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeFundamentalReport(System.Int64)">
+            <summary>
+            Остановить подписку на получение отчетов по рынку для заданного инструмента, созданная ранее через <see cref="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeFundamentalReport(StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage)"/>.
+            </summary>
+            <param name="requestId"></param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeCalculateImpliedVolatility(StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage)">
+            <summary>
+            Подписаться на получение подразумеваемой волатильности для заданного инструмента.
+            </summary>
+            <param name="message"></param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeCalculateImpliedVolatility(System.Int64)">
+            <summary>
+            Остановить подписку на получение подразумеваемой волатильности для заданного инструмента,
+            созданная ранее через <see cref="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeCalculateImpliedVolatility(StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage)"/>.
+            </summary>
+            <param name="requestId"></param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeCalculateOptionPrice(StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage)">
+            <summary>
+            Подписаться на получение греков для заданного инструмента.
+            </summary>
+            <param name="message">Инструмент.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.UnSubscribeCalculateOptionPrice(System.Int64)">
+            <summary>
+            Остановить подписку на получение греков для заданного инструмента,
+            созданная ранее через <see cref="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribeCalculateOptionPrice(StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage)"/>.
+            </summary>
+            <param name="requestId"></param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ExerciseOptions(StockSharp.Messages.OrderRegisterMessage,System.Boolean,System.Decimal,System.String,System.Boolean)">
+            <summary>
+            Call the exerciseOptions() method to exercise options. 
+            “SMART” is not an allowed exchange in exerciseOptions() calls, and that TWS does a moneyness request for the position in question whenever any API initiated exercise or lapse is attempted.
+            </summary>
+            <param name="message">this structure contains a description of the contract to be exercised.  If no multiplier is specified, a default of 100 is assumed.</param>
+            <param name="isExercise">this can have two values:
+            1 = specifies exercise
+            2 = specifies lapse
+            </param>
+            <param name="volume">the number of contracts to be exercised</param>
+            <param name="portfolioName">specifies whether your setting will override the system's natural action. For example, if your action is "exercise" and the option is not in-the-money, by natural action the option would not exercise. If you have override set to "yes" the natural action would be overridden and the out-of-the money option would be exercised. Values are: 
+            0 = no
+            1 = yes
+            </param>
+            <param name="isOverride">
+            specifies whether your setting will override the system's natural action. For example, if your action is "exercise" and the option is not in-the-money, by natural action the option would not exercise. If you have override set to "yes" the natural action would be overridden and the out-of-the money option would be exercised. Values are: 
+            0 = no
+            1 = yes
+            </param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SubscribePortfolio(System.String,System.Boolean)">
+            <summary>
+            Call this function to start getting account values, portfolio, and last update time information.
+            </summary>
+            <param name="isSubscribe">If set to <see langword="true"/>, the client will start receiving account and portfolio updates. If set to <see langword="false"/>, the client will stop receiving this information.</param>
+            <param name="portfolioName">the account code for which to receive account and portfolio updates.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ReqeustMyTrades(System.Int64,StockSharp.InteractiveBrokers.MyTradeFilter)">
+            <summary>
+            When this method is called, the execution reports that meet the filter criteria are downloaded to the client via the execDetails() method.
+            </summary>
+            <param name="requestId"></param>
+            <param name="filter">the filter criteria used to determine which execution reports are returned.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestOpenOrders">
+            <summary>
+            Call this method to request the open orders that were placed from this client. Each open order will be fed back through the openOrder() and orderStatus() functions on the EWrapper.
+            
+            The client with a clientId of "0" will also receive the TWS-owned open orders. These orders will be associated with the client and a new orderId will be generated. This association will persist over multiple API and TWS sessions.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestAutoOpenOrders(System.Boolean)">
+            <summary>
+            Call this method to request that newly created TWS orders be implicitly associated with the client. When a new TWS order is created, the order will be associated with the client and fed back through the openOrder() and orderStatus() methods on the EWrapper.
+            
+            TWS orders can only be bound to clients with a clientId of “0”.
+            </summary>
+            <param name="autoBind">If set to <see langword="true"/>, newly created TWS orders will be implicitly associated with the client. If set to <see langword="false"/>, no association will be made.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestAllOpenOrders">
+            <summary>
+            Call this method to request the open orders that were placed from all clients and also from TWS. Each open order will be fed back through the openOrder() and orderStatus() functions on the EWrapper.
+            
+            No association is made between the returned orders and the requesting client.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.RequestPortfolios">
+            <summary>
+            Call this method to request the list of managed accounts. The list will be returned by the managedAccounts() function on the EWrapper.
+            
+            This request can only be made when connected to a Financial Advisor (FA) account.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.DefaultAddress">
+            <summary>
+            Адрес по-умолчанию.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.DefaultGatewayAddress">
+            <summary>
+            Адрес по-умолчанию.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ToString">
+            <summary>
+            Получить строковое представление.
+            </summary>
+            <returns>Строковое представление.</returns>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.SecurityLookupRequired">
+            <summary>
+            Требуется ли дополнительное сообщение <see cref="T:StockSharp.Messages.SecurityLookupMessage"/> для получения списка инструментов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.IsSupportNativeSecurityLookup">
+            <summary>
+            Поддерживается ли торговой системой поиск инструментов.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.IsSupportNativePortfolioLookup">
+            <summary>
+            Поддерживается ли торговой системой поиск портфелей.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.Address">
+            <summary>
+            Адрес.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ClientId">
+            <summary>
+            Уникальный идентификатор. Используется в случае подключения нескольких клиентов к одному терминалу или gateway.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.IsRealTimeMarketData">
+            <summary>
+            Использовать ли данные реального времени или "замороженные" на сервере брокера. По-умолчанию используются "замороженные" данные.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ServerLogLevel">
+            <summary>
+            Уровень логирования сообщений сервера. По-умолчанию равен <see cref="F:StockSharp.InteractiveBrokers.ServerLogLevels.Detail"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.Fields">
+            <summary>
+            Поля маркет-данных, которые будут получаться при подписке на Level1 сообщения.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ConnectedTime">
+            <summary>
+            Время подключения.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.ExtraAuth">
+            <summary>
+            Экстра подключение.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.InteractiveBrokersMessageAdapter.OptionalCapabilities">
+            <summary>
+            Дополнительные возможности.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.ResponseMessages.Undefined">
+            <summary>
+            Undefined Incoming Message
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Native.FieldTypes">
+            <summary>
+            Incoming Tick Types
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.BidVolume">
+            <summary>
+            Bid Size
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.BidPrice">
+            <summary>
+            Bid Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AskPrice">
+            <summary>
+            Ask Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AskVolume">
+            <summary>
+            Ask Size
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastPrice">
+            <summary>
+            Last Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastVolume">
+            <summary>
+            Last Size
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.HighPrice">
+            <summary>
+            High Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LowPrice">
+            <summary>
+            Low Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.Volume">
+            <summary>
+            Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.ClosePrice">
+            <summary>
+            Close Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.BidOption">
+            <summary>
+            Bid Option
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AskOption">
+            <summary>
+            Ask Option
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastOption">
+            <summary>
+            Last Option
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.ModelOption">
+            <summary>
+            Model Option
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OpenPrice">
+            <summary>
+            Open Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.Low13Week">
+            <summary>
+            Low Price over last 13 weeks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.High13Week">
+            <summary>
+            High Price over last 13 weeks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.Low26Week">
+            <summary>
+            Low Price over last 26 weeks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.High26Week">
+            <summary>
+            High Price over last 26 weeks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.Low52Week">
+            <summary>
+            Low Price over last 52 weeks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.High52Week">
+            <summary>
+            High Price over last 52 weeks
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AverageVolume">
+            <summary>
+            Average Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OpenInterest">
+            <summary>
+            Open Interest
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionHistoricalVolatility">
+            <summary>
+            Option Historical Volatility
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionImpliedVolatility">
+            <summary>
+            Option Implied Volatility
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionBidExchange">
+            <summary>
+            Option Bid Exchange
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionAskExchange">
+            <summary>
+            Option Ask Exchange
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionCallOpenInterest">
+            <summary>
+            Option Call Open Interest
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionPutOpenInterest">
+            <summary>
+            Option Put Open Interest
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionCallVolume">
+            <summary>
+            Option Call Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OptionPutVolume">
+            <summary>
+            Option Put Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.IndexFuturePremium">
+            <summary>
+            Index Future Premium
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.BidExchange">
+            <summary>
+            Bid Exchange
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AskExchange">
+            <summary>
+            Ask Exchange
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AuctionVolume">
+            <summary>
+            Auction Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AuctionPrice">
+            <summary>
+            Auction Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AuctionImbalance">
+            <summary>
+            Auction Imbalance
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.MarkPrice">
+            <summary>
+            Mark Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.BidEfpComputation">
+            <summary>
+            Bid EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AskEfpComputation">
+            <summary>
+            Ask EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastEfpComputation">
+            <summary>
+            Last EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.OpenEfpComputation">
+            <summary>
+            Open EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.HighEfpComputation">
+            <summary>
+            High EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LowEfpComputation">
+            <summary>
+            Low EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.CloseEfpComputation">
+            <summary>
+            Close EFP Computation
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastTimestamp">
+            <summary>
+            Last Time Stamp
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.Shortable">
+            <summary>
+            Shortable
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.FundamentalRatios">
+            <summary>
+            Fundamental Ratios
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.RealTimeVolume">
+            <summary>
+            Real Time Volume
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.Halted">
+            <summary>
+            When trading is halted for a contract, TWS receives a special tick: haltedLast=1. When trading is resumed, TWS receives haltedLast=0. A new tick type, HALTED, tick ID = 49, is now available in regular market data via the API to indicate this halted state.
+            Possible values for this new tick type are:
+            0 = Not halted 
+            1 = Halted. 
+             </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.BidYield">
+            <summary>
+            Bond Yield for Bid Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.AskYield">
+            <summary>
+            Bond Yield for Ask Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastYield">
+            <summary>
+            Bond Yield for Last Price
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.CustOptionComputation">
+            <summary>
+            returns calculated implied volatility as a result of an calculateImpliedVolatility( ) request.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.TradeCount">
+            <summary>
+            Trades
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.TradeRate">
+            <summary>
+            Trades per Minute
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.VolumeRate">
+            <summary>
+            Volume per Minute
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.LastRthTrade">
+            <summary>
+            Last Regular Trading Hours Trade
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Native.FieldTypes.RealTimeHistoricalVolatility">
+            <summary>
+            Real Time Historical Volatility
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.MyTradeFilter">
+            <summary>
+            Argument passed to interactive brokers when requesting execution history.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.ClientId">
+            <summary>
+            Filter the results of the ReqExecutions() method based on the clientId.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.Portfolio">
+            <summary>
+            Filter the results of the ReqExecutions() method based on an account code.
+            </summary>
+            <remarks>This is only relevant for Financial Advisor (FA) accounts.</remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.Time">
+            <summary>
+            Filter the results of the ReqExecutions() method based on execution reports received after the specified time. 
+            </summary>
+            <remarks>The format for timeFilter is "yyyymmdd-hh:mm:ss"</remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.SecurityId">
+            <summary>
+            Filter the results of the ReqExecutions() method based on the order symbol.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.SecurityType">
+            <summary>
+            Filter the results of the ReqExecutions() method based on the order security type. 
+            </summary>
+            <remarks>Refer to the Contract struct for the list of valid security types.</remarks>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.BoardCode">
+            <summary>
+            Filter the results of the ReqExecutions() method based on the order exchange.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.MyTradeFilter.Side">
+            <summary>
+            Filter the results of the ReqExecutions() method based on the order action. 
+            </summary>
+            <remarks>Refer to the Order struct for the list of valid order actions.</remarks>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.CandleDataTypes">
+            <summary>
+            Типы данных, на основе которых должны строиться свечи.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.Trades">
+            <summary>
+            Сделки.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.Midpoint">
+            <summary>
+            Середина спреда.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.Bid">
+            <summary>
+            Лучший бид.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.Ask">
+            <summary>
+            Лучший оффер.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.BidAsk">
+            <summary>
+            Лучшая пара котировок.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.ImpliedVolatility">
+            <summary>
+            Волатильность (подразумеваемая).
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.HistoricalVolatility">
+            <summary>
+            Волатильность (историческая).
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.YieldAsk">
+            <summary>
+            Лучший доходный оффер.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.YieldBid">
+            <summary>
+            Лучший доходных бид.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.YieldBidAsk">
+            <summary>
+            Лучшая доходная пара котировок.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.CandleDataTypes.YieldLast">
+            <summary>
+            Доходная последняя сделка.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Extensions">
+            <summary>
+            Вспомагательный класс, который используется для доступа к специфичной Interactive Brokers информации через <see cref="P:StockSharp.Messages.IExtendableEntity.ExtensionInfo"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetRoutingBoard(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Получить для инструмента биржевую площадку исполнения заявок.
+            </summary>
+            <param name="security">Инструмент.</param>
+            <returns>Биржевая площадка исполнения заявок. Если площадка отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetClientId(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить идентификатор клиента.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Идентификатор клиента. Если идентификатор отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetLiquidation(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить позицию ликвидации.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Позиция ликвидации. Если позиция отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetCumulativeQuantity(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить количество прибыльных контрактов в сделке.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Количество прибыльных контрактов в сделке. Если количество отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetAveragePrice(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить среднюю цену исполнения сделки.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Средняя цена исполнения сделки. Если цена отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetOrderRef(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить описание заявки.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Описание заявки. Если описание отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetEvRule(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить Economic Value правило.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Economic Value правило. Если правило отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetEvMultiplier(StockSharp.BusinessEntities.MyTrade)">
+            <summary>
+            Получить множитель рыночной цены контракта при изменении цены на 1.
+            </summary>
+            <param name="trade">Собственная сделка.</param>
+            <returns>Множитель рыночной цены. Если множитель отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetClientId(StockSharp.BusinessEntities.Order)">
+            <summary>
+            Получить идентификатор клиента.
+            </summary>
+            <param name="order">Заявка.</param>
+            <returns>Идентификатор клиента. Если идентификатор отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetLastTradePrice(StockSharp.BusinessEntities.Order)">
+            <summary>
+            Получить цену последней сделки.
+            </summary>
+            <param name="order">Заявка.</param>
+            <returns>Цена последней сделки. Если цена отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Extensions.GetWhyHeld(StockSharp.BusinessEntities.Order)">
+            <summary>
+            Получить причину удержания заявки.
+            </summary>
+            <param name="order">Заявка.</param>
+            <returns>Причина удержания. Если причина отсутствует, то будет возвращено <see langword="null"/>.</returns>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.Native.IBSocket.ServerVersion">
+            <summary>
+            Returns the version of the TWS instance the API application is connected to
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ScannerMarketDataMessage">
+            <summary>
+            Сообщение запуска сканера инструментов на основе заданных параметров.
+            Результаты будут приходить через событие <see cref="E:StockSharp.InteractiveBrokers.IBTrader.NewScannerResults"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.ScannerMarketDataMessage.#ctor(StockSharp.InteractiveBrokers.ScannerFilter)">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.ScannerMarketDataMessage"/>.
+            </summary>
+            <param name="filter">Фильтр.</param>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerMarketDataMessage.Filter">
+            <summary>
+            Фильтр.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ScannerResultMessage">
+            <summary>
+            Сообщение с результатами сканера, запущенного сообщением <see cref="T:StockSharp.InteractiveBrokers.ScannerMarketDataMessage"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.ScannerResultMessage.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.ScannerResultMessage"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResultMessage.Results">
+            <summary>
+            Результаты.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResultMessage.OriginalTransactionId">
+            <summary>
+            Идентификатор запроса <see cref="T:StockSharp.InteractiveBrokers.ScannerMarketDataMessage"/>.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ScannerParametersMessage">
+            <summary>
+            Сообщение с параметрами сканера.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.ScannerParametersMessage.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.ScannerParametersMessage"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerParametersMessage.Parameters">
+            <summary>
+            Параметры в формате xml.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.FinancialAdviseMessage">
+            <summary>
+            Сообщение с финансовой консультацией.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.FinancialAdviseMessage.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.FinancialAdviseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.FinancialAdviseMessage.AdviseType">
+            <summary>
+            Тип.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.FinancialAdviseMessage.Data">
+            <summary>
+            Данные в формате xml.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage">
+            <summary>
+            Сообщение на получение отчетов по рынку для заданного инструмента.
+            Результаты будут приходить через событие <see cref="E:StockSharp.InteractiveBrokers.IBTrader.NewFundamentalReport"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage.#ctor(StockSharp.InteractiveBrokers.FundamentalReports)">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage"/>.
+            </summary>
+            <param name="report">Тип отчета.</param>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage.Report">
+            <summary>
+            Тип отчета.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.FundamentalReportMessage">
+            <summary>
+            Сообщение с отчетом по рынку, инициированного сообщением <see cref="T:StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.FundamentalReportMessage.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.FundamentalReportMessage"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.FundamentalReportMessage.Data">
+            <summary>
+            Текст отчета.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.FundamentalReportMessage.OriginalTransactionId">
+            <summary>
+            Идентификатор запроса <see cref="T:StockSharp.InteractiveBrokers.FundamentalReportMarketDataMessage"/>.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage">
+            <summary>
+            Сообщение подписки на получение расчетных значений опциона.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage.#ctor(System.Decimal,System.Decimal,System.Decimal)">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage"/>.
+            </summary>
+            <param name="impliedVolatility">Подразумеваемая волатильность.</param>
+            <param name="optionPrice">Цена опциона.</param>
+            <param name="assetPrice">Цена базового актива.</param>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage.ImpliedVolatility">
+            <summary>
+            Подразумеваемая волатильность.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage.OptionPrice">
+            <summary>
+            Цена опциона.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.OptionCalcMarketDataMessage.AssetPrice">
+            <summary>
+            Цена базового актива.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBTrader">
+            <summary>
+            Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector"/>, предоставляющая подключение к Interactive Brokers через IB Gateway.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.IBTrader"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.OnCancelOrders(System.Int64,System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.Messages.Sides},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
+            <summary>
+            Отменить группу заявок на бирже по фильтру.
+            </summary>
+            <param name="transactionId">Идентификатор транзакции отмены.</param>
+            <param name="isStopOrder"><see langword="true"/>, если нужно отменить только стоп-заявки, <see langword="false"/> - если только обычный и <see langword="null"/> - если оба типа.</param>
+            <param name="portfolio">Портфель. Если значение равно <see langword="null"/>, то портфель не попадает в фильтр снятия заявок.</param>
+            <param name="direction">Направление заявки. Если значение равно <see langword="null"/>, то направление не попадает в фильтр снятия заявок.</param>
+            <param name="board">Торговая площадка. Если значение равно <see langword="null"/>, то площадка не попадает в фильтр снятия заявок.</param>
+            <param name="security">Инструмент. Если значение равно <see langword="null"/>, то инструмент не попадает в фильтр снятия заявок.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeScanner(StockSharp.InteractiveBrokers.ScannerFilter,System.Boolean)">
+            <summary>
+            Запустить или остановить сканер инструментов на основе заданных параметров.
+            Результаты будут приходить через событие <see cref="E:StockSharp.InteractiveBrokers.IBTrader.NewScannerResults"/>.
+            </summary>
+            <param name="filter">Фильтр.</param>
+            <param name="isSubscribe"><see langword="true"/> если необходимо подписаться, иначе <see langword="false"/>.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeFundamentalReport(StockSharp.BusinessEntities.Security,StockSharp.InteractiveBrokers.FundamentalReports,System.Boolean)">
+            <summary>
+            Подписаться или отписаться на получение отчетов по рынку для заданного инструмента.
+            Результаты будут приходить через событие <see cref="E:StockSharp.InteractiveBrokers.IBTrader.NewFundamentalReport"/>.
+            </summary>
+            <param name="security">Инструмент.</param>
+            <param name="report">Тип отчета.</param>
+            <param name="isSubscribe"><see langword="true"/> если необходимо подписаться, иначе <see langword="false"/>.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeOptionCalc(StockSharp.BusinessEntities.Security,System.Decimal,System.Decimal,System.Decimal,System.Boolean)">
+            <summary>
+            Подписаться или отписаться на получение расчетных значений опциона.
+            Результаты будут приходить через событие <see cref="E:StockSharp.BusinessEntities.IConnector.SecuritiesChanged"/>.
+            </summary>
+            <param name="security">Инструмент.</param>
+            <param name="impliedVolatility">Подразумеваемая волатильность.</param>
+            <param name="optionPrice">Цена опциона.</param>
+            <param name="assetPrice">Цена базового актива.</param>
+            <param name="isSubscribe"><see langword="true"/> если необходимо подписаться, иначе <see langword="false"/>.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.GetSupportedRanges(StockSharp.Algo.Candles.CandleSeries)">
+            <summary>
+            Получить временные диапазоны, для которых у данного источника для передаваемой серии свечек есть данные.
+            </summary>
+            <param name="series">Серия свечек.</param>
+            <returns>Временные диапазоны.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)">
+            <summary>
+            Подписаться на получение свечек.
+            </summary>
+            <param name="series">Серия свечек.</param>
+            <param name="from">Начальная дата, с которой необходимо получать данные.</param>
+            <param name="to">Конечная дата, до которой необходимо получать данные.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.UnSubscribeCandles(StockSharp.Algo.Candles.CandleSeries)">
+            <summary>
+            Остановить подписку получения свечек, ранее созданную через <see cref="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)"/>.
+            </summary>
+            <param name="series">Серия свечек.</param>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTrader.OnProcessMessage(StockSharp.Messages.Message)">
+            <summary>
+            Обработать сообщение.
+            </summary>
+            <param name="message">Сообщение.</param>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTrader.Address">
+            <summary>
+            Адрес.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTrader.ClientId">
+            <summary>
+            Уникальный идентификатор. Используется в случае подключения нескольких клиентов к одному терминалу или gateway.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTrader.ServerLogLevel">
+            <summary>
+            Уровень логирования сообщений сервера. По-умолчанию равен <see cref="F:StockSharp.InteractiveBrokers.ServerLogLevels.Detail"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTrader.IsRealTimeMarketData">
+            <summary>
+            Использовать ли данные реального времени или "замороженные" на сервере брокера. По-умолчанию используются "замороженные" данные.
+            </summary>
+        </member>
+        <member name="E:StockSharp.InteractiveBrokers.IBTrader.NewScannerResults">
+            <summary>
+            Событие появление новых результатов сканера, запущенного ранее через <see cref="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeScanner(StockSharp.InteractiveBrokers.ScannerFilter,System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.InteractiveBrokers.IBTrader.NewCandles">
+            <summary>
+            Событие появления новых свечек, полученных после подписки через <see cref="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeCandles(StockSharp.Algo.Candles.CandleSeries,System.DateTimeOffset,System.DateTimeOffset)"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.InteractiveBrokers.IBTrader.Stopped">
+            <summary>
+            Событие окончания обработки серии.
+            </summary>
+        </member>
+        <member name="E:StockSharp.InteractiveBrokers.IBTrader.NewFundamentalReport">
+            <summary>
+            Событие появление нового отчета, полученного по подписке <see cref="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeFundamentalReport(StockSharp.BusinessEntities.Security,StockSharp.InteractiveBrokers.FundamentalReports,System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.InteractiveBrokers.IBTrader.NewScannerParameters">
+            <summary>
+            Событие о появлении новых параметров сканера, которые применяются через <see cref="T:StockSharp.InteractiveBrokers.ScannerFilter"/>. Параметры передаются в виде xml.
+            </summary>
+        </member>
+        <member name="E:StockSharp.InteractiveBrokers.IBTrader.NewFinancialAdvise">
+            <summary>
+            Событие о появлении новых финансовых консультаций. Параметры передаются в виде xml.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ScannerResult">
+            <summary>
+            Результат фильтра сканера, запускаемого через <see cref="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeScanner(StockSharp.InteractiveBrokers.ScannerFilter,System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResult.SecurityId">
+            <summary>
+            Идентификатор инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResult.Rank">
+            <summary>
+            Ранк.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResult.Distance">
+            <summary>
+            Значение запроса.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResult.Benchmark">
+            <summary>
+            Значение запроса.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResult.Projection">
+            <summary>
+            Значение запроса.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerResult.Legs">
+            <summary>
+            Описание комбинированного инструмента.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ServerLogLevels">
+            <summary>
+            Уровни логирования серверной стороны.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ServerLogLevels.System">
+            <summary>
+            Системные сообщения.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ServerLogLevels.Error">
+            <summary>
+            Ошибки.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ServerLogLevels.Warning">
+            <summary>
+            Предупреждения.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ServerLogLevels.Information">
+            <summary>
+            Информационные сообщения.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ServerLogLevels.Detail">
+            <summary>
+            Детальные сообщения.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ScannerFilterStockExcludes">
+            <summary>
+            Типы исключений акций.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ScannerFilterStockExcludes.All">
+            <summary>
+            Не исключать ничего.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ScannerFilterStockExcludes.Stock">
+            <summary>
+            Исключить <see cref="F:StockSharp.InteractiveBrokers.ScannerFilterStockExcludes.Etf"/>.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.ScannerFilterStockExcludes.Etf">
+            <summary>
+            Только Exchange-traded fund.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.ScannerFilter">
+            <summary>
+            Настройки фильтра сканера, запускаемого через <see cref="M:StockSharp.InteractiveBrokers.IBTrader.SubscribeScanner(StockSharp.InteractiveBrokers.ScannerFilter,System.Boolean)"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.ScannerFilter.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.ScannerFilter"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.RowCount">
+            <summary>
+            Количество строк в запросе.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.SecurityType">
+            <summary>
+            Тип инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.BoardCode">
+            <summary>
+            Биржевая площадка.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.ScanCode">
+            <summary>
+             
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.AbovePrice">
+            <summary>
+            Верхний предел рыночной цены инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.BelowPrice">
+            <summary>
+            Нижний предел рыночной цены инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.AboveVolume">
+            <summary>
+            Верхний предел объема торгов по инструменту.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.AverageOptionVolumeAbove">
+            <summary>
+            Верхний предел объема торгов по опциону.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.MarketCapAbove">
+            <summary>
+            Верхний предел капитализации.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.MarketCapBelow">
+            <summary>
+            Нижний предел капитализации.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.MoodyRatingAbove">
+            <summary>
+            Верхний предел рейтинга Moody.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.MoodyRatingBelow">
+            <summary>
+            Нижний предел рейтинга Moody.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.SpRatingAbove">
+            <summary>
+            Верхний предел рейтинга SP.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.SpRatingBelow">
+            <summary>
+            Нижний предел рейтинга SP.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.MaturityDateAbove">
+            <summary>
+            Верхний предел даты погашения инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.MaturityDateBelow">
+            <summary>
+            Нижний предел даты погашения инструмента.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.CouponRateAbove">
+            <summary>
+            Верхний предел купонной ставки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.CouponRateBelow">
+            <summary>
+            Нижний предел купонной ставки.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.ExcludeConvertibleBonds">
+            <summary>
+            Исключать конвертируемые облигации.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.ScannerSettingPairs">
+            <summary>
+            Расширенные параметры. Подробнее, http://www.interactivebrokers.com/en/software/tws/usersguidebook/technicalanalytics/market_scanner_types.htm .
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.ScannerFilter.StockTypeExclude">
+            <summary>
+            Тип исключений акций.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.IBTimeFrames">
+            <summary>
+            Тайм-фреймы для исторических свечек InteractiveBrokers.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTimeFrames.op_Implicit(System.TimeSpan)~StockSharp.InteractiveBrokers.IBTimeFrames">
+            <summary>
+            Привести <see cref="T:System.TimeSpan"/> значение к объекту <see cref="T:StockSharp.InteractiveBrokers.IBTimeFrames"/>.
+            </summary>
+            <param name="value"><see cref="T:System.TimeSpan"/> значение.</param>
+            <returns>Объект <see cref="T:StockSharp.InteractiveBrokers.IBTimeFrames"/>.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.IBTimeFrames.op_Explicit(StockSharp.InteractiveBrokers.IBTimeFrames)~System.TimeSpan">
+            <summary>
+            Привести объект <see cref="T:StockSharp.InteractiveBrokers.IBTimeFrames"/> к <see cref="T:System.TimeSpan"/> значению.
+            </summary>
+            <param name="timeFrame">Объект <see cref="T:StockSharp.InteractiveBrokers.IBTimeFrames"/>.</param>
+            <returns><see cref="T:System.TimeSpan"/> значение.</returns>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.AllTimeFrames">
+            <summary>
+            Возможные тайм-фреймы.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Second1">
+            <summary>
+            Секундный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Second5">
+            <summary>
+            Пяти секундный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Second15">
+            <summary>
+            Пятнадцати секундный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Second30">
+            <summary>
+            Тридцати секундный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Minute1">
+            <summary>
+            Минутный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Minute2">
+            <summary>
+            Двух минутный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Minute3">
+            <summary>
+            Трех минутный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Minute5">
+            <summary>
+            Пяти минутный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Minute15">
+            <summary>
+            Пятнадцати минутный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Minute30">
+            <summary>
+            Тридцати минутный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Hour">
+            <summary>
+            Часовой тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Day">
+            <summary>
+            Дневной тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Week">
+            <summary>
+            Недельный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Month">
+            <summary>
+            Месячный тайм-фрейм.
+            </summary>
+        </member>
+        <member name="P:StockSharp.InteractiveBrokers.IBTimeFrames.Year">
+            <summary>
+            Годовой тайм-фрейм.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Web.Market">
+            <summary>
+            Информация о бирже.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.Market.Id">
+            <summary>
+            Уникальный идентификатор.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.Market.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.Market.Country">
+            <summary>
+            Страна.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.Market.Hours">
+            <summary>
+            Часы работы.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Web.Product">
+            <summary>
+            Информация об инструменте.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.Product.ContractId">
+            <summary>
+            Идентификатор контакта.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.Product.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Web.ProductBoard">
+            <summary>
+            Информация об инструменте на конкретной площадке.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.Markets">
+            <summary>
+            Список бирж.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.Id">
+            <summary>
+            Уникальный идентификатор.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.Class">
+            <summary>
+            Класс.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.SettlementMethod">
+            <summary>
+            Поставочный.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.ExchangeWebsite">
+            <summary>
+            Сайт биржи.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.TradingHours">
+            <summary>
+            Часы торговли.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.PriceRange1">
+            <summary>
+            Ценовой диапазон.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.PriceRange2">
+            <summary>
+            Ценовой диапазон.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.PriceRange3">
+            <summary>
+            Ценовой диапазон.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.VolumeRange1">
+            <summary>
+            Сайз диапазон.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.VolumeRange2">
+            <summary>
+            Сайз диапазон.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductBoard.VolumeRange3">
+            <summary>
+            Сайз диапазон.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Web.ProductDescripton">
+            <summary>
+            Детальная информация об инструменте.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.Name">
+            <summary>
+            Название.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.Symbol">
+            <summary>
+            Код.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.Type">
+            <summary>
+            Тип.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.Country">
+            <summary>
+            Страна.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.ClosingPrice">
+            <summary>
+            Цена закрытия.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.Currency">
+            <summary>
+            Валюта.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.AssetId">
+            <summary>
+            Базовый актив.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.StockType">
+            <summary>
+            Тип акции.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.InitialMargin">
+            <summary>
+            Маржинальное обеспечение.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.MaintenanceMargin">
+            <summary>
+            Маржинальное обеспечение.
+            </summary>
+        </member>
+        <member name="F:StockSharp.InteractiveBrokers.Web.ProductDescripton.ShortMargin">
+            <summary>
+            Маржинальное обеспечение при короткой позиции.
+            </summary>
+        </member>
+        <member name="T:StockSharp.InteractiveBrokers.Web.Downloader">
+            <summary>
+            Загрузчик информации с сайта InteractiveBrokers.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Web.Downloader.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.InteractiveBrokers.Web.Downloader"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Web.Downloader.DownloadMarkets">
+            <summary>
+            Скачать информацию по биржам.
+            </summary>
+            <returns>Биржи.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Web.Downloader.DownloadProducts(StockSharp.InteractiveBrokers.Web.Market)">
+            <summary>
+            Скачать информацию об инструментах биржи.
+            </summary>
+            <param name="market">Биржа.</param>
+            <returns>Инструменты.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Web.Downloader.DownloadDescription(StockSharp.InteractiveBrokers.Web.Product)">
+            <summary>
+            Скачать детальную информацию об инструменте.
+            </summary>
+            <param name="product">Инструмент.</param>
+            <returns>Детальная информация.</returns>
+        </member>
+        <member name="M:StockSharp.InteractiveBrokers.Web.Downloader.DownloadBoards(StockSharp.InteractiveBrokers.Web.Product)">
+            <summary>
+            Скачать площадки.
+            </summary>
+            <param name="product">Инструмент.</param>
+            <returns>Площадки.</returns>
+        </member>
+    </members>
+</doc>

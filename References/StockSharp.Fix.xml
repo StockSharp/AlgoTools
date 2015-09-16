@@ -1,0 +1,4887 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>StockSharp.Fix</name>
+  </assembly>
+  <members>
+    <member name="T:StockSharp.Fix.FixServer">
+      <summary>
+            Сервер, работающий через FIX протокол.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.RaiseNewOutMessage(StockSharp.Messages.Message)">
+      <summary>
+            Вызвать событие <see cref="E:StockSharp.Fix.FixServer.NewOutMessage" />.
+            </summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.ReadOrderCondition(StockSharp.Fix.Native.IFixReader,StockSharp.Fix.Native.FixTags,System.Func{StockSharp.Messages.OrderCondition})">
+      <summary>
+            Прочитать условие регистрации заявки <see cref="P:StockSharp.Messages.OrderRegisterMessage.Condition" />.
+            </summary>
+      <param name="reader">Читатель данных.</param>
+      <param name="tag">Тэг.</param>
+      <param name="getCondition">Функция, возвращающая условие заявки.</param>
+      <returns>Успешно ли обработаны данные.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.CreateCondition">
+      <summary>
+            Создать условие заявки.
+            </summary>
+      <returns>Условие заявки.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.PostInitCondition(System.Char,StockSharp.Messages.OrderCondition)">
+      <summary>
+            Финальная инициализация условие заявки.
+            </summary>
+      <param name="ordType">Тип заявки.</param>
+      <param name="condition">Условие заявки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.OnProcess(StockSharp.Fix.FixSession,System.String,StockSharp.Fix.Native.IFixReader)">
+      <summary>
+            Метод вызывается при обработке полученного сообщения.
+            </summary>
+      <param name="session">Сессия.</param>
+      <param name="msgType">Тип сообщения.</param>
+      <param name="reader">Читатель данных.</param>
+      <returns>Успешно ли обработаны данные.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.#ctor(System.Func{System.String,System.String,System.Tuple{System.TimeSpan,StockSharp.Fix.FixClientRoles}})">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.FixServer" />.
+            </summary>
+      <param name="authorize">Авторизация клиентов.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.Start">
+      <summary>
+            Запустить сервер.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.Stop">
+      <summary>
+            Выключить сервер.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.TryGetRequestId(System.Int64)">
+      <summary>
+            Получить идентификатор запроса.
+            </summary>
+      <param name="transactionId">Идентификатор транзакции.</param>
+      <returns>Идентификатор запроса.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.CreateTransactionId(StockSharp.Fix.FixSession,System.String)">
+      <summary>
+            Сгенерировать идентификатор транзакции.
+            </summary>
+      <param name="session">Сессия.</param>
+      <param name="requestId">Идентификатор запроса.</param>
+      <returns>Идентификатор транзакции.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.OnCreateTransactionId(StockSharp.Fix.FixSession,System.String)">
+      <summary>
+            Сгенерировать идентификатор транзакции.
+            </summary>
+      <param name="session">Сессия.</param>
+      <param name="requestId">Идентификатор запроса.</param>
+      <returns>Идентификатор транзакции.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.DisposeManaged">
+      <summary>
+            Освободить занятые ресурсы.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Загрузить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Сохранить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.SendInMessage(StockSharp.Messages.Message)">
+      <summary>
+            Отправить сообщение.
+            </summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.WriterFixOrderCondition(StockSharp.Fix.Native.IFixWriter,StockSharp.Messages.ExecutionMessage)">
+      <summary>
+            Записать данные по условию заявки.
+            </summary>
+      <param name="writer">Писатель FIX данных.</param>
+      <param name="message">Сообщение, содержащее информацию о заявке.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixServer.HasSubscriptions(StockSharp.Messages.MarketDataTypes,StockSharp.Messages.SecurityId)">
+      <summary>
+            Есть ли подписчики.
+            </summary>
+      <param name="dataType">Тип маркет-данных.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <returns>Есть ли подписчики.</returns>
+    </member>
+    <member name="E:StockSharp.Fix.FixServer.NewOutMessage">
+      <summary>
+            Событие появления нового сообщения.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixServer.InitialTransactionId">
+      <summary>
+            Номер, начиная с которого <see cref="T:StockSharp.Fix.FixServer" /> будет генерировать номера транзакций.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixServer.TransactionSession">
+      <summary>
+            Транзакционная сессия.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixServer.MarketDataSession">
+      <summary>
+            Транзакционная сессия.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixServer.State">
+      <summary>
+            Включен ли сервер.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Fix.FixServer.StateChanged">
+      <summary>
+            Событие изменения <see cref="P:StockSharp.Fix.FixServer.State" />.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Fix.FixServer.SessionCreated">
+      <summary>
+            Событие создания сессии.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Fix.FixServer.UserLoggedOut">
+      <summary>
+            Событие отключения клиента.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Fix.FixServer.UserPasswordChanging">
+      <summary>
+            Событие изменения пароля клиентом.
+            </summary>
+    </member>
+    <member name="E:StockSharp.Fix.FixServer.UserFinding">
+      <summary>
+            Событие поиска клиента по его логину.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixSession">
+      <summary>
+            Настройки сессии.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixSession.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.FixSession" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixSession.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Загрузить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixSession.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Сохранить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.Address">
+      <summary>
+            Адрес сервера.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.TargetCompId">
+      <summary>
+            Идентификатор получателя.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.SenderCompId">
+      <summary>
+            Идентификатор отправителя.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.Version">
+      <summary>
+            Версия FIX протокола.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.Format">
+      <summary>
+            Формат FIX протокола.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.HeartBeat">
+      <summary>
+            Интервал проверки доступности соединения. По-умолчанию равно 1 минуте.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.Encoding">
+      <summary>
+            Кодировка, использующая при передаче данных. По-умолчанию значение равно <see cref="P:System.Text.Encoding.UTF8" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.IncrementalDepthUpdates">
+      <summary>
+            Отправлять изменения по стакану. Если выключено, отправляется стакан целиком.
+            По умолчанию, включено.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.TimeZone">
+      <summary>
+            Информация о временной зоне, где находится биржа.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.DateFormat">
+      <summary>
+            Формат даты.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.DateTimeFormat">
+      <summary>
+            Формат даты и времени.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.TimeFormat">
+      <summary>
+            Формат времени.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.ReadTimeout">
+      <summary>
+            Время ожидания получения данных от сервера. По-умолчанию равно <see cref="F:Ecng.Common.SyncObject.InfiniteTimeSpan" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixSession.WriteTimeout">
+      <summary>
+            Время ожидания отправки данных на сервер. По-умолчанию равно <see cref="F:Ecng.Common.SyncObject.InfiniteTimeSpan" />.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.BaseFixReader">
+      <summary>
+            Базовый класс читателя.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.FixBase">
+      <summary>
+            Базовый класс для писателя и читателя.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixBase.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Инициализировать <see cref="T:StockSharp.Fix.Native.FixBase" />.
+            </summary>
+      <param name="stream">Поток.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixBase.Dump(System.Byte)">
+      <summary>
+            Добавить в лог данных новый байт.
+            </summary>
+      <param name="value">Новый байт.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixBase.Dump(System.Byte[])">
+      <summary>
+            Добавить в лог данных новые байты.
+            </summary>
+      <param name="values">Новые байты.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixBase.FlushDump">
+      <summary>
+            Получить лог данных.
+            </summary>
+      <returns>Лог данных.</returns>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixBase.Stream">
+      <summary>
+            Поток.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixBase.Encoding">
+      <summary>
+            Кодировка строковых данных.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixBase.CheckSum">
+      <summary>
+            Контрольная сумма.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixBase.IsDump">
+      <summary>
+            Логировать ли приходящие данные.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixBase.LastTag">
+      <summary>
+            Последний рабочий тэг.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixBase.IsValueRead">
+      <summary>
+            Было ли прочитано значение тэга.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BaseFixReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Инициализировать <see cref="T:StockSharp.Fix.Native.BaseFixReader" />.
+            </summary>
+      <param name="stream">Поток, из которого будет осуществляться чтение.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BaseFixReader.ReadByte">
+      <summary>
+            Прочитать байт.
+            </summary>
+      <returns>Байт.</returns>
+    </member>
+    <member name="P:StockSharp.Fix.Native.BaseFixReader.ReadBytes">
+      <summary>
+            Количество прочитанных байтов.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.BaseFixWriter">
+      <summary>
+            Базовый класс писателя.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BaseFixWriter.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Инициализировать <see cref="T:StockSharp.Fix.Native.BaseFixWriter" />.
+            </summary>
+      <param name="stream">Поток.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BaseFixWriter.WriteSoh">
+      <summary>
+            Записать символ SOH.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BaseFixWriter.WriteByte(System.Byte)">
+      <summary>
+            Записать <see cref="T:System.Byte" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Byte" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BaseFixWriter.WriteBytes(System.Byte[])">
+      <summary>
+            Записать массив байтов.
+            </summary>
+      <param name="bytes">Массив байтов.</param>
+    </member>
+    <member name="T:StockSharp.Fix.Native.BinaryFixReader">
+      <summary>
+            Читатель данных, записанных в формате бинарного FIX протокола (FAST).
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.IFixReader">
+      <summary>
+            Интерфейс, описывающий читателя данных, записанных в формате FIX протокола.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadTag">
+      <summary>
+            Прочитать следующий тэг.
+            </summary>
+      <returns>Следующий тэг. -1 означает конец данных.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.FlushDump">
+      <summary>
+            Получить лог данных.
+            </summary>
+      <returns>Лог данных.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadDateTime(System.String)">
+      <summary>
+            Прочитать <see cref="T:System.DateTime" /> значение.
+            </summary>
+      <param name="format">Формат представленного времени.</param>
+      <returns>
+        <see cref="T:System.DateTime" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadTimeSpan(System.String)">
+      <summary>
+            Прочитать <see cref="T:System.TimeSpan" /> значение.
+            </summary>
+      <param name="format">Формат представленного времени.</param>
+      <returns>
+        <see cref="T:System.TimeSpan" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadInt">
+      <summary>
+            Прочитать <see cref="T:System.Int32" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Int32" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadLong">
+      <summary>
+            Прочитать <see cref="T:System.Int64" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Int64" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadDecimal">
+      <summary>
+            Прочитать <see cref="T:System.Decimal" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Decimal" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadChar">
+      <summary>
+            Прочитать <see cref="T:System.Char" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Char" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadString">
+      <summary>
+            Прочитать <see cref="T:System.String" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.String" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.ReadBool">
+      <summary>
+            Прочитать <see cref="T:System.Boolean" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Boolean" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixReader.SkipValue">
+      <summary>
+            Пропустить значение.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.Stream">
+      <summary>
+            Поток.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.ReadBytes">
+      <summary>
+            Количество прочитанных байтов.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.CheckSum">
+      <summary>
+            Контрольная сумма.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.IsDump">
+      <summary>
+            Логировать ли приходящие данные.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.Encoding">
+      <summary>
+            Кодировка строковых данных.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.IsValueRead">
+      <summary>
+            Было ли прочитано значение тэга.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixReader.LastTag">
+      <summary>
+            Последний прочитанный тэг.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.Native.BinaryFixReader" />.
+            </summary>
+      <param name="stream">Поток.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadTag">
+      <summary>
+            Прочитать следующий тэг.
+            </summary>
+      <returns>Следующий тэг. -1 означает конец данных.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadDateTime(System.String)">
+      <summary>
+            Прочитать <see cref="T:System.DateTime" /> значение.
+            </summary>
+      <param name="format">Формат представленного времени.</param>
+      <returns>
+        <see cref="T:System.DateTime" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadTimeSpan(System.String)">
+      <summary>
+            Прочитать <see cref="T:System.TimeSpan" /> значение.
+            </summary>
+      <param name="format">Формат представленного времени.</param>
+      <returns>
+        <see cref="T:System.TimeSpan" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadInt">
+      <summary>
+            Прочитать <see cref="T:System.Int32" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Int32" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadLong">
+      <summary>
+            Прочитать <see cref="T:System.Int64" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Int64" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadDecimal">
+      <summary>
+            Прочитать <see cref="T:System.Decimal" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Decimal" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadChar">
+      <summary>
+            Прочитать <see cref="T:System.Char" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Char" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadString">
+      <summary>
+            Прочитать <see cref="T:System.String" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.String" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadBool">
+      <summary>
+            Прочитать <see cref="T:System.Boolean" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Boolean" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.SkipValue">
+      <summary>
+            Пропустить значение.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadFastPresenceMap(System.Int32)">
+      <summary>
+            Прочитать Presence Map.
+            </summary>
+      <returns>Presence Map.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixReader.ReadByteVector">
+      <summary>
+            Прочитать массив байтов.
+            </summary>
+      <returns>Массив байтов.</returns>
+    </member>
+    <member name="T:StockSharp.Fix.Native.BinaryFixWriter">
+      <summary>
+            Писатель данных, записывающий в бинарном формате FIX протокола (FAST).
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.IFixWriter">
+      <summary>
+            Интерфейс, описывающий писателя данных в формате FIX протокола.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.FlushDump">
+      <summary>
+            Получить лог данных.
+            </summary>
+      <returns>Лог данных.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(StockSharp.Fix.Native.FixTags)">
+      <summary>
+            Записать тэг.
+            </summary>
+      <param name="tag">Тэг.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.Boolean)">
+      <summary>
+            Записать <see cref="T:System.Boolean" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Boolean" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.Int32)">
+      <summary>
+            Записать <see cref="T:System.Int32" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Int32" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.Int64)">
+      <summary>
+            Записать <see cref="T:System.Int64" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Int64" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.Decimal)">
+      <summary>
+            Записать <see cref="T:System.Decimal" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Decimal" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.DateTime,System.String)">
+      <summary>
+            Записать <see cref="T:System.DateTime" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.DateTime" /> значение.</param>
+      <param name="format">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.TimeSpan,System.String)">
+      <summary>
+            Записать <see cref="T:System.TimeSpan" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.TimeSpan" /> значение.</param>
+      <param name="format">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.String)">
+      <summary>
+            Записать <see cref="T:System.String" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.String" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.Write(System.Char)">
+      <summary>
+            Записать <see cref="T:System.Char" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Char" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.IFixWriter.WriteBytes(System.Byte[])">
+      <summary>
+            Записать массив байтов.
+            </summary>
+      <param name="bytes">Массив байтов.</param>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixWriter.Stream">
+      <summary>
+            Поток.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixWriter.CheckSum">
+      <summary>
+            Контрольная сумма.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixWriter.IsDump">
+      <summary>
+            Логировать ли приходящие данные.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixWriter.Encoding">
+      <summary>
+            Кодировка строковых данных.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.IFixWriter.LastTag">
+      <summary>
+            Последний записанный тэг.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.Native.BinaryFixWriter" />.
+            </summary>
+      <param name="stream">Поток, в который будет осуществляться запись.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(StockSharp.Fix.Native.FixTags)">
+      <summary>
+            Записать тэг.
+            </summary>
+      <param name="tag">Тэг.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.Boolean)">
+      <summary>
+            Записать <see cref="T:System.Boolean" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Boolean" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.Int32)">
+      <summary>
+            Записать <see cref="T:System.Int32" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Int32" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.Int64)">
+      <summary>
+            Записать <see cref="T:System.Int64" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Int64" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.Decimal)">
+      <summary>
+            Записать <see cref="T:System.Decimal" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Decimal" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.DateTime,System.String)">
+      <summary>
+            Записать <see cref="T:System.DateTime" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.DateTime" /> значение.</param>
+      <param name="format">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.TimeSpan,System.String)">
+      <summary>
+            Записать <see cref="T:System.TimeSpan" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.TimeSpan" /> значение.</param>
+      <param name="format">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.String)">
+      <summary>
+            Записать <see cref="T:System.String" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.String" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.Char)">
+      <summary>
+            Записать <see cref="T:System.Char" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Char" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.Write(System.Collections.BitArray)">
+      <summary>
+            Записать Presence Map.
+            </summary>
+      <param name="map">Presence Map.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.BinaryFixWriter.WriteVector(System.Byte[])">
+      <summary>
+            Записать массив байтов.
+            </summary>
+      <param name="bytes">Массив байтов.</param>
+    </member>
+    <member name="T:StockSharp.Fix.Native.EncryptMethod">
+      <summary>
+            Методы шифрования.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.None">
+      <summary>
+            Отсутствует.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.PKCS">
+      <summary>
+            Метода PKCS.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.DES">
+      <summary>
+            Метода DES.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.PKCS_DES">
+      <summary>
+            Метода PKCS/DES.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.PGP_DES">
+      <summary>
+            Метода PGP/DES.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.PGP_DES_MD5">
+      <summary>
+            Метода PGP/DES MD5.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.EncryptMethod.PEM_DES_MD5">
+      <summary>
+            Метода PEM/DES MD5.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.TradSesStatus">
+      <summary>
+            Состояния сессии.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.Unknown">
+      <summary>
+            Неизвестное.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.Halted">
+      <summary>
+            Приостановлена.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.Open">
+      <summary>
+            Открыта.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.Closed">
+      <summary>
+            Закрыта.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.PreOpen">
+      <summary>
+            В процессе открытия.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.PreClose">
+      <summary>
+            В процессе закрытия.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatus.RequestRejected">
+      <summary>
+            Ошибка запроса состояния сессии.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.TradSesStatusRejReason">
+      <summary>
+            Причины ошибки получения состояния сессии.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatusRejReason.InvalidSession">
+      <summary>
+            Неизвестная сессия.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TradSesStatusRejReason.Other">
+      <summary>
+            Другое.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.UserStatus">
+      <summary>
+            Состояния запроса пользователя.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.LoggedIn">
+      <summary>
+            Залогинен.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.NotLoggedIn">
+      <summary>
+            Не залогинен.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.UserNotRecognised">
+      <summary>
+            Пользователь не найден.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.PasswordIncorrect">
+      <summary>
+            Пароль неверный.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.PasswordChanged">
+      <summary>
+            Пароль изменен.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.Other">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.ForcedUserLogoutByExchange">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserStatus.SessionShutdownWarning">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.QuoteType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteType.Indicative">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteType.Tradeable">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteType.RestrictedTradeable">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteType.Counter">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.Side">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Buy">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Sell">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.BuyMinus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.SellPlus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.SellShort">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.SellShortExempt">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Undisclosed">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Cross">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.CrossShort">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.CrossShortExempt">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.AsDefined">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Opposite">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Subscribe">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Redeem">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Lend">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.Side.Borrow">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MDEntryType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.Bid">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.Offer">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.Trade">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.IndexValue">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.OpeningPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.ClosingPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SettlementPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.TradingSessionHighPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.TradingSessionLowPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.TradingSessionVWAPPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.Imbalance">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.TradeVolume">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.OpenInterest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.CompositeUnderlyingPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SimulatedSellPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SimulatedBuyPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.MarginRate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.MidPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.EmptyBook">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SettleHighPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SettleLowPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.PriorSettlePrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SessionHighBid">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SessionLowOffer">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.EarlyPrices">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.AuctionClearingPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.SwapValueFactor">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.DailyValueAdjustmentForLongPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.CumulativeValueAdjustmentForLongPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.DailyValueAdjustmentForShortPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.CumulativeValueAdjustmentForShortPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.RecoveryRate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.RecoveryRateForLong">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.RecoveryRateForShort">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.FixingPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDEntryType.CashRate">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MDUpdateAction">
+      <summary>
+            Действия.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateAction.New">
+      <summary>
+            Создать.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateAction.Change">
+      <summary>
+            Именить.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateAction.Delete">
+      <summary>
+            Удалить.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateAction.DeleteThru">
+      <summary>
+            Удалить через.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateAction.DeleteFrom">
+      <summary>
+            Удалить начиная с.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateAction.Overlay">
+      <summary>
+            Перекрыть.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PutOrCall">
+      <summary>
+            Типы опционов.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PutOrCall.Put">
+      <summary>
+            Пут.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PutOrCall.Call">
+      <summary>
+            Кол.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.SecurityResponseType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityResponseType.AcceptSecurityProposalAsIs">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityResponseType.AcceptSecurityProposalWithRevisionsAsIndicatedInTheMessage">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityResponseType.ListOfSecurityTypesReturnedPerRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityResponseType.ListOfSecuritiesReturnedPerRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityResponseType.RejectSecurityProposal">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityResponseType.CannotMatchSelectionCriteria">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.SecurityRequestResult">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestResult.ValidRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestResult.InvalidOrUnsupportedRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestResult.NoInstrumentsFoundThatMatchSelectionCriteria">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestResult.NotAuthorizedToRetrieveInstrumentData">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestResult.InstrumentDataTemporarilyUnavailable">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestResult.RequestForInstrumentDataNotSupported">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.TickDirection">
+      <summary>
+            Направления тиков.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TickDirection.PlusTick">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TickDirection.ZeroPlusTick">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TickDirection.MinusTick">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TickDirection.ZeroMinusTick">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.QuoteCancelType">
+      <summary>
+            Типы отмены котировок.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelForOneOrMoreSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelForSecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelForUnderlyingSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelAllQuotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelQuoteSpecifiedInQuoteid">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelByQuotetype">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelForSecurityIssuer">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.QuoteCancelType.CancelForIssuerOfUnderlyingSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.SubscriptionRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SubscriptionRequestType.Snapshot">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SubscriptionRequestType.SnapshotPlusUpdates">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SubscriptionRequestType.DisablePreviousSnapshotPlusUpdateRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SubscriptionRequestType.DisablePrevious">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MDUpdateType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateType.FullRefresh">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDUpdateType.IncrementalRefresh">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.SecurityListRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityListRequestType.Symbol">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityListRequestType.SecurityTypeAndOrCficode">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityListRequestType.Product">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityListRequestType.TradingSessionId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityListRequestType.AllSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityListRequestType.MarketidOrMarketidPlusMarketSegmentId">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.SecurityRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestType.RequestSecurityIdentityAndSpecifications">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestType.RequestSecurityIdentityForTheSpecificationsProvided">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestType.RequestListSecurityTypes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityRequestType.RequestListSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.SecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.AssetBackedSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.AmendedRestated">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.OtherAnticipationNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BankersAcceptance">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BankNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BillOfExchanges">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BradyBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BridgeLoan">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BuySellback">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ConvertibleBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CertificateOfDeposit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CallLoans">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CorpMortgageBackedSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CollateralizedMortgageObligation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CertificateOfObligation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CertificateOfParticipation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CorporateBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CommercialPaper">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CorporatePrivatePlacement">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CommonStock">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Defaulted">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.DebtorInPossession">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.DepositNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.DualCurrency">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.EuroCertificateOfDeposit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.EuroCorporateBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.EuroCommercialPaper">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.EuroSovereigns">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.EuroSupranationalCoupons">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FederalAgencyCoupon">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FederalAgencyDiscountNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ForeignExchangeContract">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Forward">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Future">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.GeneralObligationBonds">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.IoetteMortgage">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.LetterOfCredit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.LiquidityNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Matured">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MortgageBackedSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MutualFund">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MortgageInterestOnly">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MultilegInstrument">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MortgagePrincipalOnly">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MortgagePrivatePlacement">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MiscellaneousPassThrough">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MandatoryTender">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MediumTermNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.NoSecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Overnight">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Option">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PrivateExportFunding">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Pfandbriefe">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PromissoryNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PreferredStock">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PlazosFijos">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.RevenueAnticipationNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Replaced">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Repurchase">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Retired">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.RevenueBonds">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.RevolverLoan">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.RevolverTermLoan">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SecuritiesLoan">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SecuritiesPledge">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SpecialAssessment">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SpecialObligation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SpecialTax">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ShortTermLoanNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.StructuredNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsdSupranationalCoupons">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SwingLineFacility">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TaxAnticipationNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TaxAllocation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ToBeAnnounced">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryBillTbill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PrincipalStripOfACallableBondOrNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TimeDeposit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TaxExemptCommercialPaper">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TermLoan">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.InterestStripFromAnyBondOrNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TreasuryInflationProtectedSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryNoteTnote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PrincipalStripFromANonCallableBondOrNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TaxRevenueAnticipationNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryNoteUst">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryBillUstb">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.VariableRateDemandNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Warrant">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Withdrawn">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.WildcardEntryForUseOnSecurityDefinitionRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ExtendedCommNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.IndexedLinked">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.YankeeCorporateBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.YankeeCertificateOfDeposit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.OptionsOnPhysical">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.OptionsOnFutures">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Cash">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.OptionsOnCombo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.InterestRateSwap">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.BankDepositoryNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CanadianMoneyMarkets">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CanadianTreasuryNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CanadianTreasuryBills">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CreditDefaultSwap">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CanadianMortgageBonds">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.EuroCorporateFloatingRateNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsCorporateFloatingRateNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CanadianProvincialBonds">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.SecuredLiquidityNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TreasuryBill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TermLiquidityNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TaxableMunicipalCp">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.NonDeliverableForward">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FXSpot">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FXForward">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FXSwap">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.WildcardEntry">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryBill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.AmendedAndRestated">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TaxAndRevenueAnticipationNote">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Wildcard">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ConvertableBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.IndexLinked">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PreferedStock">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.UsTreasuryNoteBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.LiquidityNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.Overnite">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.PromissoryNotes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.RepurchaseAgreement">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.ReverseRepurchaseAgreement">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.AgencyPools">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CollateralizeMortgageObligation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FederalHousingAuthority">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FederalHomeLoan">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.FederalNationalMortgageAssociation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.GovernmentNationalMortgageAssociation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.TreasuriesPlusAgencyDebenture">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MiscellaneousPassthru">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MunicipalBond">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.NoIsitcSecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.StudentLoanMarketingAssociation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.CatsTigers">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.SecurityType.MortgagePrincipleOnly">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.OrdType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.Market">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.Limit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.Stop">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.StopLimit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.MarketOnClose">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.WithOrWithout">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.LimitOrBetter">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.LimitWithOrWithout">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.OnBasis">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.OnClose">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.LimitOnClose">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.ForexMarket">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.PreviouslyQuoted">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.PreviouslyIndicated">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.ForexLimit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.ForexSwap">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.ForexPreviouslyQuoted">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.Funari">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.MarketIfTouched">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.MarketWithLeftOverAsLimit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.PreviousFundValuationPoint">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.NextFundValuationPoint">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.Pegged">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdType.CounterOrderSelection">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.OrdStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.New">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.PartiallyFilled">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Filled">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.DoneForDay">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Canceled">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Replaced">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.PendingCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Stopped">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Rejected">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Suspended">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.PendingNew">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Calculated">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.Expired">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.AcceptedForBidding">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.OrdStatus.PendingReplace">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.ExecType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.New">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.PartialFill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Fill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.DoneForDay">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Canceled">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Replaced">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.PendingCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Stopped">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Rejected">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Suspended">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.PendingNew">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Calculated">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Expired">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Restated">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.PendingReplace">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.Trade">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.TradeCorrect">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.TradeCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.OrderStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.TradeInAClearingHold">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.TradeHasBeenReleasedToClearing">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.ExecType.TriggeredOrActivatedBySystem">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.FixTimeInForce">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.Day">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.GoodTillCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.AtTheOpening">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.ImmediateOrCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.FillOrKill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.GoodTillCrossing">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.GoodTillDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.AtTheClose">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.GoodThroughCrossing">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTimeInForce.AtCrossing">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MDReqRejReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnknownSymbol">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.DuplicateMdReqId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.InsufficientBandwidth">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.InsufficientPermissions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedSubscriptionRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedMarketDepth">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedMdUpdateType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedAggregatedBook">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedMdEntryType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedTradingSessionId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedScope">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedOpenCloseSettleFlag">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.UnsupportedMdImplicitDelete">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MDReqRejReason.InsufficientCredit">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.HandlInst">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.HandlInst.AutomatedExecutionOrderPrivate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.HandlInst.AutomatedExecutionOrderPublic">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.HandlInst.ManualOrder">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MassCancelRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForUnderlyingSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForProduct">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForCfiCode">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForSecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForTradingSession">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelAllOrders">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForMarket">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForMarketSegment">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelOrdersForSecurityGroup">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelForSecurityIssuer">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassCancelRequestType.CancelForIssuerOfUnderlyingSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PosReqType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.Positions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.Trades">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.Exercises">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.Assignments">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.SettlementActivity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.BackoutMessage">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqType.DeltaPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.AccountType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.AccountIsCarriedOnCustomerSideBooks">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.AccountIsCarriedOnNonCustomerSideBooks">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.HouseTrader">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.FloorTrader">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.AccountIsCarriedOnNonCustomerSideBooksAndIsCrossMargined">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.AccountIsHouseTraderAndIsCrossMargined">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.AccountType.JointBackOfficeAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MassStatusReqType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForASecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForAnUnderlyingSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForAProduct">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForACfiCode">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForASecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForATradingSession">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForAllOrders">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForOrdersForAPartyid">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForSecurityIssuer">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.MassStatusReqType.StatusForIssuerOfUnderlyingSecurity">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.CxlRejReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.TooLateToCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.UnknownOrder">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.Broker">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.OrderAlreadyInPendingCancelOrPendingReplaceStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.UnableToProcessOrderMassCancelRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.OrigOrdModTime">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.DuplicateClOrdId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.Other">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.InvalidPriceIncrement">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.PriceExceedsCurrentPrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejReason.PriceExceedsCurrentPriceBand">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.CxlRejResponseTo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejResponseTo.OrderCancelRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CxlRejResponseTo.OrderCancelReplaceRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PosReqResult">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqResult.ValidRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqResult.InvalidOrUnsupportedRequest">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqResult.NoPositionsFoundThatMatchCriteria">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqResult.NotAuthorizedToRequestPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqResult.RequestForPositionNotSupported">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosReqResult.Other">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PosType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.AllocationTradeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.OptionAssignment">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.AsOfTradeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.DeliveryQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.ElectronicTradeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.OptionExerciseQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.EndOfDayQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.IntraSpreadQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.InterSpreadQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.AdjustmentQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.PitTradeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.StartOfDayQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.IntegralSplit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.TransactionFromAssignment">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.TotalTransactionQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.TransactionQuantity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.TransferTradeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.TransactionFromExercise">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.CrossMarginQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.ReceiveQuantity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.CorporateActionAdjustment">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.DeliveryNoticeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.ExchangeForPhysicalQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.PrivatelyNegotiatedTradeQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.NetDeltaQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.CreditEventAdjustment">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosType.SuccessionEventAdjustment">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PosQtyStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosQtyStatus.Submitted">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosQtyStatus.Accepted">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosQtyStatus.Rejected">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PosAmtType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.CashAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.CashResidualAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.FinalMarkToMarketAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.IncrementalMarkToMarketAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.PremiumAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.StartOfDayMarkToMarketAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.TradeVariationAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.ValueAdjustedAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.SettlementValue">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.InitialTradeCouponAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.AccruedCouponAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.CouponAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.IncrementalAccruedCoupon">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.CollateralizedMarkToMarket">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.IncrementalCollateralizedMarkToMarket">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.CompensationAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.TotalBankedAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PosAmtType.TotalCollateralizedAmount">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.TimeInForce">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.Day">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.GoodTillCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.AtTheOpening">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.ImmediateOrCancel">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.FillOrKill">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.GoodTillCrossing">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.GoodTillDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.AtTheClose">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.GoodThroughCrossing">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.TimeInForce.AtCrossing">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.UserRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserRequestType.LogOnUser">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserRequestType.LogOffUser">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserRequestType.ChangePasswordForUser">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.UserRequestType.RequestIndividualUserStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.CommType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CommType.PerUnit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CommType.Percent">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CommType.Absolute">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CommType.PointsPerBondOrContract">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CommType.PercentageWaivedCashDiscount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.CommType.PercentageWaivedEnhancedUnits">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.PartyRole">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ExecutingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SettlementLocation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.OrderOriginationTrader">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ExecutingTrader">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.OrderOriginationFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.GiveupClearingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CorrespondantClearingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ExecutingSystem">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ContraFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ContraClearingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SponsoringFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.BrokerOfCredit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.UnderlyingContraFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ClearingOrganization">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Exchange">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CustomerAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CorrespondentClearingOrganization">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CorrespondentBroker">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.BuyerSeller">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Custodian">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Intermediary">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ClientId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Agent">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SubCustodian">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Beneficiary">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.InterestedParty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.RegulatoryBody">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.LiquidityProvider">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.EnteringTrader">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ContraTrader">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.PositionAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ClearingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.InvestorId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.IntroducingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.EnteringFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Locate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.FundManagerClientId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.IntroducingBroker">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ContraPositionAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ContraExchange">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.InternalCarryAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.OrderEntryOperatorId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SecondaryAccountNumber">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ForeignFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ThirdPartyAllocationFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ClaimingAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.AssetManager">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.PledgorAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.PledgeeAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.LargeTraderReportableAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.TraderMnemonic">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SenderLocation">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SessionId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.AcceptableCounterparty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.UnacceptableCounterparty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.EnteringUnit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ExecutingUnit">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ContraInvestorId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.TransferToFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.QuoteOriginator">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ReportOriginator">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.SystematicInternaliser">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.MultilateralTradingFacility">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.RegulatedMarket">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.MarketMaker">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.InvestmentFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.HostCompetentAuthority">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.HomeCompetentAuthority">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CompetentAuthorityOfTheMostRelevantMarketInTermsOfLiquidity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CompetentAuthorityOfTheTransaction">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ReportingIntermediary">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ExecutionVenue">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.MarketDataEntryOriginator">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.LocationId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.DeskId">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.MarketDataMarket">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.AllocationEntity">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.PrimeBrokerProvidingGeneralTradeServices">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.StepOutFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.Brokerclearingid">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.CentralRegistrationDepository">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ClearingAccount">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.AcceptableSettlingCounterparty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.UnacceptableSettlingCounterparty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.ForiegnFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.PartyRole.LocateLendingFirm">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.FixMessages">
+      <summary>
+            Коды FIX сообщений.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.Heartbeat">
+      <summary>
+            Ответ на пинг.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.TestRequest">
+      <summary>
+            Запрос пинга.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.ResendRequest">
+      <summary>
+            Запрос на получение счетчика.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.Reject">
+      <summary>
+            Ответ с описанием ошибки.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.SequenceReset">
+      <summary>
+            Запрос на сброс счетчика.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.Logout">
+      <summary>
+            Выход.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.ExecutionReport">
+      <summary>
+            Информация по заявке или сделке.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderCancelReject">
+      <summary>
+            Ответ с ошибкой на <see cref="F:StockSharp.Fix.Native.FixMessages.OrderCancelRequest" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.Logon">
+      <summary>
+            Вход.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderMassStatusRequest">
+      <summary>
+            Запрос на получение статуса заявок.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.QuoteRequestReject">
+      <summary>
+            Ответ с ошибкой на <see cref="F:StockSharp.Fix.Native.FixMessages.QuoteRequest" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.RequestForPositions">
+      <summary>
+            Запрос на получение позиций.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.RequestForPositionsAck">
+      <summary>
+            Ответ на <see cref="F:StockSharp.Fix.Native.FixMessages.RequestForPositions" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.PositionReport">
+      <summary>
+            Информация о позиции.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.News">
+      <summary>
+            Информация о новости.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.UserRequest">
+      <summary>
+            Запрос на изменение пользователя.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.UserResponse">
+      <summary>
+            Ответ на <see cref="F:StockSharp.Fix.Native.FixMessages.UserRequest" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.SecurityDefinitionRequest">
+      <summary>
+            Запрос на получение инструментов.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.SecurityDefinition">
+      <summary>
+            Информация об инструменте.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.NewOrderSingle">
+      <summary>
+            Регистрация заявки.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderCancelRequest">
+      <summary>
+            Запрос на отмену заявки.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderCancelReplaceRequest">
+      <summary>
+            Запрос на изменение заявки.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.BusinessMessageReject">
+      <summary>
+            Ответ с описание ошибки на запрос.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderStatusRequest">
+      <summary>
+            Запрос на получение статуса заявки.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.TradingSessionStatus">
+      <summary>
+            Ответ с состоянием сессии.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderMassCancelRequest">
+      <summary>
+            Запрос на отмену заявок.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.QuoteRequest">
+      <summary>
+            Запрос на получение котировок.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.Quote">
+      <summary>
+            Информация о котировках.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.MarketDataRequestReject">
+      <summary>
+            Ответ с ошибкой на <see cref="F:StockSharp.Fix.Native.FixMessages.MarketDataRequest" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.SecurityList">
+      <summary>
+            Информация об инструментах.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.MarketDataRequest">
+      <summary>
+            Запрос на получение маркет-данных.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.MarketDataIncrementalRefresh">
+      <summary>
+            Информация (инкрементальная) о маркет-данных.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.SecurityListRequest">
+      <summary>
+            Запрос на получение инструментов.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.MarketDataSnapshotFullRefresh">
+      <summary>
+            Информация о маркет-данных.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.QuoteCancel">
+      <summary>
+            Запрос на отмену котировок.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixMessages.OrderMassCancelReport">
+      <summary>
+            Ответ на <see cref="F:StockSharp.Fix.Native.FixMessages.OrderMassCancelRequest" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessages.GetName(System.String)">
+      <summary>
+            Получить название сообщения по его типу.
+            </summary>
+      <param name="msgType">Тип сообщения.</param>
+      <returns>Название сообщения.</returns>
+    </member>
+    <member name="T:StockSharp.Fix.Native.MDEntry">
+      <summary>
+            Строка маркет-данных.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.Type">
+      <summary>
+            Тип данных. Доступные типы <see cref="T:StockSharp.Fix.Native.MDEntryType" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.Price">
+      <summary>
+            Цена.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.Size">
+      <summary>
+            Объем.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.Action">
+      <summary>
+            Действие. Доступные типы <see cref="T:StockSharp.Fix.Native.MDUpdateAction" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.Position">
+      <summary>
+            Позиция.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.EntryId">
+      <summary>
+            Идентификатор.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.TickDirection">
+      <summary>
+            Направление тика.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.SecurityId">
+      <summary>
+            Идентификатор инструмента.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.Native.MDEntry.OtherValue">
+      <summary>
+            Дополнительное строковое значение.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.FixMessageWriter">
+      <summary>
+            Писатель FIX сообщений.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteCfhQuoteRequest(System.String,System.Boolean)">
+      <summary>
+            Записать CFH сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.QuoteRequest" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="isSubscribe">Является ли признаком подписки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteQuoteRequest(System.String,StockSharp.Messages.SecurityId)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.QuoteRequest" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteQuoteCancel(System.String,StockSharp.Messages.SecurityId)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.QuoteCancel" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteMarketDataRequest(System.String,StockSharp.Messages.SecurityId,System.Boolean,System.Nullable{System.Int32},System.Char[])">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.MarketDataRequest" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <param name="isSubscribe">Является ли признаком подписки.</param>
+      <param name="bookDepth">Глубина стакана.</param>
+      <param name="types">Типы маркет-данных. Доступные типы <see cref="T:StockSharp.Fix.Native.MDEntryType" />.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteSecurityListRequest(StockSharp.Messages.SecurityLookupMessage)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.SecurityListRequest" /> (запрос).
+            </summary>
+      <param name="message">Критерий поиска.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteSecurityDefinitionRequest(StockSharp.Messages.SecurityLookupMessage)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.SecurityDefinitionRequest" /> (запрос).
+            </summary>
+      <param name="message">Критерий поиска.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteSecurityListResponse(System.String,System.String,System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.SecurityList" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="responseId">Идентификатор ответа.</param>
+      <param name="error">Информация об ошибке.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteSecurityListResponse(System.String,System.String,System.Collections.Generic.ICollection{StockSharp.Messages.SecurityMessage})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.SecurityList" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="responseId">Идентификатор ответа.</param>
+      <param name="securityMessages">Информация об инструментах.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteMarketDataSnapshotFullRefresh(StockSharp.Messages.SecurityId,System.String,System.DateTimeOffset,System.Collections.Generic.ICollection{StockSharp.Fix.Native.MDEntry})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.MarketDataSnapshotFullRefresh" /> (ответ).
+            </summary>
+      <param name="securityId">Идентификатор инструмента.</param>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="serverTime">Время формирования маркет-данных.</param>
+      <param name="entries">Строки маркет-данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteMarketDataIncrementalRefresh(System.String,System.DateTimeOffset,System.Collections.Generic.ICollection{StockSharp.Fix.Native.MDEntry})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.MarketDataIncrementalRefresh" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="serverTime">Время формирования маркет-данных.</param>
+      <param name="entries">Строки маркет-данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteMarketDataRequestReject(System.String,System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.MarketDataRequestReject" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="error">Текстовое описание ошибки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteNews(StockSharp.Messages.NewsMessage)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.News" /> (ответ).
+            </summary>
+      <param name="newsMsg">Новость.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteNewOrderSingle(StockSharp.Messages.OrderRegisterMessage,System.Action{StockSharp.Fix.Native.IFixWriter})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.NewOrderSingle" /> (запрос).
+            </summary>
+      <param name="regMsg">Сообщение о регистрации заявки.</param>
+      <param name="condition">Обработчик для записи условия заявки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteOrderCancelReplaceRequest(StockSharp.Messages.OrderReplaceMessage)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.OrderCancelReplaceRequest" /> (запрос).
+            </summary>
+      <param name="replaceMsg">Сообщение об изменении заявки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteOrderCancelRequest(StockSharp.Messages.OrderCancelMessage)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.OrderCancelRequest" /> (запрос).
+            </summary>
+      <param name="cancelMsg">Сообщение об отмене заявки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteOrderMassCancelRequest(StockSharp.Messages.OrderGroupCancelMessage)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.OrderMassCancelRequest" /> (запрос).
+            </summary>
+      <param name="cancelMsg">Сообщение об отмене заявков.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteRequestForPositions(System.String,System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.RequestForPositions" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="account">Номер счета.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteCfhPortfolioRequest(System.String)">
+      <summary>
+            Записать сообщение CFH о запросе информации о счете (запрос).
+            </summary>
+      <param name="account">Номер счета.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteOrderMassStatusRequest(System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.OrderMassStatusRequest" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteOrderStatusRequest(System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.OrderStatusRequest" /> (запрос).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteOrderCancelReject(System.String,System.String,System.String,System.DateTimeOffset)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.OrderCancelReject" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="orderId">Идентификатор заявки.</param>
+      <param name="errorText">Текст ошибки.</param>
+      <param name="serverTime">Время ошибки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteExecutionReport(System.String,StockSharp.Messages.ExecutionMessage,System.Action{StockSharp.Fix.Native.IFixWriter,StockSharp.Messages.ExecutionMessage})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.ExecutionReport" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="execMsg">Информация об исполнении.</param>
+      <param name="condition">Обработчик для записи условия заявки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WritePositionReport(System.String,System.String,System.String,System.String,System.Nullable{StockSharp.Messages.SecurityTypes},System.Nullable{StockSharp.Messages.TPlusLimits},System.Nullable{StockSharp.Messages.CurrencyTypes},System.Collections.Generic.ICollection{System.Collections.Generic.KeyValuePair{StockSharp.Messages.PositionChangeTypes,System.Object}})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.PositionReport" /> (ответ).
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="account">Номер счета.</param>
+      <param name="symbol">Код инструента.</param>
+      <param name="securityExchange">Код площадки.</param>
+      <param name="securityType">Тип инструмента.</param>
+      <param name="limitType">Тип лимита T+.</param>
+      <param name="currency">Валюта.</param>
+      <param name="changes">Список изменений.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.#ctor(StockSharp.Fix.Native.IFixWriter,StockSharp.Fix.FixVersions,StockSharp.Fix.FixFormats,Ecng.Common.IncrementalIdGenerator,System.String,System.String,System.String,System.String,System.String)">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.Native.FixMessageWriter" />.
+            </summary>
+      <param name="writer">Писать FIX протокола.</param>
+      <param name="version">Версия FIX протокола.</param>
+      <param name="format">Формат FIX протокола.</param>
+      <param name="idGenerator">Генератор транзакций.</param>
+      <param name="senderCompId">Идентификатор отправителя.</param>
+      <param name="targetCompId">Идентификатор получателя.</param>
+      <param name="dateFormat">Формат даты.</param>
+      <param name="dateTimeFormat">Формат даты и времени.</param>
+      <param name="timeFormat">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteLogonRequest(System.TimeSpan,System.Boolean,System.String,System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.Logon" /> (запрос).
+            </summary>
+      <param name="heartBeat">Интервал проверки доступности соединения.</param>
+      <param name="isResetCounter">Нужно ли сбрасывать счетчик номеров.</param>
+      <param name="userName">Логин.</param>
+      <param name="password">Пароль.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteLogonResponse">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.Logon" /> (ответ).
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteLogoutRequest">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.Logout" /> (запрос).
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteHeartbeat(System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.Heartbeat" />.
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteTestRequest(System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.TestRequest" />.
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteSequenceReset(System.Boolean,System.Int64)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.SequenceReset" />.
+            </summary>
+      <param name="gapFill">Заполнять ли пробелы.</param>
+      <param name="number">Идентификатор первоначального сообщения.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteResendRequest(System.Int32,System.Int32)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.ResendRequest" />.
+            </summary>
+      <param name="begin">Идентификатор первоначального сообщения.</param>
+      <param name="end">Идентификатор последнего сообщения.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteChangePasswordRequest(StockSharp.Messages.ChangePasswordMessage,System.String,System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.UserRequest" />.
+            </summary>
+      <param name="message">Сообщение изменения пароля.</param>
+      <param name="userName">Логин.</param>
+      <param name="password">Пароль.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteUserResponse(System.String,System.String,StockSharp.Fix.Native.UserStatus,System.String)">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.UserResponse" />.
+            </summary>
+      <param name="requestId">Идентификатор запроса.</param>
+      <param name="userName">Имя пользователя.</param>
+      <param name="status">Статус.</param>
+      <param name="text">Текстовое сообщение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.FixMessageWriter.WriteReject(System.String,System.Int32,System.String,System.Nullable{StockSharp.Fix.Native.FixTags},System.Nullable{System.Int32})">
+      <summary>
+            Записать сообщение <see cref="F:StockSharp.Fix.Native.FixMessages.Reject" />.
+            </summary>
+      <param name="error">Информация об ошибке.</param>
+      <param name="seqNum">Номер сообщения.</param>
+      <param name="msgType">Тип сообщения.</param>
+      <param name="tag">Тэг.</param>
+      <param name="sessionRejectReason">Код ошибки.</param>
+    </member>
+    <member name="P:StockSharp.Fix.Native.FixMessageWriter.Writer">
+      <summary>
+            Писать FIX протокола.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.FixTags">
+      <summary>
+            Тэги FIX протокола.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Account">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.BeginSeqNo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.BeginString">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.BodyLength">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.CheckSum">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ClOrdID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Commission">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.CommType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.CumQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Currency">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.EndSeqNo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ExecID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.HandlInst">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.IDSource">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.LastPx">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.LastQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MsgSeqNum">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MsgType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NewSeqNo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OrderID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OrderQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OrdStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OrdType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OrigClOrdID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OrigTime">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Price">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.RefSeqNum">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SenderCompID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SendingTime">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Side">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Symbol">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TargetCompID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Text">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TimeInForce">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TransactTime">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SymbolSfx">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TradeDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.EncryptMethod">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.StopPx">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ExDestination">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.CxlRejReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityDesc">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.HeartBtInt">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ClientID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MaxFloor">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TestReqID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.QuoteID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.GapFillFlag">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ExpireTime">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.QuoteReqID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.BidPx">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OfferPx">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.BidSize">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.OfferSize">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ResetSeqNumFlag">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoRelatedSym">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Headline">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.URLLink">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ExecType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.LeavesQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PutOrCall">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.StrikePrice">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityExchange">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ContractMultiplier">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.RedemptionDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDReqID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SubscriptionRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MarketDepth">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDUpdateType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoMDEntryTypes">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoMDEntries">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDEntryType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDEntryPx">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDEntrySize">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDEntryDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDEntryTime">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TickDirection">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDUpdateAction">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDReqRejReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDEntryPositionNo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.QuoteCancelType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.QuoteEntryID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityReqID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityResponseID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityResponseType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TradingSessionID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TradSesStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.RefTagID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.RefMsgType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SessionRejectReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.BusinessRejectReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoTradingSessions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TotalNumSecurities">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ExpireDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.CxlRejResponseTo">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.CFICode">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NestedPartyID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MassCancelRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MassCancelResponse">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MassCancelRejectReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.QuoteType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NestedPartyRole">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoNestedPartyIDs">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Username">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.Password">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityListRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.SecurityRequestResult">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.RoundLot">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MinTradeVol">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.TradSesStatusRejReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.AccountType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MassStatusReqID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MassStatusReqType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.QuoteRequestRejectReason">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.AcctIDSource">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoPositions">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.LongQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ShortQty">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosQtyStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosAmtType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosAmt">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosReqID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.ClearingBusinessDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosReqType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.PosReqResult">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoPosAmt">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NextExpectedMsgSeqNum">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NoInstrAttrib">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.InstrAttribType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.InstrAttribValue">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.EndDate">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.UserRequestID">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.UserRequestType">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.NewPassword">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.UserStatus">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.UserStatusText">
+      <summary>
+      </summary>
+    </member>
+    <member name="F:StockSharp.Fix.Native.FixTags.MDOtherValue">
+      <summary>
+      </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixFormats">
+      <summary>
+            Форматы FIX протокола.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixFormats.Text">
+      <summary>
+            Текстовый формат.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixFormats.Binary">
+      <summary>
+            Бинарный формат (FAST).
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixMessageAdapter">
+      <summary>
+            Адаптер сообщений для FIX.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.ProcessMarketDataMessage(System.String,StockSharp.Fix.Native.IFixReader)">
+      <summary>
+            Метод вызывается при обработке полученного сообщения.
+            </summary>
+      <param name="msgType">Тип FIX сообщения.</param>
+      <param name="reader">Читатель данных, записанных в формате FIX протокола.</param>
+      <returns>Успешно ли обработаны данные.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.FixMessageAdapter" />.
+            </summary>
+      <param name="transactionIdGenerator">Генератор идентификаторов транзакций.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.CreateOrderCondition">
+      <summary>
+            Создать для заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional" /> условие, которое поддерживается подключением.
+            </summary>
+      <returns>Условие для заявки. Если подключение не поддерживает заявки типа <see cref="F:StockSharp.Messages.OrderTypes.Conditional" />, то будет возвращено <see langword="null" />.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.OnSendInMessage(StockSharp.Messages.Message)">
+      <summary>
+            Отправить сообщение.
+            </summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.Load(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Загрузить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.Save(Ecng.Serialization.SettingsStorage)">
+      <summary>
+            Сохранить настройки.
+            </summary>
+      <param name="storage">Хранилище настроек.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.ToString">
+      <summary>
+            Получить строковое представление.
+            </summary>
+      <returns>Строковое представление.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.ReadOrderCondition(StockSharp.Fix.Native.IFixReader,StockSharp.Fix.Native.FixTags,System.Func{StockSharp.Messages.OrderCondition})">
+      <summary>
+            Прочитать условие регистрации заявки <see cref="P:StockSharp.Messages.OrderRegisterMessage.Condition" />.
+            </summary>
+      <param name="reader">Читатель данных.</param>
+      <param name="tag">Тэг.</param>
+      <param name="getCondition">Функция, возвращающая условие заявки.</param>
+      <returns>Успешно ли обработаны данные.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.PostInitCondition(System.Char,StockSharp.Messages.OrderCondition)">
+      <summary>
+            Финальная инициализация условие заявки.
+            </summary>
+      <param name="ordType">Тип заявки.</param>
+      <param name="condition">Условие заявки.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.ProcessTransactionMessage(System.String,StockSharp.Fix.Native.IFixReader)">
+      <summary>
+            Метод вызывается при обработке полученного сообщения.
+            </summary>
+      <param name="msgType">Тип FIX сообщения.</param>
+      <param name="reader">Читатель данных, записанных в формате FIX протокола.</param>
+      <returns>Успешно ли обработаны данные.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.FixMessageAdapter.WriteOrderCondition(StockSharp.Fix.Native.IFixWriter,StockSharp.Messages.OrderRegisterMessage)">
+      <summary>
+            Записать данные по условию заявки.
+            </summary>
+      <param name="writer">Писатель FIX данных.</param>
+      <param name="regMsg">Сообщение, содержащее информацию для регистрации заявки.</param>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.IsSupportNativeSecurityLookup">
+      <summary>
+            Поддерживается ли торговой системой поиск инструментов.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.OrderStatusRequired">
+      <summary>
+            Требуется ли дополнительное сообщение <see cref="T:StockSharp.Messages.OrderStatusMessage" /> для получения списка заявок и собственных сделок.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.SecurityLookupRequired">
+      <summary>
+            Требуется ли дополнительное сообщение <see cref="T:StockSharp.Messages.SecurityLookupMessage" /> для получения списка инструментов.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.Version">
+      <summary>
+            Версия FIX протокола. По-умолчанию равно <see cref="F:StockSharp.Fix.FixVersions.Fix44" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.SenderCompId">
+      <summary>
+            Идентификатор отправителя.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.TargetCompId">
+      <summary>
+            Идентификатор получателя.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.Login">
+      <summary>
+            Логин.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.Password">
+      <summary>
+            Пароль.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.Address">
+      <summary>
+            Адрес сервера.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.MarketData">
+      <summary>
+            Тип маркет-данных.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.ExchangeBoard">
+      <summary>
+            Площадка, на которой торгуются инструменты.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.RequestAllPortfolios">
+      <summary>
+            Запрашивать все портфели при старте.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.RequestAllSecurities">
+      <summary>
+            Запрашивать все инструменты при подключении.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.Encoding">
+      <summary>
+            Кодировка, использующая при передаче данных. По-умолчанию значение равно <see cref="P:System.Text.Encoding.UTF8" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.IsResetCounter">
+      <summary>
+            Нужно ли сбрасывать счетчик номеров. По-умолчанию включено.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.Format">
+      <summary>
+            Формат FIX протокола.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.TimeZone">
+      <summary>
+            Информация о временной зоне, где находится биржа.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.DateFormat">
+      <summary>
+            Формат даты.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.DateTimeFormat">
+      <summary>
+            Формат даты и времени.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.TimeFormat">
+      <summary>
+            Формат времени.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.ReadTimeout">
+      <summary>
+            Время ожидания получения данных от сервера. По-умолчанию равно <see cref="F:Ecng.Common.SyncObject.InfiniteTimeSpan" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.WriteTimeout">
+      <summary>
+            Время ожидания отправки данных на сервер. По-умолчанию равно <see cref="F:Ecng.Common.SyncObject.InfiniteTimeSpan" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixMessageAdapter.IsValid">
+      <summary>
+            Проверить введенные параметры на валидность.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.TextFixReader">
+      <summary>
+            Читатель данных, записанных в формате текстового FIX протокола.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.Native.TextFixReader" />.
+            </summary>
+      <param name="stream">Поток, из которого будет осуществляться чтение.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadTag">
+      <summary>
+            Прочитать следующий тэг.
+            </summary>
+      <returns>Следующий тэг. -1 означает конец данных.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadDateTime(System.String)">
+      <summary>
+            Прочитать <see cref="T:System.DateTime" /> значение.
+            </summary>
+      <param name="format">Формат представленного времени.</param>
+      <returns>
+        <see cref="T:System.DateTime" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadTimeSpan(System.String)">
+      <summary>
+            Прочитать <see cref="T:System.TimeSpan" /> значение.
+            </summary>
+      <param name="format">Формат представленного времени.</param>
+      <returns>
+        <see cref="T:System.TimeSpan" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadInt">
+      <summary>
+            Прочитать <see cref="T:System.Int32" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Int32" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadLong">
+      <summary>
+            Прочитать <see cref="T:System.Int64" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Int64" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadDecimal">
+      <summary>
+            Прочитать <see cref="T:System.Decimal" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Decimal" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadChar">
+      <summary>
+            Прочитать <see cref="T:System.Char" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Char" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadString">
+      <summary>
+            Прочитать <see cref="T:System.String" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.String" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.ReadBool">
+      <summary>
+            Прочитать <see cref="T:System.Boolean" /> значение.
+            </summary>
+      <returns>
+        <see cref="T:System.Boolean" /> значение.</returns>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixReader.SkipValue">
+      <summary>
+            Пропустить значение.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixClientRoles">
+      <summary>
+            Роли.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixClientRoles.Regular">
+      <summary>
+            Обычное подключение.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixClientRoles.Admin">
+      <summary>
+            Административное подключение.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixMarketData">
+      <summary>
+            Типы маркет-данных.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixMarketData.None">
+      <summary>
+            Отсутствует.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixMarketData.Quote">
+      <summary>
+            Котировки.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixMarketData.MarketData">
+      <summary>
+            Полная глубина.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixVersions">
+      <summary>
+            Версии FIX протокола.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix40">
+      <summary>
+            FIX 4.0.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix41">
+      <summary>
+            FIX 4.1.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix42">
+      <summary>
+            FIX 4.2.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix43">
+      <summary>
+            FIX 4.3.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix44">
+      <summary>
+            FIX 4.4.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix44_CFH">
+      <summary>
+            FIX 4.4 (CFH Clearing).
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix44_Micex">
+      <summary>
+            FIX 4.4 (Micex).
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix44_Lua">
+      <summary>
+            FIX 4.4 (LUA).
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix50">
+      <summary>
+            FIX 5.0.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix50Sp1">
+      <summary>
+            FIX 5.0 SP1.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixVersions.Fix50Sp2">
+      <summary>
+            FIX 5.0 SP2.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixTrader">
+      <summary>
+            Реализация интерфейса <see cref="T:StockSharp.BusinessEntities.IConnector" /> для взаимодействия с биржей или брокерской системой через протокол FIX.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixTrader.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.FixTrader" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixTrader.OnCancelOrder(StockSharp.BusinessEntities.Order,System.Int64)">
+      <summary>
+            Отменить заявку на бирже.
+            </summary>
+      <param name="order">Заявка, которую нужно отменять.</param>
+      <param name="transactionId">Идентификатор транзакции отмены.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixTrader.OnCancelOrders(System.Int64,System.Nullable{System.Boolean},StockSharp.BusinessEntities.Portfolio,System.Nullable{StockSharp.Messages.Sides},StockSharp.BusinessEntities.ExchangeBoard,StockSharp.BusinessEntities.Security)">
+      <summary>
+            Отменить группу заявок на бирже по фильтру.
+            </summary>
+      <param name="transactionId">Идентификатор транзакции отмены.</param>
+      <param name="isStopOrder">
+        <see langword="true" />, если нужно отменить только стоп-заявки, <see langword="false" /> - если только обычный и <see langword="null" /> - если оба типа.</param>
+      <param name="portfolio">Портфель. Если значение равно <see langword="null" />, то портфель не попадает в фильтр снятия заявок.</param>
+      <param name="direction">Направление заявки. Если значение равно <see langword="null" />, то направление не попадает в фильтр снятия заявок.</param>
+      <param name="board">Торговая площадка. Если значение равно <see langword="null" />, то площадка не попадает в фильтр снятия заявок.</param>
+      <param name="security">Инструмент. Если значение равно <see langword="null" />, то инструмент не попадает в фильтр снятия заявок.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixTrader.ChangePassword(System.String)">
+      <summary>
+            Сменить пароль.
+            </summary>
+      <param name="newPassword">Новый пароль.</param>
+    </member>
+    <member name="M:StockSharp.Fix.FixTrader.OnProcessMessage(StockSharp.Messages.Message)">
+      <summary>
+            Обработать сообщение.
+            </summary>
+      <param name="message">Сообщение.</param>
+    </member>
+    <member name="P:StockSharp.Fix.FixTrader.TransactionCopyAdapter">
+      <summary>
+            Транзакционная сессия (копия, используется в случае ММВБ для получение заявок и сделок, зарегистрированных под подключения).
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixStopOrderType">
+      <summary>
+            Типы стоп-заявок, специфичных для <see cref="N:StockSharp.Fix" />.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixStopOrderType.StopLoss">
+      <summary>
+            Стоп-лосс.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixStopOrderType.StopLossTrailing">
+      <summary>
+            Скользящий стоп.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixStopOrderType.TakeProfit">
+      <summary>
+            Тейк.
+            </summary>
+    </member>
+    <member name="F:StockSharp.Fix.FixStopOrderType.TakeProfitTrailing">
+      <summary>
+            Скользящий тейк.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.FixOrderCondition">
+      <summary>
+            Условие заявок, специфичных для <see cref="N:StockSharp.Fix" />.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.FixOrderCondition.#ctor">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.FixOrderCondition" />.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixOrderCondition.Type">
+      <summary>
+            Тип стоп-заявки.
+            </summary>
+    </member>
+    <member name="P:StockSharp.Fix.FixOrderCondition.StopPrice">
+      <summary>
+            Стоп-цена.
+            </summary>
+    </member>
+    <member name="T:StockSharp.Fix.Native.TextFixWriter">
+      <summary>
+            Писатель данных, записывающий в текстовом формате FIX протокола.
+            </summary>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.#ctor(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Создать <see cref="T:StockSharp.Fix.Native.TextFixWriter" />.
+            </summary>
+      <param name="stream">Поток, в который будет осуществляться запись.</param>
+      <param name="encoding">Кодировка строковых данных.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(StockSharp.Fix.Native.FixTags)">
+      <summary>
+            Записать тэг.
+            </summary>
+      <param name="tag">Тэг.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.Boolean)">
+      <summary>
+            Записать <see cref="T:System.Boolean" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Boolean" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.Int32)">
+      <summary>
+            Записать <see cref="T:System.Int32" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Int32" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.Int64)">
+      <summary>
+            Записать <see cref="T:System.Int64" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Int64" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.Decimal)">
+      <summary>
+            Записать <see cref="T:System.Decimal" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Decimal" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.DateTime,System.String)">
+      <summary>
+            Записать <see cref="T:System.DateTime" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.DateTime" /> значение.</param>
+      <param name="format">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.TimeSpan,System.String)">
+      <summary>
+            Записать <see cref="T:System.TimeSpan" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.TimeSpan" /> значение.</param>
+      <param name="format">Формат времени.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.String)">
+      <summary>
+            Записать <see cref="T:System.String" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.String" /> значение.</param>
+    </member>
+    <member name="M:StockSharp.Fix.Native.TextFixWriter.Write(System.Char)">
+      <summary>
+            Записать <see cref="T:System.Char" /> значение.
+            </summary>
+      <param name="value">
+        <see cref="T:System.Char" /> значение.</param>
+    </member>
+  </members>
+</doc>
