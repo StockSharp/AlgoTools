@@ -44,14 +44,14 @@
             Вызвать метод сервиса <typeparamref name="TService"/>.
             </summary>
             <typeparam name="TResult">Тип результата, возвращающий метод сервиса.</typeparam>
-            <param name="handler">Обработчик, в котором вызывает метод.</param>
+            <param name="handler">Обработчик, в котором вызывается метод.</param>
             <returns>Результат, возвращающий метод сервиса.</returns>
         </member>
         <member name="M:StockSharp.Community.BaseServiceClient`1.Invoke(System.Action{`0})">
             <summary>
             Вызвать метод сервиса <typeparamref name="TService"/>.
             </summary>
-            <param name="handler">Обработчик, в котором вызывает метод.</param>
+            <param name="handler">Обработчик, в котором вызывается метод.</param>
         </member>
         <member name="M:StockSharp.Community.BaseServiceClient`1.DisposeManaged">
             <summary>

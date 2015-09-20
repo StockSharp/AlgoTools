@@ -4,6 +4,236 @@
         <name>StockSharp.Algo</name>
     </assembly>
     <members>
+        <member name="T:StockSharp.Algo.Indicators.Correlation">
+            <summary>
+            Корреляция.
+            </summary>
+            <remarks>
+            https://en.wikipedia.org/wiki/Correlation_and_dependence
+            </remarks>
+        </member>
+        <member name="T:StockSharp.Algo.Indicators.Covariance">
+            <summary>
+            Ковариация.
+            </summary>
+            <remarks>
+            https://en.wikipedia.org/wiki/Covariance
+            </remarks>
+        </member>
+        <member name="T:StockSharp.Algo.Indicators.LengthIndicator`1">
+            <summary>
+            Базовый класс для индикаторов с одним результирующим значением и основанных на периоде.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Algo.Indicators.BaseIndicator">
+            <summary>
+            Базовый индикатор.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Algo.Indicators.IIndicator">
+            <summary>
+            Интерфейс, описывающий индикатор.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.IIndicator.Process(StockSharp.Algo.Indicators.IIndicatorValue)">
+            <summary>
+            Обработать входное значение.
+            </summary>
+            <param name="input">Входное значение.</param>
+            <returns>Новое значение индикатора.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.IIndicator.Reset">
+            <summary>
+            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.IIndicator.Id">
+            <summary>
+            Уникальный идентификатор.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.IIndicator.Name">
+            <summary>
+            Название индикатора.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.IIndicator.IsFormed">
+            <summary>
+            Сформирован ли индикатор.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.IIndicator.Container">
+            <summary>
+            Контейнер, хранящий данные индикатора.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.Indicators.IIndicator.Changed">
+            <summary>
+            Событие об изменении индикатора (например, добавлено новое значение).
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.Indicators.IIndicator.Reseted">
+            <summary>
+            Событие о сбросе состояния индикатора на первоначальное. Событие вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.#ctor">
+            <summary>
+            Инициализировать <see cref="T:StockSharp.Algo.Indicators.BaseIndicator"/>, который работает с данными типа <see cref="T:System.Decimal"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Reset">
+            <summary>
+            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Process(StockSharp.Algo.Indicators.IIndicatorValue)">
+            <summary>
+            Обработать входное значение.
+            </summary>
+            <param name="input">Входное значение.</param>
+            <returns>Результирующее значение.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.OnProcess(StockSharp.Algo.Indicators.IIndicatorValue)">
+            <summary>
+            Обработать входное значение.
+            </summary>
+            <param name="input">Входное значение.</param>
+            <returns>Результирующее значение.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.RaiseChangedEvent(StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Algo.Indicators.IIndicatorValue)">
+            <summary>
+            Вызвать событие <see cref="E:StockSharp.Algo.Indicators.BaseIndicator.Changed"/>.
+            </summary>
+            <param name="input">Входное значение индикатора.</param>
+            <param name="result">Результирующее значение индикатора.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Clone">
+            <summary>
+            Создать копию <see cref="T:StockSharp.Algo.Indicators.IIndicator"/>.
+            </summary>
+            <returns>Копия.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.ToString">
+            <summary>
+            Получить строковое представление.
+            </summary>
+            <returns>Строковое представление.</returns>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.Id">
+            <summary>
+            Уникальный идентификатор.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.Name">
+            <summary>
+            Название индикатора.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.IsFormed">
+            <summary>
+            Сформирован ли индикатор.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.Container">
+            <summary>
+            Контейнер, хранящий данные индикатора.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.Indicators.BaseIndicator.Changed">
+            <summary>
+            Событие об изменении индикатора (например, добавлено новое значение).
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.Indicators.BaseIndicator.Reseted">
+            <summary>
+            Событие о сбросе состояния индикатора на первоначальное. Событие вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.#ctor">
+            <summary>
+            Инициализировать <see cref="T:StockSharp.Algo.Indicators.LengthIndicator`1"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.Reset">
+            <summary>
+            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.Load(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Загрузить настройки.
+            </summary>
+            <param name="settings">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.Save(Ecng.Serialization.SettingsStorage)">
+            <summary>
+            Сохранить настройки.
+            </summary>
+            <param name="settings">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.ToString">
+            <summary>
+            Получить строковое представление.
+            </summary>
+            <returns>Строковое представление.</returns>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.LengthIndicator`1.Length">
+            <summary>
+            Длина периода. По-умолчанию длина равна 1.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.LengthIndicator`1.IsFormed">
+            <summary>
+            Сформирован ли индикатор.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Indicators.LengthIndicator`1.Buffer">
+            <summary>
+            Буфер для хранения данных.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.Covariance.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Indicators.Covariance"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.Covariance.OnProcess(StockSharp.Algo.Indicators.IIndicatorValue)">
+            <summary>
+            Обработать входное значение.
+            </summary>
+            <param name="input">Входное значение.</param>
+            <returns>Результирующее значение.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.Correlation.#ctor">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Indicators.Correlation"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.Correlation.Reset">
+            <summary>
+            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.Correlation.OnProcess(StockSharp.Algo.Indicators.IIndicatorValue)">
+            <summary>
+            Обработать входное значение.
+            </summary>
+            <param name="input">Входное значение.</param>
+            <returns>Результирующее значение.</returns>
+        </member>
         <member name="T:StockSharp.Algo.Storages.Backup.AmazonExtensions">
             <summary>
             Вспомогательный класс для AWS.
@@ -5460,143 +5690,6 @@
             Базовый индикатор, который строится в виде комбинации нескольких индикаторов.
             </summary>
         </member>
-        <member name="T:StockSharp.Algo.Indicators.BaseIndicator">
-            <summary>
-            Базовый индикатор.
-            </summary>
-        </member>
-        <member name="T:StockSharp.Algo.Indicators.IIndicator">
-            <summary>
-            Интерфейс, описывающий индикатор.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.IIndicator.Process(StockSharp.Algo.Indicators.IIndicatorValue)">
-            <summary>
-            Обработать входное значение.
-            </summary>
-            <param name="input">Входное значение.</param>
-            <returns>Новое значение индикатора.</returns>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.IIndicator.Reset">
-            <summary>
-            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.IIndicator.Id">
-            <summary>
-            Уникальный идентификатор.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.IIndicator.Name">
-            <summary>
-            Название индикатора.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.IIndicator.IsFormed">
-            <summary>
-            Сформирован ли индикатор.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.IIndicator.Container">
-            <summary>
-            Контейнер, хранящий данные индикатора.
-            </summary>
-        </member>
-        <member name="E:StockSharp.Algo.Indicators.IIndicator.Changed">
-            <summary>
-            Событие об изменении индикатора (например, добавлено новое значение).
-            </summary>
-        </member>
-        <member name="E:StockSharp.Algo.Indicators.IIndicator.Reseted">
-            <summary>
-            Событие о сбросе состояния индикатора на первоначальное. Событие вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.#ctor">
-            <summary>
-            Инициализировать <see cref="T:StockSharp.Algo.Indicators.BaseIndicator"/>, который работает с данными типа <see cref="T:System.Decimal"/>.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Reset">
-            <summary>
-            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Save(Ecng.Serialization.SettingsStorage)">
-            <summary>
-            Сохранить настройки.
-            </summary>
-            <param name="storage">Хранилище настроек.</param>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Load(Ecng.Serialization.SettingsStorage)">
-            <summary>
-            Загрузить настройки.
-            </summary>
-            <param name="storage">Хранилище настроек.</param>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Process(StockSharp.Algo.Indicators.IIndicatorValue)">
-            <summary>
-            Обработать входное значение.
-            </summary>
-            <param name="input">Входное значение.</param>
-            <returns>Результирующее значение.</returns>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.OnProcess(StockSharp.Algo.Indicators.IIndicatorValue)">
-            <summary>
-            Обработать входное значение.
-            </summary>
-            <param name="input">Входное значение.</param>
-            <returns>Результирующее значение.</returns>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.RaiseChangedEvent(StockSharp.Algo.Indicators.IIndicatorValue,StockSharp.Algo.Indicators.IIndicatorValue)">
-            <summary>
-            Вызвать событие <see cref="E:StockSharp.Algo.Indicators.BaseIndicator.Changed"/>.
-            </summary>
-            <param name="input">Входное значение индикатора.</param>
-            <param name="result">Результирующее значение индикатора.</param>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.Clone">
-            <summary>
-            Создать копию <see cref="T:StockSharp.Algo.Indicators.IIndicator"/>.
-            </summary>
-            <returns>Копия.</returns>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.BaseIndicator.ToString">
-            <summary>
-            Получить строковое представление.
-            </summary>
-            <returns>Строковое представление.</returns>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.Id">
-            <summary>
-            Уникальный идентификатор.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.Name">
-            <summary>
-            Название индикатора.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.IsFormed">
-            <summary>
-            Сформирован ли индикатор.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.BaseIndicator.Container">
-            <summary>
-            Контейнер, хранящий данные индикатора.
-            </summary>
-        </member>
-        <member name="E:StockSharp.Algo.Indicators.BaseIndicator.Changed">
-            <summary>
-            Событие об изменении индикатора (например, добавлено новое значение).
-            </summary>
-        </member>
-        <member name="E:StockSharp.Algo.Indicators.BaseIndicator.Reseted">
-            <summary>
-            Событие о сбросе состояния индикатора на первоначальное. Событие вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
-            </summary>
-        </member>
         <member name="T:StockSharp.Algo.Indicators.IComplexIndicator">
             <summary>
             Интерфейс индикатора, который строится в виде комбинации нескольких индикаторов.
@@ -5992,54 +6085,6 @@
         <member name="T:StockSharp.Algo.Indicators.Highest">
             <summary>
             Максимальное значение за период.
-            </summary>
-        </member>
-        <member name="T:StockSharp.Algo.Indicators.LengthIndicator`1">
-            <summary>
-            Базовый класс для индикаторов с одним результирующим значением и основанных на периоде.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.#ctor">
-            <summary>
-            Инициализировать <see cref="T:StockSharp.Algo.Indicators.LengthIndicator`1"/>.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.Reset">
-            <summary>
-            Сбросить состояние индикатора на первоначальное. Метод вызывается каждый раз, когда меняются первоначальные настройки (например, длина периода).
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.Load(Ecng.Serialization.SettingsStorage)">
-            <summary>
-            Загрузить настройки.
-            </summary>
-            <param name="settings">Хранилище настроек.</param>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.Save(Ecng.Serialization.SettingsStorage)">
-            <summary>
-            Сохранить настройки.
-            </summary>
-            <param name="settings">Хранилище настроек.</param>
-        </member>
-        <member name="M:StockSharp.Algo.Indicators.LengthIndicator`1.ToString">
-            <summary>
-            Получить строковое представление.
-            </summary>
-            <returns>Строковое представление.</returns>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.LengthIndicator`1.Length">
-            <summary>
-            Длина периода. По-умолчанию длина равна 1.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.LengthIndicator`1.IsFormed">
-            <summary>
-            Сформирован ли индикатор.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Algo.Indicators.LengthIndicator`1.Buffer">
-            <summary>
-            Буфер для хранения данных.
             </summary>
         </member>
         <member name="M:StockSharp.Algo.Indicators.Highest.#ctor">
@@ -10072,6 +10117,33 @@
             <returns>Значение.</returns>
         </member>
         <member name="M:StockSharp.Algo.Indicators.MarketDepthIndicatorValue.SetValue``1(StockSharp.Algo.Indicators.IIndicator,``0)">
+            <summary>
+            Изменить входное значение индикатора новым значением (например, оно получено от другого индикатора).
+            </summary>
+            <typeparam name="T">Тип данных, которым оперирует индикатор.</typeparam>
+            <param name="indicator">Индикатор.</param>
+            <param name="value">Значение.</param>
+            <returns>Новый объект, содержащий входное значение.</returns>
+        </member>
+        <member name="T:StockSharp.Algo.Indicators.PairIndicatorValue`1">
+            <summary>
+            Значение индикатора, работающее с парой <see ref="Tuple{TValue, TValue}"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.PairIndicatorValue`1.#ctor(StockSharp.Algo.Indicators.IIndicator,System.Tuple{`0,`0})">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Indicators.PairIndicatorValue`1"/>.
+            </summary>
+            <param name="indicator">Индикатор.</param>
+            <param name="value">Значение.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.PairIndicatorValue`1.#ctor(StockSharp.Algo.Indicators.IIndicator)">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Indicators.PairIndicatorValue`1"/>.
+            </summary>
+            <param name="indicator">Индикатор.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Indicators.PairIndicatorValue`1.SetValue``1(StockSharp.Algo.Indicators.IIndicator,``0)">
             <summary>
             Изменить входное значение индикатора новым значением (например, оно получено от другого индикатора).
             </summary>

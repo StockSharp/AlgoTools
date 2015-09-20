@@ -2471,6 +2471,11 @@
             The selected instrument.
             </summary>
         </member>
+        <member name="P:StockSharp.Xaml.SecurityEditor.Text">
+            <summary>
+            Gets or sets the text of the currently selected item.
+            </summary>
+        </member>
         <member name="E:StockSharp.Xaml.SecurityEditor.SecuritySelected">
             <summary>
             The selected instrument change event.
@@ -4472,18 +4477,20 @@
             The class for work with the Yandex.Disk.
             </summary>
         </member>
-        <member name="M:StockSharp.Xaml.YandexDisk.Publish(System.String)">
+        <member name="M:StockSharp.Xaml.YandexDisk.Publish(System.String,System.Windows.Window)">
             <summary>
             To share a file.
             </summary>
             <param name="file">File.</param>
+            <param name="owner">The login window owner.</param>
             <returns>The link to a file.</returns>
         </member>
-        <member name="M:StockSharp.Xaml.YandexDisk.Replace(System.String)">
+        <member name="M:StockSharp.Xaml.YandexDisk.Replace(System.String,System.Windows.Window)">
             <summary>
             To replace a file.
             </summary>
             <param name="file">File.</param>
+            <param name="owner">The login window owner.</param>
         </member>
         <member name="P:StockSharp.Xaml.YandexDisk.RootPath">
             <summary>

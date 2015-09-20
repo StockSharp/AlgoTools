@@ -15107,9 +15107,9 @@
             Chart of profit-loss curve.
             </summary>
         </member>
-        <member name="F:StockSharp.Localization.LocalizedStrings.Str3261Key">
+        <member name="F:StockSharp.Localization.LocalizedStrings.PnLRealizedKey">
             <summary>
-            P&amp;L (unrealized)
+            P&amp;L (realized)
             </summary>
         </member>
         <member name="F:StockSharp.Localization.LocalizedStrings.StorageSettingsKey">
@@ -19337,16 +19337,6 @@
             Warnings
             </summary>
         </member>
-        <member name="F:StockSharp.Localization.LocalizedStrings.XamlStr535Key">
-            <summary>
-            P&amp;L (unrealised.)
-            </summary>
-        </member>
-        <member name="F:StockSharp.Localization.LocalizedStrings.XamlStr536Key">
-            <summary>
-            P&amp;L (realized.)
-            </summary>
-        </member>
         <member name="F:StockSharp.Localization.LocalizedStrings.XamlStr537Key">
             <summary>
             Apply
@@ -20740,6 +20730,21 @@
         <member name="F:StockSharp.Localization.LocalizedStrings.RandomizePriceKey">
             <summary>
             Randomize price
+            </summary>
+        </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.CovarianceKey">
+            <summary>
+            Covariance
+            </summary>
+        </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.CorrelationKey">
+            <summary>
+            Correlation
+            </summary>
+        </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.PnLKey">
+            <summary>
+            P&amp;L
             </summary>
         </member>
         <member name="M:StockSharp.Localization.LocalizedStrings.GetString(System.String,System.Nullable{Ecng.Localization.Languages})">
@@ -35780,9 +35785,9 @@
             Chart of profit-loss curve.
             </summary>
         </member>
-        <member name="P:StockSharp.Localization.LocalizedStrings.Str3261">
+        <member name="P:StockSharp.Localization.LocalizedStrings.PnLRealized">
             <summary>
-            P&amp;L (unrealized)
+            P&amp;L (realized)
             </summary>
         </member>
         <member name="P:StockSharp.Localization.LocalizedStrings.StorageSettings">
@@ -40010,16 +40015,6 @@
             Warnings
             </summary>
         </member>
-        <member name="P:StockSharp.Localization.LocalizedStrings.XamlStr535">
-            <summary>
-            P&amp;L (unrealised.)
-            </summary>
-        </member>
-        <member name="P:StockSharp.Localization.LocalizedStrings.XamlStr536">
-            <summary>
-            P&amp;L (realized.)
-            </summary>
-        </member>
         <member name="P:StockSharp.Localization.LocalizedStrings.XamlStr537">
             <summary>
             Apply
@@ -41413,6 +41408,21 @@
         <member name="P:StockSharp.Localization.LocalizedStrings.RandomizePrice">
             <summary>
             Randomize price
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.Covariance">
+            <summary>
+            Covariance
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.Correlation">
+            <summary>
+            Correlation
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.PnL">
+            <summary>
+            P&amp;L
             </summary>
         </member>
         <member name="T:StockSharp.Localization.ProjectDescriptions">
