@@ -16,6 +16,8 @@
 	using Ecng.Serialization;
 	using Ecng.Xaml;
 
+	using MoreLinq;
+
 	using StockSharp.Algo;
 	using StockSharp.Algo.Candles;
 	using StockSharp.Algo.History.Russian.Finam;
@@ -72,9 +74,9 @@
 
 			private bool _isChanged;
 
-			public DateTime MinValue { get { return _dates.FirstOrDefault(); } }
+			public DateTime? MinValue { get { return _dates.FirstOr(); } }
 
-			public DateTime MaxValue { get { return _dates.LastOrDefault(); } }
+			public DateTime? MaxValue { get { return _dates.LastOr(); } }
 
 			public DatesCache(string filePath)
 			{
@@ -151,6 +153,13 @@
 			}
 		}
 
+		private class ColorSettings
+		{
+			public Color Position { get; set; }
+			public Color Buy { get; set; }
+			public Color Sell { get; set; }
+		}
+
 		private readonly FinamHistorySource _finamHistorySource = new FinamHistorySource();
 		private readonly ISecurityStorage _securityStorage = new SecurityStorage();
 		private readonly StorageRegistry _dataRegistry = new StorageRegistry { DefaultDrive = new LocalMarketDataDrive("Data") };
@@ -163,16 +172,82 @@
 
 		private readonly Dictionary<Security, List<Candle>> _candles = new Dictionary<Security, List<Candle>>();
 		private readonly FilterableSecurityProvider _securityProvider;
-		private readonly List<SecurityEditor> _securityCtrls = new List<SecurityEditor>();
+		private readonly Dictionary<SecurityEditor, ColorSettings> _securityCtrls = new Dictionary<SecurityEditor, ColorSettings>();
+
+		private class Settings : IPersistable
+		{
+			public DateTime Year { get; set; }
+			public string Trader { get; set; }
+			public DateTime? From { get; set; }
+			public DateTime? To { get; set; }
+			public string Security1 { get; set; }
+			public string Security2 { get; set; }
+			public string Security3 { get; set; }
+			public string Security4 { get; set; }
+			public TimeSpan TimeFrame { get; set; }
+
+			void IPersistable.Load(SettingsStorage storage)
+			{
+				Year = storage.GetValue<DateTime>("Year");
+				Trader = storage.GetValue<string>("Trader");
+				From = storage.GetValue<DateTime?>("From");
+				To = storage.GetValue<DateTime?>("To");
+				Security1 = storage.GetValue<string>("Security1");
+				Security2 = storage.GetValue<string>("Security2");
+				Security3 = storage.GetValue<string>("Security3");
+				Security4 = storage.GetValue<string>("Security4");
+				TimeFrame = storage.GetValue<TimeSpan>("TimeFrame");
+			}
+
+			void IPersistable.Save(SettingsStorage storage)
+			{
+				storage.SetValue("Year", Year);
+				storage.SetValue("Trader", Trader);
+				
+				if (From != null)
+					storage.SetValue("From", From);
+
+				if (To != null)
+					storage.SetValue("To", To);
+
+				storage.SetValue("Security1", Security1);
+				storage.SetValue("Security2", Security2);
+				storage.SetValue("Security3", Security3);
+				storage.SetValue("Security4", Security4);
+				storage.SetValue("TimeFrame", TimeFrame);
+			}
+		}
+
+		private const string _settingsFile = "setting.xml";
 
 		public MainWindow()
 		{
 			InitializeComponent();
 
-			_securityCtrls.Add(Security1);
-			_securityCtrls.Add(Security2);
-			_securityCtrls.Add(Security3);
-			_securityCtrls.Add(Security4);
+			_securityCtrls.Add(Security1, new ColorSettings
+			{
+				Position = Colors.Green,
+				Buy = Colors.Green,
+				Sell = Colors.Red,
+			});
+			_securityCtrls.Add(Security2, new ColorSettings
+			{
+				Position = Colors.Blue,
+				Buy = Colors.Teal,
+				Sell = Colors.BlueViolet,
+			});
+			_securityCtrls.Add(Security3, new ColorSettings
+			{
+				Position = Colors.Brown,
+				Buy = Colors.Yellow,
+				Sell = Colors.Brown,
+			});
+			_securityCtrls.Add(Security4, new ColorSettings
+			{
+				Position = Colors.YellowGreen,
+				Buy = Colors.Cyan,
+				Sell = Colors.DeepPink,
+			});
 
 			Chart.IsInteracted = true;
 			//Chart.IsAutoRange = true;
@@ -180,7 +255,7 @@
 			Chart.SubscribeIndicatorElement += Chart_SubscribeIndicatorElement;
 
 			_securityProvider = new FilterableSecurityProvider();
-			_securityCtrls.ForEach(ctrl => ctrl.SecurityProvider = _securityProvider);
+			_securityCtrls.ForEach(pair => pair.Key.SecurityProvider = _securityProvider);
 
 			TimeFrame.ItemsSource = new[] { TimeSpan.FromTicks(1) }.Concat(FinamHistorySource.TimeFrames);
 			TimeFrame.SelectedItem = TimeSpan.FromMinutes(5);
@@ -220,11 +295,6 @@
 		{
 			get { return (string)Trader.SelectedItem; }
 		}
-
-		//private Security SelectedSecurity
-		//{
-		//	get { return (Security)Security.SelectedItem; }
-		//}
 
 		private TimeSpan SelectedTimeFrame
 		{
@@ -293,10 +363,48 @@
 					.Put(s.Id, s.ExtensionInfo[FinamHistorySource.MarketIdField], s.ExtensionInfo[FinamHistorySource.SecurityIdField])));
 			}
 
-			Trader.Text = "Vasya";
-			Security1.Text = "RIZ5@FORTS";
-			Security2.Text = "SIZ5@FORTS";
-			//From.Value = new DateTime(2014, 09, 16);
+			if (File.Exists(_settingsFile))
+			{
+				var settings = new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile).Load<Settings>();
+
+				Year.SelectedItem = settings.Year;
+				Trader.Text = settings.Trader;
+				From.Value = settings.From;
+				To.Value = settings.To;
+				Security1.Text = settings.Security1;
+				Security2.Text = settings.Security2;
+				Security3.Text = settings.Security3;
+				Security4.Text = settings.Security4;
+				TimeFrame.SelectedItem = settings.TimeFrame;
+			}
+			else
+			{
+				Trader.Text = "Vasya";
+				Security1.Text = "RIZ5@FORTS";
+				//Trader.Text = "iZotov";
+				//Security1.Text = "SPZ5@FORTS";
+				//Security2.Text = "SIZ5@FORTS";
+				//From.Value = new DateTime(2014, 09, 16);	
+			}
+		}
+
+		protected override void OnClosed(EventArgs e)
+		{
+			var settings = new Settings
+			{
+				Year = SelectedYear.Year,
+				Trader = Trader.Text,
+				From = From.Value,
+				To = To.Value,
+				Security1 = Security1.Text,
+				Security2 = Security2.Text,
+				Security3 = Security3.Text,
+				Security4 = Security4.Text,
+				TimeFrame = SelectedTimeFrame
+			};
+			new XmlSerializer<SettingsStorage>().Serialize(settings.Save(), _settingsFile);
+
+			base.OnClosed(e);
 		}
 
 		private void Year_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -327,7 +435,7 @@
 
 		private void TryEnableDownload()
 		{
-			Download.IsEnabled = SelectedTrader != null && _securityCtrls.Any(ctrl => ctrl.SelectedSecurity != null);
+			Download.IsEnabled = SelectedTrader != null && _securityCtrls.Any(pair => pair.Key.SelectedSecurity != null);
 		}
 		
 		private void Download_OnClick(object sender, RoutedEventArgs e)
@@ -340,9 +448,8 @@
 			var tf = SelectedTimeFrame;
 
 			var seriesSet = _securityCtrls
-				.Select(ctrl => ctrl.SelectedSecurity)
-				.Where(s => s != null)
-				.Select(s => new CandleSeries(typeof(TimeFrameCandle), s, tf))
+				.Where(pair => pair.Key.SelectedSecurity != null)
+				.Select(pair => Tuple.Create(new CandleSeries(typeof(TimeFrameCandle), pair.Key.SelectedSecurity, tf), pair.Value))
 				.ToArray();
 
 			BusyIndicator.BusyContent = "Подготовка данных...";
@@ -358,8 +465,8 @@
 			{
 				foreach (var series in seriesSet)
 				{
-					var security = series.Security;
-					var candleStorage = _dataRegistry.GetCandleStorage(series, format: StorageFormats.Csv);
+					var security = series.Item1.Security;
+					var candleStorage = _dataRegistry.GetCandleStorage(series.Item1, format: StorageFormats.Csv);
 					var secCandles = _candles.SafeAdd(security);
 					
 					secCandles.Clear();
@@ -376,11 +483,11 @@
 					var finamFrom = from;
 					var finamTo = to;
 
-					if (maxCandleDate != default(DateTime) && finamFrom >= minCandleDate && finamFrom <= maxCandleDate)
-						finamFrom = maxCandleDate + TimeSpan.FromDays(1);
+					if (maxCandleDate != null && finamFrom >= minCandleDate && finamFrom <= maxCandleDate)
+						finamFrom = maxCandleDate.Value + TimeSpan.FromDays(1);
 
-					if (minCandleDate != default(DateTime) && finamTo >= minCandleDate && finamTo <= maxCandleDate)
-						finamTo = minCandleDate - TimeSpan.FromDays(1);
+					if (minCandleDate != null && finamTo >= minCandleDate && finamTo <= maxCandleDate)
+						finamTo = minCandleDate.Value - TimeSpan.FromDays(1);
 
 					if (finamTo <= finamFrom)
 						continue;
@@ -408,7 +515,7 @@
 
 				foreach (var series in seriesSet)
 				{
-					var security = series.Security;
+					var security = series.Item1.Security;
 
 					var olStorage = traderStorage.GetOrderLogStorage(security, format: StorageFormats.Csv);
 					var tradeDatesCache = _tradesDates.SafeAdd(trader, k => new DatesCache(Path.Combine(traderDrive.Path, "dates.bin")));
@@ -554,16 +661,35 @@
 
 					var positionArea = new ChartArea { Height = 200 };
 					Chart.AddArea(positionArea);
+					positionArea.YAxises.Clear();
 
-					var chartValues = new Dictionary<DateTimeOffset, IDictionary<IChartElement, object>>();
+					const string equityYAxis = "Equity";
+
+					candlesArea.YAxises.Clear();
+					candlesArea.YAxises.Add(new ChartAxis
+					{
+						Id = equityYAxis,
+						AutoRange = true,
+						AxisType = ChartAxisType.Numeric,
+						AxisAlignment = ChartAxisAlignment.Left,
+					});
+					var equityElem = new ChartIndicatorElement
+					{
+						YAxisId = equityYAxis,
+						FullTitle = LocalizedStrings.PnL,
+						IndicatorPainter = new PnlPainter()
+					};
+					var equityInd = new SimpleMovingAverage { Length = 1 };
+					Chart.AddElement(candlesArea, equityElem);
+
+					var chartValues = new SortedDictionary<DateTimeOffset, IDictionary<IChartElement, object>>();
+					var pnlValues = new Dictionary<DateTimeOffset, decimal>();
 
 					foreach (var series in seriesSet)
 					{
-						var security = series.Security;
+						var security = series.Item1.Security;
 
 						var candleYAxis = "Candles_Y_" + security.Id;
-						var equityYAxis = "Equity_Y_" + security.Id;
-						var posYAxis = "Pos_Y_" + security.Id;
 
 						candlesArea.YAxises.Add(new ChartAxis
 						{
@@ -572,40 +698,27 @@
 							AxisType = ChartAxisType.Numeric,
 							AxisAlignment = ChartAxisAlignment.Right,
 						});
-						candlesArea.YAxises.Add(new ChartAxis
-						{
-							Id = equityYAxis,
-							AutoRange = true,
-							AxisType = ChartAxisType.Numeric,
-							AxisAlignment = ChartAxisAlignment.Left,
-						});
 
 						var candlesElem = new ChartCandleElement
 						{
 							ShowAxisMarker = false,
 							YAxisId = candleYAxis,
 						};
-						Chart.AddElement(candlesArea, candlesElem, series);
+						Chart.AddElement(candlesArea, candlesElem, series.Item1);
 
 						var tradesElem = new ChartTradeElement
 						{
 							BuyStrokeColor = Colors.Black,
 							SellStrokeColor = Colors.Black,
+							BuyColor = series.Item2.Buy,
+							SellColor = series.Item2.Sell,
 							FullTitle = LocalizedStrings.Str985 + " " + security.Id,
 							YAxisId = candleYAxis,
 						};
 						Chart.AddElement(candlesArea, tradesElem);
 
-						var equityElem = new ChartIndicatorElement
-						{
-							YAxisId = equityYAxis,
-							FullTitle = LocalizedStrings.PnL + " " + security.Id,
-							IndicatorPainter = new PnlPainter()
-						};
-						var equityInd = new SimpleMovingAverage { Length = 1 };
-						Chart.AddElement(candlesArea, equityElem);
-
-						candlesArea.YAxises.Add(new ChartAxis
+						var posYAxis = "Pos_Y_" + security.Id;
+						positionArea.YAxises.Add(new ChartAxis
 						{
 							Id = posYAxis,
 							AutoRange = true,
@@ -616,6 +729,7 @@
 						{
 							FullTitle = LocalizedStrings.Str862 + " " + security.Id,
 							YAxisId = posYAxis,
+							Color = series.Item2.Position
 						};
 						var positionInd = new SimpleMovingAverage { Length = 1 };
 						Chart.AddElement(positionArea, positionElem);
@@ -669,7 +783,7 @@
 									_statisticManager.AddPnL(c.OpenTime, pnlQueue.RealizedPnL + pnlQueue.UnrealizedPnL);
 								}
 
-								values.Add(equityElem, equityInd.Process(pnlQueue.RealizedPnL + pnlQueue.UnrealizedPnL));
+								pnlValues[c.OpenTime] = pnlValues.TryGetValue(c.OpenTime) + (pnlQueue.RealizedPnL + pnlQueue.UnrealizedPnL);
 								values.Add(positionElem, positionInd.Process(pos));
 
 								return new RefPair<DateTimeOffset, IDictionary<IChartElement, object>>
@@ -689,6 +803,11 @@
 								dict[pair2.Key] = pair2.Value;
 							}
 						}
+					}
+
+					foreach (var pair in pnlValues)
+					{
+						chartValues[pair.Key].Add(equityElem, equityInd.Process(pair.Value));
 					}
 
 					Chart.IsAutoRange = true;
