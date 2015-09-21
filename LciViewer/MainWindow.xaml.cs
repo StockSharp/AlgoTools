@@ -365,7 +365,7 @@
 
 			if (File.Exists(_settingsFile))
 			{
-				var settings = new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile).Load<Settings>();
+				var settings = CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile).Load<Settings>());
 
 				Year.SelectedItem = settings.Year;
 				Trader.Text = settings.Trader;
@@ -402,7 +402,7 @@
 				Security4 = Security4.Text,
 				TimeFrame = SelectedTimeFrame
 			};
-			new XmlSerializer<SettingsStorage>().Serialize(settings.Save(), _settingsFile);
+			CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Serialize(settings.Save(), _settingsFile));
 
 			base.OnClosed(e);
 		}
@@ -444,7 +444,6 @@
 			var from = From.Value ?? year.Days.First();
 			var to = (To.Value ?? year.Days.Last()).EndOfDay();
 			var trader = SelectedTrader;
-			//var securities = _securityCtrls.Select(ctrl => ctrl.SelectedSecurity).Where(s => s != null).ToArray();
 			var tf = SelectedTimeFrame;
 
 			var seriesSet = _securityCtrls
