@@ -20747,6 +20747,11 @@
             P&amp;L
             </summary>
         </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.ApartKey">
+            <summary>
+            Apart
+            </summary>
+        </member>
         <member name="M:StockSharp.Localization.LocalizedStrings.GetString(System.String,System.Nullable{Ecng.Localization.Languages})">
             <summary>
             Get localized string.
@@ -41423,6 +41428,11 @@
         <member name="P:StockSharp.Localization.LocalizedStrings.PnL">
             <summary>
             P&amp;L
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.Apart">
+            <summary>
+            Apart
             </summary>
         </member>
         <member name="T:StockSharp.Localization.ProjectDescriptions">

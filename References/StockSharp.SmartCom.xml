@@ -2047,7 +2047,7 @@
         </member>
         <member name="T:StockSharp.SmartCom.SmartComExtensionInfoHelper">
             <summary>
-            Вспомагательный класс, который используется для доступа к специфичной SmartCOM информации через <see cref="P:StockSharp.Messages.IExtendableEntity.ExtensionInfo"/>.
+            Вспомогательный класс, который используется для доступа к специфичной SmartCOM информации через <see cref="P:StockSharp.Messages.IExtendableEntity.ExtensionInfo"/>.
             </summary>
         </member>
         <member name="F:StockSharp.SmartCom.SmartComExtensionInfoHelper.SecurityOptionsMargin">

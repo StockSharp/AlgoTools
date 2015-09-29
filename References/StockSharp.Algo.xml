@@ -663,6 +663,16 @@
             Менеджер свечек, которому принадлежит данный источник.
             </summary>
         </member>
+        <member name="M:StockSharp.Algo.Candles.Compression.ICandleBuilder.ProcessValue(StockSharp.Algo.Candles.CandleSeries,StockSharp.Algo.Candles.Candle,StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue)">
+            <summary>
+            Обработать новые данные.
+            </summary>
+            <param name="series">Серия свечек.</param>
+            <param name="currentCandle">Текущая свеча.</param>
+            <param name="value">Новые данные, с помощью которых принимается решение о необходимости начала или окончания формирования текущей свечи.</param>
+            <returns>Новая свеча. Если новую свечу нет необходимости создавать, то возвращается <paramref name="currentCandle"/>.
+            Если новую свечу создать невозможно (<paramref name="value"/> не может быть применено к свечам), то возвращается <see langword="null"/>.</returns>
+        </member>
         <member name="P:StockSharp.Algo.Candles.Compression.ICandleBuilder.CandleType">
             <summary>
             Тип свечи.
@@ -767,6 +777,16 @@
             <param name="series">Серия свечек.</param>
             <param name="candle">Свеча.</param>
             <param name="value">Данные.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Candles.Compression.CandleBuilder`1.StockSharp#Algo#Candles#Compression#ICandleBuilder#ProcessValue(StockSharp.Algo.Candles.CandleSeries,StockSharp.Algo.Candles.Candle,StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue)">
+            <summary>
+            Обработать новые данные.
+            </summary>
+            <param name="series">Серия свечек.</param>
+            <param name="currentCandle">Текущая свеча.</param>
+            <param name="value">Новые данные, с помощью которых принимается решение о необходимости начала или окончания формирования текущей свечи.</param>
+            <returns>Новая свеча. Если новую свечу нет необходимости создавать, то возвращается <paramref name="currentCandle"/>.
+            Если новую свечу создать невозможно (<paramref name="value"/> не может быть применено к свечам), то возвращается <see langword="null"/>.</returns>
         </member>
         <member name="M:StockSharp.Algo.Candles.Compression.CandleBuilder`1.ProcessValue(StockSharp.Algo.Candles.CandleSeries,`0,StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue)">
             <summary>
@@ -1958,11 +1978,6 @@
             Интерфейс, описывающий данные источника <see cref="T:StockSharp.Algo.Candles.Compression.ICandleBuilderSource"/>.
             </summary>
         </member>
-        <member name="P:StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue.Id">
-            <summary>
-            Уникальный идентификатор.
-            </summary>
-        </member>
         <member name="P:StockSharp.Algo.Candles.Compression.ICandleBuilderSourceValue.Security">
             <summary>
             Инструмент, по которому были сформированы данные.
@@ -2000,6 +2015,23 @@
             <param name="trade">Тиковая сделка.</param>
         </member>
         <member name="P:StockSharp.Algo.Candles.Compression.TradeCandleBuilderSourceValue.Trade">
+            <summary>
+            Тиковая сделка.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Algo.Candles.Compression.TickCandleBuilderSourceValue">
+            <summary>
+            Данные источника <see cref="T:StockSharp.Algo.Candles.Compression.ICandleBuilderSource"/>, созданные на основе <see cref="T:StockSharp.BusinessEntities.Trade"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Candles.Compression.TickCandleBuilderSourceValue.#ctor(StockSharp.BusinessEntities.Security,StockSharp.Messages.ExecutionMessage)">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Candles.Compression.TickCandleBuilderSourceValue"/>.
+            </summary>
+            <param name="security">Инструмент, по которому были сформированы данные.</param>
+            <param name="tick">Тиковая сделка.</param>
+        </member>
+        <member name="P:StockSharp.Algo.Candles.Compression.TickCandleBuilderSourceValue.Tick">
             <summary>
             Тиковая сделка.
             </summary>
@@ -10246,6 +10278,15 @@
             <param name="isFinal">Является ли значение окончательным (индикатор окончательно формирует свое значение и более не будет изменяться в данной точке времени). По-умолчанию <see langword="true"/>.</param>
             <returns>Новое значение индикатора.</returns>
         </member>
+        <member name="M:StockSharp.Algo.Indicators.IndicatorHelper.Process``1(StockSharp.Algo.Indicators.IIndicator,System.Tuple{``0,``0},System.Boolean)">
+            <summary>
+            Обновить индикатор числовой парой.
+            </summary>
+            <param name="indicator">Индикатор.</param>
+            <param name="value">Пара значений.</param>
+            <param name="isFinal">Является ли пара окончательной (индикатор окончательно формирует свое значение и более не будет изменяться в данной точке времени). По-умолчанию <see langword="true"/>.</param>
+            <returns>Новое значение индикатора.</returns>
+        </member>
         <member name="M:StockSharp.Algo.Indicators.IndicatorHelper.GetInputValue``1(StockSharp.Algo.Indicators.IIndicatorValue)">
             <summary>
             Получить входное значение для <see cref="T:StockSharp.Algo.Indicators.IIndicatorValue"/>.
@@ -10463,6 +10504,18 @@
             Сохранить инструмент.
             </summary>
             <param name="security">Инструмент.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Storages.ISecurityStorage.Delete(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Удалить инструмент.
+            </summary>
+            <param name="security">Инструмент.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Storages.ISecurityStorage.DeleteBy(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Удалить инструменты по критерию.
+            </summary>
+            <param name="criteria">Критерий.</param>
         </member>
         <member name="M:StockSharp.Algo.Storages.ISecurityStorage.GetSecurityIds">
             <summary>
@@ -12288,6 +12341,14 @@
             <param name="format">Тип формата. По-умолчанию передается <see cref="F:StockSharp.Algo.Storages.StorageFormats.Binary"/>.</param>
             <returns>Хранилище маркет-данных.</returns>
         </member>
+        <member name="M:StockSharp.Algo.Storages.IStorageRegistry.GetSecurityStorage(StockSharp.Algo.Storages.IMarketDataDrive,StockSharp.Algo.Storages.StorageFormats)">
+            <summary>
+            Получить хранилище инструментов.
+            </summary>
+            <param name="drive">Хранилище. Если значение равно <see langword="null"/>, то будет использоваться <see cref="P:StockSharp.Algo.Storages.IStorageRegistry.DefaultDrive"/>.</param>
+            <param name="format">Тип формата. По-умолчанию передается <see cref="F:StockSharp.Algo.Storages.StorageFormats.Binary"/>.</param>
+            <returns>Хранилище инструментов.</returns>
+        </member>
         <member name="M:StockSharp.Algo.Storages.IStorageRegistry.RegisterTradeStorage(StockSharp.Algo.Storages.IMarketDataStorage{StockSharp.BusinessEntities.Trade})">
             <summary>
             Зарегистрировать хранилище тиковых сделок.
@@ -12533,9 +12594,40 @@
             <param name="format">Тип формата. По-умолчанию передается <see cref="F:StockSharp.Algo.Storages.StorageFormats.Binary"/>.</param>
             <returns>Хранилище новостей.</returns>
         </member>
+        <member name="M:StockSharp.Algo.Storages.StorageRegistry.GetSecurityStorage(StockSharp.Algo.Storages.IMarketDataDrive,StockSharp.Algo.Storages.StorageFormats)">
+            <summary>
+            Получить хранилище инструментов.
+            </summary>
+            <param name="drive">Хранилище. Если значение равно <see langword="null"/>, то будет использоваться <see cref="P:StockSharp.Algo.Storages.StorageRegistry.DefaultDrive"/>.</param>
+            <param name="format">Тип формата. По-умолчанию передается <see cref="F:StockSharp.Algo.Storages.StorageFormats.Binary"/>.</param>
+            <returns>Хранилище инструментов.</returns>
+        </member>
         <member name="P:StockSharp.Algo.Storages.StorageRegistry.DefaultDrive">
             <summary>
             Хранилище, которое используется по-умолчанию.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Algo.CollectionSecurityProvider">
+            <summary>
+            Поставщик информации об инструментах, получающий данные из коллекции.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.CollectionSecurityProvider.#ctor(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security})">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.CollectionSecurityProvider"/>.
+            </summary>
+            <param name="securities">Коллекция инструментов.</param>
+        </member>
+        <member name="M:StockSharp.Algo.CollectionSecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Найти инструменты, соответствующие фильтру <paramref name="criteria"/>.
+            </summary>
+            <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
+            <returns>Найденные инструменты.</returns>
+        </member>
+        <member name="P:StockSharp.Algo.CollectionSecurityProvider.Securities">
+            <summary>
+            Коллекция инструментов.
             </summary>
         </member>
         <member name="T:StockSharp.Algo.Strategies.Analytics.BaseAnalyticsStrategy">
@@ -16910,6 +17002,18 @@
             </summary>
             <param name="entity">Торговый объект.</param>
         </member>
+        <member name="M:StockSharp.Algo.Storages.SecurityList.Delete(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Удалить инструмент.
+            </summary>
+            <param name="security">Инструмент.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Storages.SecurityList.DeleteBy(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Удалить инструменты по критерию.
+            </summary>
+            <param name="criteria">Критерий.</param>
+        </member>
         <member name="T:StockSharp.Algo.Testing.ExecutionLogConverter">
             <summary>
             Преобразователь сообщений вида <see cref="T:StockSharp.Messages.QuoteChangeMessage"/> и <see cref="T:StockSharp.Messages.ExecutionMessage"/> (ассоциированный с тиковой сделкой)
@@ -17174,29 +17278,6 @@
         <member name="F:StockSharp.Algo.ShrinkRules.More">
             <summary>
             Округлять к большему значению.
-            </summary>
-        </member>
-        <member name="T:StockSharp.Algo.CollectionSecurityProvider">
-            <summary>
-            Поставщик информации об инструментах, получающий данные из коллекции.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Algo.CollectionSecurityProvider.#ctor(System.Collections.Generic.IEnumerable{StockSharp.BusinessEntities.Security})">
-            <summary>
-            Создать <see cref="T:StockSharp.Algo.CollectionSecurityProvider"/>.
-            </summary>
-            <param name="securities">Коллекция инструментов.</param>
-        </member>
-        <member name="M:StockSharp.Algo.CollectionSecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
-            <summary>
-            Найти инструменты, соответствующие фильтру <paramref name="criteria"/>.
-            </summary>
-            <param name="criteria">Инструмент, поля которого будут использоваться в качестве фильтра.</param>
-            <returns>Найденные инструменты.</returns>
-        </member>
-        <member name="P:StockSharp.Algo.CollectionSecurityProvider.Securities">
-            <summary>
-            Коллекция инструментов.
             </summary>
         </member>
         <member name="T:StockSharp.Algo.ConnectorSecurityProvider">
@@ -18209,6 +18290,12 @@
             </summary>
             <param name="provider">Поставщик информации об инструментах.</param>
             <returns>Все доступные инструменты.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.TraderHelper.DeleteAll(StockSharp.Algo.Storages.ISecurityStorage)">
+            <summary>
+            Удалить все инструменты.
+            </summary>
+            <param name="storage">Хранилище информации об инструментах.</param>
         </member>
         <member name="M:StockSharp.Algo.TraderHelper.GetSecurityValue``1(StockSharp.BusinessEntities.IMarketDataProvider,StockSharp.BusinessEntities.Security,StockSharp.Messages.Level1Fields)">
             <summary>

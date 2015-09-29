@@ -116,7 +116,7 @@
         </member>
         <member name="M:StockSharp.Quik.Lua.LuaFixTransactionMessageAdapter.PostInitCondition(System.Char,StockSharp.Messages.OrderCondition)">
             <summary>
-            Финальная инициализация условие заявки.
+            Финальная инициализация условия заявки.
             </summary>
             <param name="ordType">Тип заявки.</param>
             <param name="condition">Условие заявки.</param>
