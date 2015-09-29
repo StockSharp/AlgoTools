@@ -37,7 +37,7 @@
 	{
 		class SecurityStorage : ISecurityStorage
 		{
-			private readonly Dictionary<string, Security> _securitiesByCode = new Dictionary<string, Security>(StringComparer.InvariantCultureIgnoreCase);
+			private readonly Dictionary<string, List<Security>> _securitiesByCode = new Dictionary<string, List<Security>>(StringComparer.InvariantCultureIgnoreCase);
 			private readonly Dictionary<string, Security> _securitiesById = new Dictionary<string, Security>(StringComparer.InvariantCultureIgnoreCase);
 
 			IEnumerable<Security> ISecurityProvider.Lookup(Security criteria)
@@ -45,8 +45,12 @@
 				if (criteria.Code == "*")
 					return _securitiesById.Values;
 
-				var security = _securitiesById.TryGetValue(criteria.Id) ?? _securitiesByCode.TryGetValue(criteria.Code);
-				return security == null ? Enumerable.Empty<Security>() : new[] { security };
+				var security = _securitiesById.TryGetValue(criteria.Id);
+				
+				if (security != null)
+					return new[] { security };
+
+				return _securitiesByCode.TryGetValue(criteria.Code) ?? Enumerable.Empty<Security>();
 			}
 
 			object ISecurityProvider.GetNativeId(Security security)
@@ -56,13 +60,23 @@
 
 			void ISecurityStorage.Save(Security security)
 			{
-				_securitiesByCode[security.Code] = security;
+				_securitiesByCode.SafeAdd(security.Code).Add(security);
 				_securitiesById[security.Id] = security;
 			}
 
 			IEnumerable<string> ISecurityStorage.GetSecurityIds()
 			{
 				return _securitiesById.Keys;
+			}
+
+			void ISecurityStorage.Delete(Security security)
+			{
+				throw new NotSupportedException();
+			}
+
+			void ISecurityStorage.DeleteBy(Security criteria)
+			{
+				throw new NotSupportedException();
 			}
 		}
 
@@ -162,7 +176,7 @@
 
 		private readonly FinamHistorySource _finamHistorySource = new FinamHistorySource();
 		private readonly ISecurityStorage _securityStorage = new SecurityStorage();
-		private readonly StorageRegistry _dataRegistry = new StorageRegistry { DefaultDrive = new LocalMarketDataDrive("Data") };
+		private readonly StorageRegistry _dataRegistry = new StorageRegistry { DefaultDrive = new LocalMarketDataDrive(Path.Combine(_settingsDir, "Data")) };
 		private readonly Dictionary<string, StorageRegistry> _traderStorages = new Dictionary<string, StorageRegistry>(StringComparer.InvariantCultureIgnoreCase);
 		private readonly Competition _competition = new Competition();
 		private readonly StatisticManager _statisticManager = new StatisticManager();
@@ -174,6 +188,8 @@
 		private readonly FilterableSecurityProvider _securityProvider;
 		private readonly Dictionary<SecurityEditor, ColorSettings> _securityCtrls = new Dictionary<SecurityEditor, ColorSettings>();
 
+		private const string _settingsDir = "Settings";
+
 		private class Settings : IPersistable
 		{
 			public DateTime Year { get; set; }
@@ -184,6 +200,7 @@
 			public string Security2 { get; set; }
 			public string Security3 { get; set; }
 			public string Security4 { get; set; }
+			public bool Apart { get; set; }
 			public TimeSpan TimeFrame { get; set; }
 
 			void IPersistable.Load(SettingsStorage storage)
@@ -196,6 +213,7 @@
 				Security2 = storage.GetValue<string>("Security2");
 				Security3 = storage.GetValue<string>("Security3");
 				Security4 = storage.GetValue<string>("Security4");
+				Apart = storage.GetValue("Apart", true);
 				TimeFrame = storage.GetValue<TimeSpan>("TimeFrame");
 			}
 
@@ -214,11 +232,12 @@
 				storage.SetValue("Security2", Security2);
 				storage.SetValue("Security3", Security3);
 				storage.SetValue("Security4", Security4);
+				storage.SetValue("Apart", Apart);
 				storage.SetValue("TimeFrame", TimeFrame);
 			}
 		}
 
-		private const string _settingsFile = "setting.xml";
+		private static readonly string _settingsFile = Path.Combine(_settingsDir, "setting.xml");
 
 		public MainWindow()
 		{
@@ -306,6 +325,8 @@
 			Year.ItemsSource = Competition.AllYears;
 			Year.SelectedItem = Competition.AllYears.Last();
 
+			Directory.CreateDirectory(_settingsDir);
+
 			var ns = typeof(IIndicator).Namespace;
 
 			var rendererTypes = typeof(Chart).Assembly
@@ -320,7 +341,7 @@
 
 			Chart.IndicatorTypes.AddRange(indicators);
 
-			const string finamSecurities = "finam.csv";
+			var finamSecurities = Path.Combine(_settingsDir, "finam.csv");
 
 			if (File.Exists(finamSecurities))
 			{
@@ -376,6 +397,7 @@
 				Security3.Text = settings.Security3;
 				Security4.Text = settings.Security4;
 				TimeFrame.SelectedItem = settings.TimeFrame;
+				Apart.IsChecked = settings.Apart;
 			}
 			else
 			{
@@ -384,7 +406,8 @@
 				//Trader.Text = "iZotov";
 				//Security1.Text = "SPZ5@FORTS";
 				//Security2.Text = "SIZ5@FORTS";
-				//From.Value = new DateTime(2014, 09, 16);	
+				//From.Value = new DateTime(2014, 09, 16);
+				Apart.IsChecked = true;
 			}
 		}
 
@@ -400,7 +423,8 @@
 				Security2 = Security2.Text,
 				Security3 = Security3.Text,
 				Security4 = Security4.Text,
-				TimeFrame = SelectedTimeFrame
+				TimeFrame = SelectedTimeFrame,
+				Apart = Apart.IsChecked == true,
 			};
 			CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Serialize(settings.Save(), _settingsFile));
 
@@ -445,6 +469,7 @@
 			var to = (To.Value ?? year.Days.Last()).EndOfDay();
 			var trader = SelectedTrader;
 			var tf = SelectedTimeFrame;
+			var apart = Apart.IsChecked == true;
 
 			var seriesSet = _securityCtrls
 				.Where(pair => pair.Key.SelectedSecurity != null)
@@ -508,8 +533,8 @@
 					// TODO
 					secCandles.AddRange(newCandles);
 				}
-				
-				var traderDrive = new LocalMarketDataDrive(trader);
+
+				var traderDrive = new LocalMarketDataDrive(Path.Combine(_settingsDir, trader));
 				var traderStorage = _traderStorages.SafeAdd(trader, key => new StorageRegistry { DefaultDrive = traderDrive });
 
 				foreach (var series in seriesSet)
@@ -655,31 +680,61 @@
 					
 					_statisticManager.Reset();
 
-					var candlesArea = new ChartArea();
-					Chart.AddArea(candlesArea);
+					var equityInd = new SimpleMovingAverage { Length = 1 };
+					ChartIndicatorElement equityElem;
+					var candlesAreas = new Dictionary<CandleSeries, ChartArea>();
 
-					var positionArea = new ChartArea { Height = 200 };
+					if (apart)
+					{
+						foreach (var series in seriesSet)
+						{
+							var area = new ChartArea { Title = series.Item1.Security.Id };
+							Chart.AddArea(area);
+							candlesAreas.Add(series.Item1, area);
+						}
+
+						var equityArea = new ChartArea { Title = LocalizedStrings.PnL };
+						Chart.AddArea(equityArea);
+
+						equityElem = new ChartIndicatorElement
+						{
+							FullTitle = LocalizedStrings.PnL,
+							IndicatorPainter = new PnlPainter()
+						};
+						Chart.AddElement(equityArea, equityElem);
+					}
+					else
+					{
+						var candlesArea = new ChartArea();
+						Chart.AddArea(candlesArea);
+
+						foreach (var tuple in seriesSet)
+						{
+							candlesAreas.Add(tuple.Item1, candlesArea);
+						}
+
+						const string equityYAxis = "Equity";
+
+						candlesArea.YAxises.Clear();
+						candlesArea.YAxises.Add(new ChartAxis
+						{
+							Id = equityYAxis,
+							AutoRange = true,
+							AxisType = ChartAxisType.Numeric,
+							AxisAlignment = ChartAxisAlignment.Left,
+						});
+						equityElem = new ChartIndicatorElement
+						{
+							YAxisId = equityYAxis,
+							FullTitle = LocalizedStrings.PnL,
+							IndicatorPainter = new PnlPainter()
+						};
+						Chart.AddElement(candlesArea, equityElem);
+					}
+
+					var positionArea = new ChartArea { Height = 100 };
 					Chart.AddArea(positionArea);
 					positionArea.YAxises.Clear();
-
-					const string equityYAxis = "Equity";
-
-					candlesArea.YAxises.Clear();
-					candlesArea.YAxises.Add(new ChartAxis
-					{
-						Id = equityYAxis,
-						AutoRange = true,
-						AxisType = ChartAxisType.Numeric,
-						AxisAlignment = ChartAxisAlignment.Left,
-					});
-					var equityElem = new ChartIndicatorElement
-					{
-						YAxisId = equityYAxis,
-						FullTitle = LocalizedStrings.PnL,
-						IndicatorPainter = new PnlPainter()
-					};
-					var equityInd = new SimpleMovingAverage { Length = 1 };
-					Chart.AddElement(candlesArea, equityElem);
 
 					var chartValues = new SortedDictionary<DateTimeOffset, IDictionary<IChartElement, object>>();
 					var pnlValues = new Dictionary<DateTimeOffset, decimal>();
@@ -689,6 +744,8 @@
 						var security = series.Item1.Security;
 
 						var candleYAxis = "Candles_Y_" + security.Id;
+
+						var candlesArea = candlesAreas[series.Item1];
 
 						candlesArea.YAxises.Add(new ChartAxis
 						{

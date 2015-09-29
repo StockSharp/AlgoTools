@@ -25,7 +25,7 @@
 					<ColumnDefinition Width="5" />
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="5" />
-					<ColumnDefinition Width="100" />
+					<ColumnDefinition Width="200" />
 					<ColumnDefinition Width="5" />
 					<ColumnDefinition />
 					<ColumnDefinition Width="5" />
@@ -74,6 +74,8 @@
 					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition Width="5" />
 					<ColumnDefinition Width="100" />
+					<ColumnDefinition Width="5" />
+					<ColumnDefinition Width="Auto" />
 					<ColumnDefinition />
 				</Grid.ColumnDefinitions>
 
@@ -96,6 +98,10 @@
 					<Run Text="{x:Static loc:LocalizedStrings.Security}"/><Run Text=" 4:"/>
 				</TextBlock>
 				<sx:SecurityEditor Grid.Column="14" x:Name="Security4" SecuritySelected="OnSecuritySelected" />
+
+				<CheckBox x:Name="Apart" Grid.Column="16" VerticalAlignment="Center">
+					<Run Text="{x:Static loc:LocalizedStrings.Apart}"/>
+				</CheckBox>
 			</Grid>
 
 			<Grid Grid.Row="4">
