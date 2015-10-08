@@ -69,6 +69,8 @@
 				return _securitiesById.Keys;
 			}
 
+			public event Action<Security> NewSecurity;
+
 			void ISecurityStorage.Delete(Security security)
 			{
 				throw new NotSupportedException();
@@ -86,8 +88,6 @@
 
 			private readonly string _filePath;
 
-			private bool _isChanged;
-
 			public DateTime? MinValue { get { return _dates.FirstOr(); } }
 
 			public DateTime? MaxValue { get { return _dates.LastOr(); } }
@@ -100,29 +100,20 @@
 					CultureInfo.InvariantCulture.DoInCulture(() => _dates.AddRange(new XmlSerializer<DateTime[]>().Deserialize(_filePath)));
 			}
 
-			public void Add(DateTime date)
+			public void Add(params DateTime[] dates)
 			{
-				if (date >= DateTime.Today)
-					return;
+				if (dates == null)
+					throw new ArgumentNullException("dates");
 
-				_dates.Add(date);
-				_isChanged = true;
+				_dates.AddRange(dates.Where(d => d < DateTime.Today));
+
+				_filePath.CreateDirIfNotExists();
+				CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<DateTime[]>().Serialize(_dates.ToArray(), _filePath));
 			}
 
 			public bool Contains(DateTime date)
 			{
 				return _dates.Contains(date);
-			}
-
-			public void Save()
-			{
-				if (!_isChanged)
-					return;
-
-				_isChanged = true;
-
-				_filePath.CreateDirIfNotExists();
-				CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<DateTime[]>().Serialize(_dates.ToArray(), _filePath));
 			}
 		}
 
@@ -411,26 +402,6 @@
 			}
 		}
 
-		protected override void OnClosed(EventArgs e)
-		{
-			var settings = new Settings
-			{
-				Year = SelectedYear.Year,
-				Trader = Trader.Text,
-				From = From.Value,
-				To = To.Value,
-				Security1 = Security1.Text,
-				Security2 = Security2.Text,
-				Security3 = Security3.Text,
-				Security4 = Security4.Text,
-				TimeFrame = SelectedTimeFrame,
-				Apart = Apart.IsChecked == true,
-			};
-			CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Serialize(settings.Save(), _settingsFile));
-
-			base.OnClosed(e);
-		}
-
 		private void Year_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
 		{
 			From.Value = To.Value = null;
@@ -464,13 +435,28 @@
 		
 		private void Download_OnClick(object sender, RoutedEventArgs e)
 		{
+			var settings = new Settings
+			{
+				Year = SelectedYear.Year,
+				Trader = Trader.Text,
+				From = From.Value,
+				To = To.Value,
+				Security1 = Security1.Text,
+				Security2 = Security2.Text,
+				Security3 = Security3.Text,
+				Security4 = Security4.Text,
+				TimeFrame = SelectedTimeFrame,
+				Apart = Apart.IsChecked == true,
+			};
+			CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Serialize(settings.Save(), _settingsFile));
+
 			var year = SelectedYear;
 			var from = From.Value ?? year.Days.First();
 			var to = (To.Value ?? year.Days.Last()).EndOfDay();
 			var trader = SelectedTrader;
 			var tf = SelectedTimeFrame;
 			var apart = Apart.IsChecked == true;
-
+			
 			var seriesSet = _securityCtrls
 				.Where(pair => pair.Key.SelectedSecurity != null)
 				.Select(pair => Tuple.Create(new CandleSeries(typeof(TimeFrameCandle), pair.Key.SelectedSecurity, tf), pair.Value))
@@ -516,19 +502,28 @@
 					if (finamTo <= finamFrom)
 						continue;
 
-					worker.ReportProgress(1, Tuple.Create(security, finamFrom, finamTo));
+					TimeFrameCandle[] newCandles;
 
-					var newCandles = (tf.Ticks == 1
-						? finamFrom.Range(finamTo, TimeSpan.FromDays(1)).SelectMany(day => _finamHistorySource.GetTrades(security, day, day)).ToEx().ToCandles<TimeFrameCandle>(tf)
-						: _finamHistorySource.GetCandles(security, tf, finamFrom, finamTo)
-						).ToArray();
+					if (tf.Ticks == 1)
+					{
+						newCandles = finamFrom.Range(finamTo, TimeSpan.FromDays(1)).SelectMany(day =>
+						{
+							worker.ReportProgress(1, Tuple.Create(security, day));
 
-					candleStorage.Save(newCandles);
-
-					foreach (var date in newCandles.Select(c => c.OpenTime.Date).Distinct())
-						candlesDatesCache.Add(date);
-
-					candlesDatesCache.Save();
+							var candles = _finamHistorySource.GetTrades(security, day, day).ToEx().ToCandles<TimeFrameCandle>(tf).ToArray();
+							candleStorage.Save(candles);
+							candlesDatesCache.Add(day);
+							return candles;
+						}).ToArray();
+					}
+					else
+					{
+						worker.ReportProgress(1, Tuple.Create(security, finamFrom, finamTo));
+						newCandles = _finamHistorySource.GetCandles(security, tf, finamFrom, finamTo).ToArray();
+						
+						candleStorage.Save(newCandles);
+						candlesDatesCache.Add(newCandles.Select(c => c.OpenTime.Date).Distinct().ToArray());
+					}
 
 					// TODO
 					secCandles.AddRange(newCandles);
@@ -574,7 +569,6 @@
 							}
 
 							tradeDatesCache.Add(date);
-							tradeDatesCache.Save();
 
 							return dateTrades;
 						})
@@ -661,8 +655,14 @@
 				switch (ea.ProgressPercentage)
 				{
 					case 1:
-						BusyIndicator.BusyContent = "Скачивание {Item1.Id} свечей с {Item2:yyyy-MM-dd} по {Item3:yyyy-MM-dd}...".PutEx(ea.UserState);
+					{
+						if (ea.UserState is Tuple<Security, DateTime>)
+							BusyIndicator.BusyContent = "Скачивание {Item1.Id} тиков за {Item2:yyyy-MM-dd}...".PutEx(ea.UserState);
+						else
+							BusyIndicator.BusyContent = "Скачивание {Item1.Id} свечей с {Item2:yyyy-MM-dd} по {Item3:yyyy-MM-dd}...".PutEx(ea.UserState);
+						
 						break;
+					}
 
 					default:
 						BusyIndicator.BusyContent = "Скачивание сделок за {0:yyyy-MM-dd}...".Put(ea.UserState);
