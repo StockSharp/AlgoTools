@@ -4,6 +4,80 @@
         <name>StockSharp.Algo</name>
     </assembly>
     <members>
+        <member name="T:StockSharp.Algo.ISecurityList">
+            <summary>
+            Interface describing a list of items.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Algo.FilterableSecurityProvider">
+            <summary>
+            Provider of information about instruments supporting search using <see cref="T:Gma.DataStructures.StringSearch.SuffixTrie`1"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.FilterableSecurityProvider.#ctor(StockSharp.Algo.ISecurityList,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Algo.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="securities">Securities.</param>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.Algo.FilterableSecurityProvider.#ctor(System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Algo.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.Algo.FilterableSecurityProvider.#ctor(StockSharp.BusinessEntities.IConnector,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Algo.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="connector">Connection to the trading system.</param>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.Algo.FilterableSecurityProvider.#ctor(StockSharp.Algo.Storages.ISecurityStorage,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Algo.FilterableSecurityProvider"/>.
+            </summary>
+            <param name="storage">Security meta info storage.</param>
+            <param name="excludeFilter">Filter for instruments exclusion.</param>
+        </member>
+        <member name="M:StockSharp.Algo.FilterableSecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Lookup securities by criteria <paramref name="criteria" />.
+            </summary>
+            <param name="criteria">The instrument whose fields will be used as a filter.</param>
+            <returns>Found instruments.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.FilterableSecurityProvider.DisposeManaged">
+            <summary>
+            Release resources.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.FilterableSecurityProvider.Securities">
+            <summary>
+            Available instruments.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.FilterableSecurityProvider.Connector">
+            <summary>
+            Connection to the trading system.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.FilterableSecurityProvider.ExcludeFilter">
+            <summary>
+            Filter for instruments exclusion.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.FilterableSecurityProvider.ExcludedCount">
+            <summary>
+            The number of excluded instruments by filter <see cref="P:StockSharp.Algo.FilterableSecurityProvider.ExcludeFilter"/>.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.FilterableSecurityProvider.SecuritiesChanged">
+            <summary>
+            Available instruments set change event.
+            </summary>
+        </member>
         <member name="T:StockSharp.Algo.Indicators.Correlation">
             <summary>
             Корреляция.
@@ -410,6 +484,11 @@
             Загрузить настройки.
             </summary>
             <param name="storage">Хранилище настроек.</param>
+        </member>
+        <member name="M:StockSharp.Algo.BasketMessageAdapter.DisposeManaged">
+            <summary>
+            Освободить занятые ресурсы.
+            </summary>
         </member>
         <member name="P:StockSharp.Algo.BasketMessageAdapter.InnerAdapters">
             <summary>
@@ -4213,7 +4292,29 @@
             <summary>
             Создать <see cref="T:StockSharp.Algo.HeartbeatAdapter"/>.
             </summary>
-            <param name="adapter">Адаптер.</param>
+            <param name="innerAdapter">Underlying adapter.</param>
+        </member>
+        <member name="M:StockSharp.Algo.HeartbeatAdapter.SendInMessage(StockSharp.Messages.Message)">
+            <summary>
+            Send message.
+            </summary>
+            <param name="message">Message.</param>
+        </member>
+        <member name="M:StockSharp.Algo.HeartbeatAdapter.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.HeartbeatAdapter.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.Algo.HeartbeatAdapter"/>.
+            </summary>
+            <returns>Copy.</returns>
+        </member>
+        <member name="E:StockSharp.Algo.HeartbeatAdapter.NewOutMessage">
+            <summary>
+            New message event.
+            </summary>
         </member>
         <member name="T:StockSharp.Algo.ContinuousSecurity">
             <summary>
@@ -8687,16 +8788,28 @@
             </summary>
             <param name="innerAdapter">Адаптер, в который будут перенаправляться сообщения.</param>
         </member>
+        <member name="M:StockSharp.Algo.ManagedMessageAdapter.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.ManagedMessageAdapter.SendInMessage(StockSharp.Messages.Message)">
+            <summary>
+            Send message.
+            </summary>
+            <param name="message">Message.</param>
+        </member>
         <member name="M:StockSharp.Algo.ManagedMessageAdapter.ProcessMessage(StockSharp.Messages.Message)">
             <summary>
             Обработать сообщение, содержащее рыночные данные.
             </summary>
             <param name="message">Сообщение, содержащее рыночные данные.</param>
         </member>
-        <member name="P:StockSharp.Algo.ManagedMessageAdapter.InnerAdapter">
+        <member name="M:StockSharp.Algo.ManagedMessageAdapter.Clone">
             <summary>
-            Вложенный адаптер.
+            Create a copy of <see cref="T:StockSharp.Algo.ManagedMessageAdapter"/>.
             </summary>
+            <returns>Copy.</returns>
         </member>
         <member name="P:StockSharp.Algo.ManagedMessageAdapter.CommissionManager">
             <summary>
@@ -8711,6 +8824,11 @@
         <member name="P:StockSharp.Algo.ManagedMessageAdapter.RiskManager">
             <summary>
             Менеджер расчета задержки регистрации заявок.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Algo.ManagedMessageAdapter.NewOutMessage">
+            <summary>
+            New message event.
             </summary>
         </member>
         <member name="M:StockSharp.Algo.PnL.PortfolioPnLManager.Reset">
@@ -10342,6 +10460,36 @@
             Смещение значения индикатора.
             </summary>
         </member>
+        <member name="T:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1">
+            <summary>
+            Хранилище, генерирующее данные в процессе работы.
+            </summary>
+            <typeparam name="T">Тип данных.</typeparam>
+        </member>
+        <member name="M:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1.#ctor(StockSharp.BusinessEntities.Security,System.Object,System.Func{System.DateTimeOffset,System.Collections.Generic.IEnumerable{StockSharp.Messages.Message}},System.Type)">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1"/>.
+            </summary>
+            <param name="security">Инструмент, с которым работает внешнее хранилище.</param>
+            <param name="arg">Дополнительный аргумент, ассоциированный с данными. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg"/>.</param>
+            <param name="getData">Метод генерации данных для указанной даты.</param>
+            <param name="dataType">Тип данных.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1.#ctor(StockSharp.BusinessEntities.Security,System.Object,System.Func{System.DateTimeOffset,System.Collections.Generic.IEnumerable{`0}})">
+            <summary>
+            Создать <see cref="T:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1"/>.
+            </summary>
+            <param name="security">Инструмент, с которым работает внешнее хранилище.</param>
+            <param name="arg">Дополнительный аргумент, ассоциированный с данными. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg"/>.</param>
+            <param name="getData">Метод генерации данных для указанной даты.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1.Load(System.DateTime)">
+            <summary>
+            Загрузить данные.
+            </summary>
+            <param name="date">Дата, для которой необходимо загрузить данные.</param>
+            <returns>Данные. Если данных не существует, то будет возвращено пустое множество.</returns>
+        </member>
         <member name="T:StockSharp.Algo.Storages.ISecurityMarketDataDrive">
             <summary>
             Интерфейс, описывающий хранилище для инструмента.
@@ -10522,6 +10670,11 @@
             Получить идентификаторы сохраненных инструментов.
             </summary>
             <returns>Идентификаторы инструментов.</returns>
+        </member>
+        <member name="E:StockSharp.Algo.Storages.ISecurityStorage.NewSecurity">
+            <summary>
+            Событие добавление нового инструмента.
+            </summary>
         </member>
         <member name="T:StockSharp.Algo.Storages.NewsList">
             <summary>
@@ -14640,6 +14793,21 @@
             Имя портфеля. Если оно задано, то <see cref="P:StockSharp.Algo.Testing.CommissionRuleMessage.Rule"/> применяется к конктреному портфелю.
             </summary>
         </member>
+        <member name="T:StockSharp.Algo.Testing.HistorySourceMessage">
+            <summary>
+            Market-data message with historical source.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Algo.Testing.HistorySourceMessage.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Algo.Testing.HistorySourceMessage"/>.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Algo.Testing.HistorySourceMessage.GetMessages">
+            <summary>
+            Callback to retrieve historical data for the specified date.
+            </summary>
+        </member>
         <member name="T:StockSharp.Algo.TimeQuoteChange">
             <summary>
             Котировка с меткой времени. Используется для CSV файлов.
@@ -15820,6 +15988,17 @@
             в виде одной транзакции.
             </summary>
         </member>
+        <member name="T:StockSharp.Algo.Storages.IBasketMarketDataStorageEnumerator`1">
+            <summary>
+            Загрузчик сообщений хранилища-агрегатора.
+            </summary>
+            <typeparam name="T">Тип сообщения.</typeparam>
+        </member>
+        <member name="P:StockSharp.Algo.Storages.IBasketMarketDataStorageEnumerator`1.DataTypes">
+            <summary>
+            Доступные типы данных.
+            </summary>
+        </member>
         <member name="T:StockSharp.Algo.Storages.BasketMarketDataStorage`1">
             <summary>
             Хранилище-агрегатор, позволяющее загружать данные одновременно из нескольких хранилищ маркет-данных.
@@ -15848,11 +16027,6 @@
             Вложенные хранилища маркет-данных.
             </summary>
         </member>
-        <member name="T:StockSharp.Algo.Storages.BasketMarketDataStorage`1.BasketMarketDataStorageEnumerator">
-            <summary>
-            Загрузчик сообщений хранилища-агрегатора.
-            </summary>
-        </member>
         <member name="P:StockSharp.Algo.Storages.BasketMarketDataStorage`1.BasketMarketDataStorageEnumerator.Current">
             <summary>
             Текущее сообщение.
@@ -15862,25 +16036,6 @@
             <summary>
             Доступные типы данных.
             </summary>
-        </member>
-        <member name="T:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1">
-            <summary>
-            Хранилище, генерирующее данные в процессе работы.
-            </summary>
-            <typeparam name="T">Тип данных.</typeparam>
-        </member>
-        <member name="M:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1.#ctor(System.Func{System.DateTime,System.Collections.Generic.IEnumerable{`0}})">
-            <summary>
-            Создать <see cref="T:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1"/>.
-            </summary>
-            <param name="getData">Метод генерации данных для указанной даты.</param>
-        </member>
-        <member name="M:StockSharp.Algo.Storages.InMemoryMarketDataStorage`1.Load(System.DateTime)">
-            <summary>
-            Загрузить данные.
-            </summary>
-            <param name="date">Дата, для которой необходимо загрузить данные.</param>
-            <returns>Данные. Если данных не существует, то будет возвращено пустое множество.</returns>
         </member>
         <member name="T:StockSharp.Algo.Testing.ClearingMessage">
             <summary>
@@ -16132,6 +16287,23 @@
             </summary>
             <param name="portfolio">Портфель, по которому необходимо начать получать новую информацию.</param>
         </member>
+        <member name="M:StockSharp.Algo.Testing.HistoryEmulationConnector.RegisterHistorySource(StockSharp.BusinessEntities.Security,StockSharp.Messages.MarketDataTypes,System.Object,System.Func{System.DateTimeOffset,System.Collections.Generic.IEnumerable{StockSharp.Messages.Message}})">
+            <summary>
+            Зарегистрировать исторические данные.
+            </summary>
+            <param name="security">Инструмент.</param>
+            <param name="dataType">Тип данных.</param>
+            <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType"/>. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg"/>.</param>
+            <param name="getMessages">Функция получения исторических данных.</param>
+        </member>
+        <member name="M:StockSharp.Algo.Testing.HistoryEmulationConnector.UnRegisterHistorySource(StockSharp.BusinessEntities.Security,StockSharp.Messages.MarketDataTypes,System.Object)">
+            <summary>
+            Удалить регистрацию, ранее осуществленную через <see cref="M:StockSharp.Algo.Testing.HistoryEmulationConnector.RegisterHistorySource(StockSharp.BusinessEntities.Security,StockSharp.Messages.MarketDataTypes,System.Object,System.Func{System.DateTimeOffset,System.Collections.Generic.IEnumerable{StockSharp.Messages.Message}})"/>.
+            </summary>
+            <param name="security">Инструмент.</param>
+            <param name="dataType">Тип данных.</param>
+            <param name="arg">Параметр, ассоциированный с типом <paramref name="dataType"/>. Например, <see cref="P:StockSharp.Algo.Candles.Candle.Arg"/>.</param>
+        </member>
         <member name="P:StockSharp.Algo.Testing.HistoryEmulationConnector.HistoryMessageAdapter">
             <summary>
             Адаптер, получающий сообщения из хранилища <see cref="T:StockSharp.Algo.Storages.IStorageRegistry"/>.
@@ -16200,6 +16372,13 @@
             </summary>
             <param name="depth"><see cref="T:StockSharp.BusinessEntities.MarketDepth"/>.</param>
             <returns><see cref="T:StockSharp.Messages.QuoteChangeMessage"/>.</returns>
+        </member>
+        <member name="M:StockSharp.Algo.MessageConverterHelper.ToCandleMessage(StockSharp.Messages.MarketDataTypes)">
+            <summary>
+            Преобразовать тип свечек <see cref="T:StockSharp.Messages.MarketDataTypes"/> в тип сообщения <see cref="T:StockSharp.Messages.CandleMessage"/>.
+            </summary>
+            <param name="type">Тип свечек.</param>
+            <returns>Тип сообщения <see cref="T:StockSharp.Messages.CandleMessage"/>.</returns>
         </member>
         <member name="M:StockSharp.Algo.MessageConverterHelper.ToCandleMarketDataType(System.Type)">
             <summary>
@@ -17013,6 +17192,11 @@
             Удалить инструменты по критерию.
             </summary>
             <param name="criteria">Критерий.</param>
+        </member>
+        <member name="E:StockSharp.Algo.Storages.SecurityList.NewSecurity">
+            <summary>
+            Событие добавление нового инструмента.
+            </summary>
         </member>
         <member name="T:StockSharp.Algo.Testing.ExecutionLogConverter">
             <summary>

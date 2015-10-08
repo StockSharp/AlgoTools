@@ -473,6 +473,47 @@
             The list of rules added to the table.
             </summary>
         </member>
+        <member name="T:StockSharp.Xaml.ConnectorInfo">
+            <summary>
+            Information about connection.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Xaml.ConnectorInfo.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Xaml.ConnectorInfo"/>.
+            </summary>
+            <param name="adapterType">The type of transaction or market data adapter.</param>
+        </member>
+        <member name="P:StockSharp.Xaml.ConnectorInfo.Name">
+            <summary>
+            The connection name.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Xaml.ConnectorInfo.Description">
+            <summary>
+            The connection description.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Xaml.ConnectorInfo.Category">
+            <summary>
+            The connection description.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Xaml.ConnectorInfo.PreferLanguage">
+            <summary>
+            The target audience.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Xaml.ConnectorInfo.Platform">
+            <summary>
+            Platform.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Xaml.ConnectorInfo.AdapterType">
+            <summary>
+            The type of adapter.
+            </summary>
+        </member>
         <member name="T:StockSharp.Xaml.EndPointListEditor">
             <summary>
             Editor for the collection <see cref="T:System.Net.EndPoint"/>.
@@ -2666,165 +2707,47 @@
             List of selected types.
             </summary>
         </member>
-        <member name="T:StockSharp.Xaml.MessageAdaptersPanel">
-            <summary>
-            The panel for the new connections creating <see cref="T:StockSharp.Messages.IMessageAdapter"/>.
-            </summary>
-            <summary>
-            MessageAdaptersPanel
-            </summary>
-        </member>
-        <member name="F:StockSharp.Xaml.MessageAdaptersPanel.RemoveSessionCommand">
-            <summary>
-            <see cref="T:System.Windows.Input.RoutedCommand"/> for the connection removal.
-            </summary>
-        </member>
-        <member name="F:StockSharp.Xaml.MessageAdaptersPanel.EnableSessionCommand">
-            <summary>
-            <see cref="T:System.Windows.Input.RoutedCommand"/> to enable connection.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Xaml.MessageAdaptersPanel.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.Xaml.MessageAdaptersPanel"/>.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Xaml.MessageAdaptersPanel.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.MessageAdaptersPanel.AutoConnect">
-            <summary>
-            Auto connect.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.MessageAdaptersPanel.Adapter">
-            <summary>
-            Adapter aggregator.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.MessageAdaptersPanel.ConnectorsInfo">
-            <summary>
-            Visual description of available connections.
-            </summary>
-        </member>
-        <member name="E:StockSharp.Xaml.MessageAdaptersPanel.ConnectorsChanged">
-            <summary>
-            The settings change event.
-            </summary>
-        </member>
-        <member name="E:StockSharp.Xaml.MessageAdaptersPanel.CheckConnectionState">
-            <summary>
-            The connection status check event.
-            </summary>
-        </member>
-        <member name="T:StockSharp.Xaml.ConnectorInfo">
-            <summary>
-            Information about connection.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Xaml.ConnectorInfo.#ctor(System.Type,System.Type)">
-            <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.Xaml.ConnectorInfo"/>.
-            </summary>
-            <param name="transactionAdapterType">The type of transaction adapter.</param>
-            <param name="marketDataAdapterType">The type of market data adapter.</param>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.Name">
-            <summary>
-            The connection name.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.Description">
-            <summary>
-            The connection description.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.Category">
-            <summary>
-            The connection description.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.PreferLanguage">
-            <summary>
-            The target audience.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.Platform">
-            <summary>
-            Platform.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.TransactionAdapterType">
-            <summary>
-            The type of transaction adapter.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.ConnectorInfo.MarketDataAdapterType">
-            <summary>
-            The type of market data adapter.
-            </summary>
-        </member>
-        <member name="T:StockSharp.Xaml.MessageAdaptersWindow">
+        <member name="T:StockSharp.Xaml.ConnectorWindow">
             <summary>
             The window for new connections creating <see cref="T:StockSharp.Messages.IMessageAdapter"/>.
             </summary>
             <summary>
-            MessageAdaptersWindow
+            ConnectorWindow
             </summary>
         </member>
-        <member name="M:StockSharp.Xaml.MessageAdaptersWindow.#ctor">
+        <member name="F:StockSharp.Xaml.ConnectorWindow.RemoveCommand">
             <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.Xaml.MessageAdaptersWindow"/>.
+            <see cref="T:System.Windows.Input.RoutedCommand"/> for the connection removal.
             </summary>
         </member>
-        <member name="M:StockSharp.Xaml.MessageAdaptersWindow.InitializeComponent">
+        <member name="F:StockSharp.Xaml.ConnectorWindow.EnableCommand">
+            <summary>
+            <see cref="T:System.Windows.Input.RoutedCommand"/> to enable connection.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Xaml.ConnectorWindow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:StockSharp.Xaml.ConnectorWindow"/>.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Xaml.ConnectorWindow.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
         </member>
-        <member name="E:StockSharp.Xaml.MessageAdaptersWindow.CheckConnectionState">
-            <summary>
-            The connection status check event.
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.MessageAdaptersWindow.AutoConnect">
+        <member name="P:StockSharp.Xaml.ConnectorWindow.AutoConnect">
             <summary>
             Auto connect.
             </summary>
         </member>
-        <member name="P:StockSharp.Xaml.MessageAdaptersWindow.Adapter">
+        <member name="P:StockSharp.Xaml.ConnectorWindow.Adapter">
             <summary>
             Adapter aggregator.
             </summary>
         </member>
-        <member name="P:StockSharp.Xaml.MessageAdaptersWindow.ConnectorsInfo">
+        <member name="P:StockSharp.Xaml.ConnectorWindow.ConnectorsInfo">
             <summary>
             Visual description of available connections.
-            </summary>
-        </member>
-        <member name="T:StockSharp.Xaml.MessageAdapterWindow">
-            <summary>
-            The window for connection settings editing <see cref="T:StockSharp.Messages.IMessageAdapter"/>.
-            </summary>
-            <summary>
-            MessageAdapterWindow
-            </summary>
-        </member>
-        <member name="M:StockSharp.Xaml.MessageAdapterWindow.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.Xaml.MessageAdapterWindow"/>.
-            </summary>
-        </member>
-        <member name="M:StockSharp.Xaml.MessageAdapterWindow.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
-        <member name="P:StockSharp.Xaml.MessageAdapterWindow.Adapter">
-            <summary>
-            Adapter to the trading system.
             </summary>
         </member>
         <member name="T:StockSharp.Xaml.StatisticParameterGrid">

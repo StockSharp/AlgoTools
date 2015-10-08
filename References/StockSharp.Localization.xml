@@ -18772,7 +18772,7 @@
             Last trade volume
             </summary>
         </member>
-        <member name="F:StockSharp.Localization.LocalizedStrings.XamlStr385Key">
+        <member name="F:StockSharp.Localization.LocalizedStrings.OKKey">
             <summary>
             OK
             </summary>
@@ -20750,6 +20750,16 @@
         <member name="F:StockSharp.Localization.LocalizedStrings.ApartKey">
             <summary>
             Apart
+            </summary>
+        </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.FinamCandlesKey">
+            <summary>
+            Finam (сandles)
+            </summary>
+        </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.YahooCandlesKey">
+            <summary>
+            Yahoo (сandles)
             </summary>
         </member>
         <member name="M:StockSharp.Localization.LocalizedStrings.GetString(System.String,System.Nullable{Ecng.Localization.Languages})">
@@ -39455,7 +39465,7 @@
             Last trade volume
             </summary>
         </member>
-        <member name="P:StockSharp.Localization.LocalizedStrings.XamlStr385">
+        <member name="P:StockSharp.Localization.LocalizedStrings.OK">
             <summary>
             OK
             </summary>
@@ -41433,6 +41443,16 @@
         <member name="P:StockSharp.Localization.LocalizedStrings.Apart">
             <summary>
             Apart
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.FinamCandles">
+            <summary>
+            Finam (сandles)
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.YahooCandles">
+            <summary>
+            Yahoo (сandles)
             </summary>
         </member>
         <member name="T:StockSharp.Localization.ProjectDescriptions">

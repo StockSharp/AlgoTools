@@ -563,6 +563,16 @@
             Message adapter, forward messages through a transport channel <see cref="T:StockSharp.Messages.IMessageChannel"/>.
             </summary>
         </member>
+        <member name="T:StockSharp.Messages.MessageAdapterWrapper">
+            <summary>
+            Base implementation of <see cref="T:StockSharp.Messages.IMessageAdapterWrapper"/>.
+            </summary>
+        </member>
+        <member name="T:StockSharp.Messages.IMessageAdapterWrapper">
+            <summary>
+            Wrapping based adapter.
+            </summary>
+        </member>
         <member name="T:StockSharp.Messages.IMessageAdapter">
             <summary>
             Base message adapter interface which convert messages <see cref="T:StockSharp.Messages.Message"/> to native commands and back.
@@ -668,18 +678,62 @@
             Board code for combined security.
             </summary>
         </member>
+        <member name="P:StockSharp.Messages.IMessageAdapterWrapper.InnerAdapter">
+            <summary>
+            Underlying adapter.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Messages.MessageAdapterWrapper.#ctor(StockSharp.Messages.IMessageAdapter)">
+            <summary>
+            Initialize <see cref="T:StockSharp.Messages.MessageAdapterWrapper"/>.
+            </summary>
+            <param name="innerAdapter">Underlying adapter.</param>
+        </member>
+        <member name="M:StockSharp.Messages.MessageAdapterWrapper.SendInMessage(StockSharp.Messages.Message)">
+            <summary>
+            Send message.
+            </summary>
+            <param name="message">Message.</param>
+        </member>
+        <member name="M:StockSharp.Messages.MessageAdapterWrapper.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="P:StockSharp.Messages.MessageAdapterWrapper.InnerAdapter">
+            <summary>
+            Underlying adapter.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Messages.MessageAdapterWrapper.NewOutMessage">
+            <summary>
+            New message event.
+            </summary>
+        </member>
         <member name="M:StockSharp.Messages.ChannelMessageAdapter.#ctor(StockSharp.Messages.IMessageAdapter,StockSharp.Messages.IMessageChannel,StockSharp.Messages.IMessageChannel)">
             <summary>
             Initializes a new instance of the <see cref="T:StockSharp.Messages.ChannelMessageAdapter"/>.
             </summary>
-            <param name="adapter">Adapter.</param>
+            <param name="innerAdapter">Underlying adapter.</param>
             <param name="inputChannel">Incomming messages channgel.</param>
             <param name="outputChannel">Outgoing message channel.</param>
         </member>
-        <member name="P:StockSharp.Messages.ChannelMessageAdapter.Adapter">
+        <member name="M:StockSharp.Messages.ChannelMessageAdapter.Dispose">
             <summary>
-            Adapter.
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             </summary>
+        </member>
+        <member name="M:StockSharp.Messages.ChannelMessageAdapter.SendInMessage(StockSharp.Messages.Message)">
+            <summary>
+            Send message.
+            </summary>
+            <param name="message">Message.</param>
+        </member>
+        <member name="M:StockSharp.Messages.ChannelMessageAdapter.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.Messages.ChannelMessageAdapter"/>.
+            </summary>
+            <returns>Copy.</returns>
         </member>
         <member name="P:StockSharp.Messages.ChannelMessageAdapter.InputChannel">
             <summary>
@@ -699,6 +753,11 @@
         <member name="P:StockSharp.Messages.ChannelMessageAdapter.OwnOutputChannel">
             <summary>
             Control the lifetime of the outgoing messages channel.
+            </summary>
+        </member>
+        <member name="E:StockSharp.Messages.ChannelMessageAdapter.NewOutMessage">
+            <summary>
+            New message event.
             </summary>
         </member>
         <member name="T:StockSharp.Messages.ClearQueueMessage">
@@ -2113,6 +2172,14 @@
             <param name="adapter">Adapter.</param>
             <param name="type">Message type.</param>
         </member>
+        <member name="M:StockSharp.Messages.Extensions.IsMessageSupported(StockSharp.Messages.IMessageAdapter,StockSharp.Messages.MessageTypes)">
+            <summary>
+            Determines whether the specified message type is supported by the adapter.
+            </summary>
+            <param name="adapter">Adapter.</param>
+            <param name="type">Message type.</param>
+            <returns><see langword="true"/> if the specified message type is supported, otherwise, <see langword="false"/>.</returns>
+        </member>
         <member name="T:StockSharp.Messages.ExtandableEntityHelper">
             <summary>
             Extension class for <see cref="P:StockSharp.Messages.IExtendableEntity.ExtensionInfo"/>.
@@ -2162,6 +2229,12 @@
             Send message.
             </summary>
             <param name="message">Message.</param>
+        </member>
+        <member name="M:StockSharp.Messages.InMemoryMessageChannel.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.Messages.InMemoryMessageChannel"/>.
+            </summary>
+            <returns>Copy.</returns>
         </member>
         <member name="P:StockSharp.Messages.InMemoryMessageChannel.Name">
             <summary>
@@ -2301,6 +2374,12 @@
             <summary>
             Initializes a new instance of the <see cref="T:StockSharp.Messages.PassThroughMessageChannel"/>.
             </summary>
+        </member>
+        <member name="M:StockSharp.Messages.PassThroughMessageChannel.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.Messages.PassThroughMessageChannel"/>.
+            </summary>
+            <returns>Copy.</returns>
         </member>
         <member name="T:StockSharp.Messages.BaseChangeMessage`1">
             <summary>
@@ -2446,6 +2525,12 @@
             Save settings.
             </summary>
             <param name="storage">Settings storage.</param>
+        </member>
+        <member name="M:StockSharp.Messages.MessageAdapter.Clone">
+            <summary>
+            Create a copy of <see cref="T:StockSharp.Messages.MessageAdapter"/>.
+            </summary>
+            <returns>Copy.</returns>
         </member>
         <member name="P:StockSharp.Messages.MessageAdapter.SupportedMessages">
             <summary>

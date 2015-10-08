@@ -4,6 +4,17 @@
         <name>StockSharp.Quik</name>
     </assembly>
     <members>
+        <member name="T:StockSharp.Quik.Lua.LuaFixMarketDataMessageAdapter">
+            <summary>
+            Адаптер сообщений для Quik LUA FIX.
+            </summary>
+        </member>
+        <member name="M:StockSharp.Quik.Lua.LuaFixMarketDataMessageAdapter.#ctor(Ecng.Common.IdGenerator)">
+            <summary>
+            Создать <see cref="T:StockSharp.Quik.Lua.LuaFixMarketDataMessageAdapter"/>.
+            </summary>
+            <param name="transactionIdGenerator">Генератор идентификаторов транзакций.</param>
+        </member>
         <member name="T:StockSharp.Quik.Lua.LuaFixServer">
             <summary>
             FIX сервер, запускающийся LUA.

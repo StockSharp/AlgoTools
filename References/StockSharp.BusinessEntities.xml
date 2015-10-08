@@ -1777,98 +1777,6 @@
             Notification about adding a new exchange.
             </summary>
         </member>
-        <member name="T:StockSharp.BusinessEntities.ISecurityList">
-            <summary>
-            Interface describing a list of items.
-            </summary>
-        </member>
-        <member name="T:StockSharp.BusinessEntities.FilterableSecurityProvider">
-            <summary>
-            Provider of information about instruments supporting search using <see cref="T:Gma.DataStructures.StringSearch.SuffixTrie`1"/>.
-            </summary>
-        </member>
-        <member name="T:StockSharp.BusinessEntities.ISecurityProvider">
-            <summary>
-            The interface for access to provider of information about instruments.
-            </summary>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.ISecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
-            <summary>
-            Lookup securities by criteria <paramref name="criteria" />.
-            </summary>
-            <param name="criteria">The instrument whose fields will be used as a filter.</param>
-            <returns>Found instruments.</returns>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.ISecurityProvider.GetNativeId(StockSharp.BusinessEntities.Security)">
-            <summary>
-            Get native id.
-            </summary>
-            <param name="security">Security.</param>
-            <returns>Native (internal) trading system security id.</returns>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.#ctor(StockSharp.BusinessEntities.ISecurityList,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
-            <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.FilterableSecurityProvider"/>.
-            </summary>
-            <param name="securities">Securities.</param>
-            <param name="excludeFilter">Filter for instruments exclusion.</param>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.#ctor(System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
-            <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.FilterableSecurityProvider"/>.
-            </summary>
-            <param name="excludeFilter">Filter for instruments exclusion.</param>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.#ctor(StockSharp.BusinessEntities.IConnector,System.Boolean,System.Func{StockSharp.BusinessEntities.Security,System.Boolean})">
-            <summary>
-            Initializes a new instance of the <see cref="T:StockSharp.BusinessEntities.FilterableSecurityProvider"/>.
-            </summary>
-            <param name="connector">Connection to the trading system.</param>
-            <param name="onlyNewSecurities">To get only new instruments from the trading system.</param>
-            <param name="excludeFilter">Filter for instruments exclusion.</param>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
-            <summary>
-            Lookup securities by criteria <paramref name="criteria" />.
-            </summary>
-            <param name="criteria">The instrument whose fields will be used as a filter.</param>
-            <returns>Found instruments.</returns>
-        </member>
-        <member name="M:StockSharp.BusinessEntities.FilterableSecurityProvider.DisposeManaged">
-            <summary>
-            Release resources.
-            </summary>
-        </member>
-        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.Securities">
-            <summary>
-            Available instruments.
-            </summary>
-        </member>
-        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.Connector">
-            <summary>
-            Connection to the trading system.
-            </summary>
-        </member>
-        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.OnlyNewSecurities">
-            <summary>
-            To get only new instruments from the trading system.
-            </summary>
-        </member>
-        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.ExcludeFilter">
-            <summary>
-            Filter for instruments exclusion.
-            </summary>
-        </member>
-        <member name="P:StockSharp.BusinessEntities.FilterableSecurityProvider.ExcludedCount">
-            <summary>
-            The number of excluded instruments by filter <see cref="P:StockSharp.BusinessEntities.FilterableSecurityProvider.ExcludeFilter"/>.
-            </summary>
-        </member>
-        <member name="E:StockSharp.BusinessEntities.FilterableSecurityProvider.SecuritiesChanged">
-            <summary>
-            Available instruments set change event.
-            </summary>
-        </member>
         <member name="T:StockSharp.BusinessEntities.IConnector">
             <summary>
             The main interface providing the connection to the trading systems.
@@ -1905,6 +1813,25 @@
             <summary>
             Security changed.
             </summary>
+        </member>
+        <member name="T:StockSharp.BusinessEntities.ISecurityProvider">
+            <summary>
+            The interface for access to provider of information about instruments.
+            </summary>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ISecurityProvider.Lookup(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Lookup securities by criteria <paramref name="criteria" />.
+            </summary>
+            <param name="criteria">The instrument whose fields will be used as a filter.</param>
+            <returns>Found instruments.</returns>
+        </member>
+        <member name="M:StockSharp.BusinessEntities.ISecurityProvider.GetNativeId(StockSharp.BusinessEntities.Security)">
+            <summary>
+            Get native id.
+            </summary>
+            <param name="security">Security.</param>
+            <returns>Native (internal) trading system security id.</returns>
         </member>
         <member name="M:StockSharp.BusinessEntities.IConnector.GetSessionState(StockSharp.BusinessEntities.ExchangeBoard)">
             <summary>
