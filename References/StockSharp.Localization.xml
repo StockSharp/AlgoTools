@@ -20762,6 +20762,11 @@
             Yahoo (сandles)
             </summary>
         </member>
+        <member name="F:StockSharp.Localization.LocalizedStrings.OrderLogBuilderKey">
+            <summary>
+            Order log to order book builder
+            </summary>
+        </member>
         <member name="M:StockSharp.Localization.LocalizedStrings.GetString(System.String,System.Nullable{Ecng.Localization.Languages})">
             <summary>
             Get localized string.
@@ -41453,6 +41458,11 @@
         <member name="P:StockSharp.Localization.LocalizedStrings.YahooCandles">
             <summary>
             Yahoo (сandles)
+            </summary>
+        </member>
+        <member name="P:StockSharp.Localization.LocalizedStrings.OrderLogBuilder">
+            <summary>
+            Order log to order book builder
             </summary>
         </member>
         <member name="T:StockSharp.Localization.ProjectDescriptions">
