@@ -6,6 +6,7 @@
 	using System.Globalization;
 	using System.IO;
 	using System.Linq;
+	using System.Threading.Tasks;
 	using System.Windows;
 	using System.Windows.Controls;
 	using System.Windows.Media;
@@ -332,74 +333,101 @@
 
 			Chart.IndicatorTypes.AddRange(indicators);
 
-			var finamSecurities = Path.Combine(_settingsDir, "finam.csv");
+			var finamSecurities = Path.Combine(_settingsDir, "finam2.csv");
 
-			if (File.Exists(finamSecurities))
+			BusyIndicator.BusyContent = "Обновление инструментов...";
+			BusyIndicator.IsBusy = true;
+
+			Task.Factory.StartNew(() =>
 			{
-				var idGen = new SecurityIdGenerator();
+				File.Delete("finam.csv");
 
-				var securities = File.ReadAllLines(finamSecurities).Select(line =>
+				if (File.Exists(finamSecurities))
 				{
-					var cells = line.SplitByComma();
-					var idParts = idGen.Split(cells[0]);
-
-					return new Security
+					CultureInfo.InvariantCulture.DoInCulture(() =>
 					{
-						Id = cells[0],
-						Code = idParts.Item1,
-						Board = ExchangeBoard.GetOrCreateBoard(idParts.Item2),
-						ExtensionInfo = new Dictionary<object, object>
+						var idGen = new SecurityIdGenerator();
+
+						var securities = File.ReadAllLines(finamSecurities).Select(line =>
 						{
-							{ FinamHistorySource.MarketIdField, cells[1].To<long>() },
-							{ FinamHistorySource.SecurityIdField, cells[2].To<long>() },
+							var cells = line.SplitByComma();
+							var idParts = idGen.Split(cells[0]);
+
+							return new Security
+							{
+								Id = cells[0],
+								Code = idParts.Item1,
+								Board = ExchangeBoard.GetOrCreateBoard(idParts.Item2),
+								ExtensionInfo = new Dictionary<object, object>
+								{
+									{ FinamHistorySource.MarketIdField, cells[1].To<long>() },
+									{ FinamHistorySource.SecurityIdField, cells[2].To<long>() },
+								},
+								PriceStep = cells[3].To<decimal?>(),
+								Decimals = cells[4].To<int?>(),
+								Currency = cells[5].To<CurrencyTypes?>(),
+							};
+						});
+
+						foreach (var security in securities)
+						{
+							_securityProvider.Securities.Add(security);
+							_securityStorage.Save(security);
 						}
-					};
-				});
-
-				foreach (var security in securities)
-				{
-					_securityProvider.Securities.Add(security);
-					_securityStorage.Save(security);
+					});
 				}
-			}
-			else
+				else
+				{
+					_finamHistorySource.Refresh(_securityStorage, new Security(), s => { }, () => false);
+
+					var securities = _securityStorage.LookupAll().ToArray();
+
+					foreach (var security in securities)
+						_securityProvider.Securities.Add(security);
+
+					File.WriteAllLines(finamSecurities, securities.Where(s => !s.Id.Contains(',')).Select(s => "{0},{1},{2},{3},{4},{5}"
+						.Put(s.Id, s.ExtensionInfo[FinamHistorySource.MarketIdField], s.ExtensionInfo[FinamHistorySource.SecurityIdField], s.PriceStep, s.Decimals, s.Currency)));
+				}
+			})
+			.ContinueWith(res =>
 			{
-				_finamHistorySource.Refresh(_securityStorage, new Security(), s => { }, () => false);
+				BusyIndicator.IsBusy = false;
 
-				var securities = _securityStorage.LookupAll().ToArray();
+				if (res.Exception != null)
+				{
+					new MessageBoxBuilder()
+						.Error()
+						.Owner(this)
+						.Text(res.Exception.ToString())
+						.Show();
+				}
 
-				foreach (var security in securities)
-					_securityProvider.Securities.Add(security);
+				if (File.Exists(_settingsFile))
+				{
+					var settings = CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile).Load<Settings>());
 
-				File.WriteAllLines(finamSecurities, securities.Where(s => !s.Id.Contains(',')).Select(s => "{0},{1},{2}"
-					.Put(s.Id, s.ExtensionInfo[FinamHistorySource.MarketIdField], s.ExtensionInfo[FinamHistorySource.SecurityIdField])));
-			}
-
-			if (File.Exists(_settingsFile))
-			{
-				var settings = CultureInfo.InvariantCulture.DoInCulture(() => new XmlSerializer<SettingsStorage>().Deserialize(_settingsFile).Load<Settings>());
-
-				Year.SelectedItem = settings.Year;
-				Trader.Text = settings.Trader;
-				From.Value = settings.From;
-				To.Value = settings.To;
-				Security1.Text = settings.Security1;
-				Security2.Text = settings.Security2;
-				Security3.Text = settings.Security3;
-				Security4.Text = settings.Security4;
-				TimeFrame.SelectedItem = settings.TimeFrame;
-				Apart.IsChecked = settings.Apart;
-			}
-			else
-			{
-				Trader.Text = "Vasya";
-				Security1.Text = "RIZ5@FORTS";
-				//Trader.Text = "iZotov";
-				//Security1.Text = "SPZ5@FORTS";
-				//Security2.Text = "SIZ5@FORTS";
-				//From.Value = new DateTime(2014, 09, 16);
-				Apart.IsChecked = true;
-			}
+					Year.SelectedItem = settings.Year;
+					Trader.Text = settings.Trader;
+					From.Value = settings.From;
+					To.Value = settings.To;
+					Security1.Text = settings.Security1;
+					Security2.Text = settings.Security2;
+					Security3.Text = settings.Security3;
+					Security4.Text = settings.Security4;
+					TimeFrame.SelectedItem = settings.TimeFrame;
+					Apart.IsChecked = settings.Apart;
+				}
+				else
+				{
+					Trader.Text = "Vasya";
+					Security1.Text = "RIZ5@FORTS";
+					//Trader.Text = "iZotov";
+					//Security1.Text = "SPZ5@FORTS";
+					//Security2.Text = "SIZ5@FORTS";
+					//From.Value = new DateTime(2014, 09, 16);
+					Apart.IsChecked = true;
+				}
+			}, TaskScheduler.FromCurrentSynchronizationContext());
 		}
 
 		private void Year_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -537,7 +565,7 @@
 					var security = series.Item1.Security;
 
 					var olStorage = traderStorage.GetOrderLogStorage(security, format: StorageFormats.Csv);
-					var tradeDatesCache = _tradesDates.SafeAdd(trader, k => new DatesCache(Path.Combine(traderDrive.Path, "dates.bin")));
+					var tradeDatesCache = _tradesDates.SafeAdd(trader, k => new DatesCache(Path.Combine(traderDrive.Path, "dates.xml")));
 
 					var secTrades = from
 						.Range(to, TimeSpan.FromDays(1))
@@ -583,6 +611,11 @@
 
 								if (time.TimeOfDay >= last)
 									time = time.AddTicks(-1);
+							}
+
+							if (tf == TimeSpan.FromDays(1) && period != null && period.Times.Length > 0)
+							{
+								return new DateTimeOffset(time.Date + period.Times[0].Min, time.Offset);
 							}
 
 							return time.Truncate(tf);
@@ -690,6 +723,7 @@
 						{
 							var area = new ChartArea { Title = series.Item1.Security.Id };
 							Chart.AddArea(area);
+							area.YAxises.Clear();
 							candlesAreas.Add(series.Item1, area);
 						}
 
